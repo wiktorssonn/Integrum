@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-size: 1em;
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+    grid-template-rows: 300px auto auto auto;
+    grid-template-columns: 100%;
+
+}
+
+#wrapper > header {
+    grid-area: header;
+    background-color: #fff;
+
+    background-image: url("pictures/Integrum-Logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+#wrapper > nav {
+    grid-area: nav;
+    background-color: #666;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    font-size: 1.2em;
+
+}
+
+#wrapper > nav > a {
+    text-decoration: none;
+    color: #222;
+    padding: 0.5em;
+    line-height: 3em;
+
+}
+
+#wrapper > nav > a:hover {
+    color: #fff;
+    transition: 100ms;
+}
+
+#wrapper > nav > a > i {  /* Loggan i navmenu */
+    color: #111;
+    line-height: 1.5em;
+    font-size: 2em;
+}
+#wrapper > nav > a > i:hover {
+    color: #fff;
+    transition: 100ms;
+    cursor: pointer;
+}
+
+
+#wrapper > main {
+    grid-area: main;
+    background-color: #ccc;
+    
+    padding: 2em;
+}
+
+#wrapper > main > a > .ja {
+    transform-origin: left top;
+    transition: transform 0.5s;
+} 
+
+#wrapper > main > a > .ja:hover {
+    transform: rotate(720deg);
+} 
+
+#wrapper > footer {
+    grid-area: footer;
+    background-color: grey;
+
+    text-align: center;
+}
