@@ -20,7 +20,7 @@ body {
     grid-area: header;
     background-color: #fff;
 
-    background-image: url("pictures/Integrum-Logo.jpg");
+    background-image: url("Integrum-Logo.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -52,7 +52,7 @@ body {
     transition: 100ms;
 }
 
-#wrapper > nav > a > i {  /* Loggan i navmenu */
+#wrapper > nav > a > i {  /* Hem-loggan i navmenu */
     color: #111;
     line-height: 1.5em;
     font-size: 2em;
@@ -71,14 +71,6 @@ body {
     padding: 2em;
 }
 
-#wrapper > main > a > .ja {
-    transform-origin: left top;
-    transition: transform 0.5s;
-} 
-
-#wrapper > main > a > .ja:hover {
-    transform: rotate(720deg);
-} 
 
 #wrapper > footer {
     grid-area: footer;
