@@ -20,7 +20,7 @@ body {
     grid-area: header;
     background-color: #fff;
 
-    background-image: url("/webb/images/Integrum-Logo.jpg");
+    background-image: url("webb/images/Integrum-Logo.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
