@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
+from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "fbc07874e91feeaa1b0e8dcb400930bf"
@@ -53,4 +54,5 @@ if __name__ == "__main__":  # Startar servern automatiskt och kör den i debug-m
 
 #pip install Flask
 #pip install Flask-WTF
-#pip install SQLAlchemy
+
+#pip install flask-bcrypt       - Kryptering av lösenord
