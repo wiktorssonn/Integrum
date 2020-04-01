@@ -1,8 +1,23 @@
 from flask import Flask, render_template, url_for, flash, redirect
+from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
-app = Flask(__name__)
 
+app = Flask(__name__)
 app.config["SECRET_KEY"] = "fbc07874e91feeaa1b0e8dcb400930bf"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+db= SQLAlchemy(app)
+
+class User(db.Model):
+    user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
+    password = db.Column(db.String(60), nullable=False)
+
+    def __repr__(self): #Hur det printas ut?
+        return User("{}, {}, {}, {}".format(self.username, self.email, self.image_file))
+
+
 
 
 @app.route("/")
@@ -54,3 +69,4 @@ if __name__ == "__main__":  # Startar servern automatiskt och kör den i debug-m
 #pip install Flask
 #pip install Flask-WTF
 #pip install WTForms
+#pip install flask-sqlalchemy
