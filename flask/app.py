@@ -53,4 +53,4 @@ if __name__ == "__main__":  # Startar servern automatiskt och kör den i debug-m
 
 #pip install Flask
 #pip install Flask-WTF
-#pip install WTForms
+#pip install SQLAlchemy
