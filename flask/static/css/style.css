@@ -26,6 +26,13 @@ body {
     background-position: center;
 }
 
+#wrapper > header > h1 {
+    color: white;
+    font-size: 200px;
+    display: flex;
+
+    justify-content: center;
+}
 
 #wrapper > nav {
     grid-area: nav;
