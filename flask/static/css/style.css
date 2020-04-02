@@ -63,6 +63,12 @@ body {
     cursor: pointer;
 }
 
+#wrapper > nav > a > #log_in{
+    color: #111;
+    line-height: 0.5em;
+    font-size: 1em;
+    margin-right: 7px;
+}
 
 #wrapper > main {
     grid-area: main;
