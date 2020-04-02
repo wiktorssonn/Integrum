@@ -20,8 +20,6 @@ body {
     grid-area: header;
     background-color: #fff;
 
-    background-image: url("/static/images/leaves_bg.jpg");
-    /*background-size: contain;*/
     background-repeat: no-repeat;
     background-position: center;
 }
