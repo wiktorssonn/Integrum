@@ -3,7 +3,9 @@
     }
     
     body {
-    
+
+     
+     
      font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
      font-weight: 100;
      color: rgba(255, 255, 255, 1);
@@ -18,9 +20,26 @@
      user-select: none;
     }
 
+<<<<<<< Updated upstream
     #schema{
       color: black;
     }
+=======
+    #wrapper > header {
+        background-image: url(/images/Integrum-Logo.jpg);
+        grid-area: header;
+        background-color: #fff;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #schema{
+        color: black;
+    }
+
+    
+>>>>>>> Stashed changes
     
     #calendar {
       -webkit-transform: translate3d(0, 0, 0);
