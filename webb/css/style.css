@@ -44,11 +44,13 @@ body {
     color: #222;
     padding: 0.5em;
     line-height: 3em;
-
+    height:100%;
+    width:100%;
 }
 
 #wrapper > nav > a:hover {
     color: #fff;
+    background-color: #bbb;
     transition: 100ms;
 }
 
