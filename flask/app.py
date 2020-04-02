@@ -137,9 +137,9 @@ if __name__ == "__main__":  # Startar servern automatiskt och kör den i debug-m
 
 
 #pip install Flask
-<<<<<<< HEAD
+
 #pip install Flask-WTF      -Validering av formulär etc
 
 #pip install flask-bcrypt       -Kryptering av lösenord 
-=======
+
 
