@@ -20,7 +20,7 @@ body {
     grid-area: header;
     background-color: #fff;
     background-image: url("/static/images/malmo_banner.jpg");
-    /*background-size: contain;*/
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
