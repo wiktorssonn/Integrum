@@ -38,7 +38,7 @@ body {
     
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: start;
 
     font-size: 1.2em;
 
@@ -48,12 +48,15 @@ body {
     text-decoration: none;
     color: #222;
     padding: 0.5em;
-    line-height: 3em;
-
+    line-height: 4em;
+    font-size: 1em;
+    height:100%;
+    width:50%;
+    text-align: center;
 }
 
 #wrapper > nav > a:hover {
-    color: #fff;
+    background-color: #828c95;
     transition: 100ms;
 }
 
@@ -61,17 +64,6 @@ body {
     color: #111;
     line-height: 1.5em;
     font-size: 2em;
-}
-#wrapper > nav > a > i:hover {
-    color: #fff;
-    transition: 100ms;
-    cursor: pointer;
-}
-#wrapper > nav > a > #log_in {
-    color: #111;
-    line-height: 0.5em;
-    font-size: 1em;
-    margin-right: 7px;
 }
 
 #wrapper > main {
