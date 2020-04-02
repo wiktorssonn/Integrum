@@ -17,6 +17,10 @@
      -ms-user-select: none;
      user-select: none;
     }
+
+    #schema{
+      color: black;
+    }
     
     #calendar {
       -webkit-transform: translate3d(0, 0, 0);
