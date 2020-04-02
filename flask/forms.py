@@ -3,7 +3,10 @@ from flask_wtf import FlaskForm
 # Importerar Olika sorters field för olika typer av fält
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 # Importerar olika validators så att rätt information fylls i
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+#Importerar psyopg2 för att prata med databasen
+import psycopg2
+
 
 
 class RegistrationForm(FlaskForm):
@@ -17,11 +20,11 @@ class RegistrationForm(FlaskForm):
                              validators=[DataRequired()])
 
     confirm_password = PasswordField("Bekräfta lösenord",
-                                     validators=[DataRequired(), EqualTo("Lösenord")])
+                                     validators=[DataRequired(), EqualTo("password")])
 
     submit = SubmitField("Registrera")
 
-
+    
 class LoginForm(FlaskForm):
     email = StringField("Email",
                         validators=[DataRequired(), Email()])
@@ -33,3 +36,5 @@ class LoginForm(FlaskForm):
     remember = BooleanField("Kom ihåg mig")
 
     submit = SubmitField("Login")
+
+
