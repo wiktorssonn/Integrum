@@ -20,18 +20,10 @@ body {
     grid-area: header;
     background-color: #fff;
 
-    background-image: url("/static/images/leaves_bg.jpg");
+    background-image: url("/static/images/malmo_banner.jpg");
     /*background-size: contain;*/
     background-repeat: no-repeat;
     background-position: center;
-}
-
-#wrapper > header > h1 {
-    color: white;
-    font-size: 200px;
-    display: flex;
-
-    justify-content: center;
 }
 
 #wrapper > nav {
