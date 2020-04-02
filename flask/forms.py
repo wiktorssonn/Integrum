@@ -1,4 +1,4 @@
-# Importerar FlaskForm som har färdiga formulärfunktioner
+# Importerar FlaskForm som har färdiga formulärfunktioner!
 from flask_wtf import FlaskForm
 # Importerar Olika sorters field för olika typer av fält
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
