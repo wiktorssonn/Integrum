@@ -66,6 +66,10 @@ body {
     font-size: 2em;
 }
 
+#home{
+    flex-shrink: 1.5;
+}
+
 #wrapper > nav > a > #log_in {
     color: #111;
     line-height: 0.5em;
