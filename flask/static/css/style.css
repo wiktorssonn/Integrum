@@ -28,6 +28,7 @@ body {
 
 #wrapper > header > h1 {
     color: white;
+    text-shadow: 2px 3px 8px black;
     font-size: 200px;
     display: flex;
 
