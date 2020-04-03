@@ -47,6 +47,10 @@ except (Exception, psycopg2.Error) as error:
 def hem():
     return render_template("index.html")
 
+@app.route("/ia")
+def ia():
+    return render_template("ia.html")
+
 @app.route("/schema")
 def schema():
     return render_template("schema.html", title="Schema")

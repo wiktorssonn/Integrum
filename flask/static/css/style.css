@@ -76,10 +76,16 @@ body {
 #wrapper > main {
     grid-area: main;
     background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     
     padding: 2em;
 }
 
+#wrapper > main > p {
+    width: 50%;
+}
 
 #wrapper > footer {
     grid-area: footer;
