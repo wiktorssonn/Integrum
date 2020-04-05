@@ -66,11 +66,10 @@ body {
     flex-shrink: 1.5;
 }
 
-#wrapper > nav > a > #log_in {
+#log_in {
     color: white;
     line-height: 0.5em;
     font-size: 1em;
-    margin-right: 8px;
 }
 
 #wrapper > main {
