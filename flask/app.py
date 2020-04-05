@@ -49,7 +49,7 @@ def hem():
 
 @app.route("/ia")
 def ia():
-    return render_template("ia.html")
+    return render_template("ia.html", title="Informationsarkitekt")
 
 @app.route("/schema")
 def schema():
@@ -65,6 +65,9 @@ def om_oss():
 def kontakt():
     return render_template("kontakt.html", title="Kontakt")
 
+@app.route("/forum")
+def forum():
+    return render_template("forum.html", title="Forum")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():

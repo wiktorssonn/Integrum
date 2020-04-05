@@ -53,7 +53,7 @@ body {
 
 #wrapper > nav > a:hover {
     background-color: #2E789E;
-    transition: 100ms;
+    transition: 0.2s;
 }
 
 #wrapper > nav > a > i {  /* Hem-loggan i navmenu */
@@ -61,6 +61,14 @@ body {
     line-height: 0.5em;
     font-size: 2em;
 }
+
+#wrapper > main > #forum_links > li {
+    list-style: none;
+    color: black;
+    line-height: 0.5em;
+    font-size: 2em;
+}
+
 
 #home{
     flex-shrink: 1.5;
@@ -150,14 +158,17 @@ body {
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
     background-color: #2E789E;
-    transition: 100ms;
+    transition: 0.2s;
     }
   
   /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
+  .dropdown:hover .dropdown-content {
+    display: block;
+    transition: 0.2s;
+    }
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {
     background-color: #2E789E;
-    transition: 100ms;
+    transition: 0.2s;
     }
