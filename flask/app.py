@@ -7,6 +7,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 #Importerar psycopg2 för att skriva till databasen
 import psycopg2
+import os.path
 
 
 app = Flask(__name__)

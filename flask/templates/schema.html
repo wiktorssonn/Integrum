@@ -6,19 +6,21 @@
 
 {% block head %} 
     <!-- CSS -->
-    <link href="static/css/schema.css" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/schema.css') }}" type="text/css" rel="stylesheet">
     <!-- Javscript -->
-    <script type="text/javascript" src="{{ url_for('static', filename = '/flask/static/js/schema.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/schema.js') }}"></script>
+    
     
 {% endblock head %}
 
 {% block content %}
-    <link rel="stylesheet" href="static/css/schema.css"/>
+    
+    
     <h2 id="schema">SCHEMA</h2>
     <div id="calendar"></div>
-    <script type="text/javascript" src="static/js/schema.js"></script>
+    
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
 {% endblock content %}
         
