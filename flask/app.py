@@ -20,6 +20,10 @@ login_manager = LoginManager(app)
 def hem():
     return render_template("index.html")
 
+@app.route("/ia")
+def ia():
+    return render_template("ia.html", title="Informationsarkitekt")
+
 @app.route("/schema")
 def schema():
     return render_template("schema.html", title="Schema")
@@ -34,6 +38,9 @@ def om_oss():
 def kontakt():
     return render_template("kontakt.html", title="Kontakt")
 
+@app.route("/forum")
+def forum():
+    return render_template("forum.html", title="Forum")
 
 
 @login_manager.user_loader

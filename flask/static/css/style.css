@@ -32,7 +32,7 @@ body {
     
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-around;
     align-items: center;
     height: 50px;
 
@@ -53,7 +53,7 @@ body {
 
 #wrapper > nav > a:hover {
     background-color: #2E789E;
-    transition: 100ms;
+    transition: 0.2s;
 }
 
 #wrapper > nav > a > i {  /* Hem-loggan i navmenu */
@@ -62,24 +62,37 @@ body {
     font-size: 2em;
 }
 
+#wrapper > main > #forum_links > li {
+    list-style: none;
+    color: black;
+    line-height: 0.5em;
+    font-size: 2em;
+}
+
+
 #home{
     flex-shrink: 1.5;
 }
 
-#wrapper > nav > a > #log_in {
+#log_in {
     color: white;
     line-height: 0.5em;
     font-size: 1em;
-    margin-right: 8px;
 }
 
 #wrapper > main {
     grid-area: main;
     background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     
     padding: 2em;
 }
 
+#wrapper > main > p {
+    width: 50%;
+}
 
 #wrapper > footer {
     grid-area: footer;
@@ -103,3 +116,59 @@ body {
     margin: 0 auto; 
 }
 
+
+
+
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    background-color: black;
+    padding: 11px;
+    font-size: 1em;
+    width: 15em;
+    border: none;
+    text-align: center;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 15em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #2E789E;
+    transition: 0.2s;
+    }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+    transition: 0.2s;
+    }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #2E789E;
+    transition: 0.2s;
+    }
