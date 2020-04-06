@@ -94,7 +94,7 @@ class RegistrationForm(FlaskForm):
 #Login formuläret med inbyggda valideringar genom wtforms
 class LoginForm(FlaskForm):
     email = StringField("Email",
-                        validators=[DataRequired(), Email()])
+                        validators=[DataRequired(), Email(message="Ogiltig email adress")])
 
     password = PasswordField("Lösenord",
                              validators=[DataRequired()])
