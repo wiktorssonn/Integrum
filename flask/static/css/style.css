@@ -162,6 +162,10 @@ body {
     transition: 0.2s;
     }
   
+.dropdown-content a:last-child {
+    border-radius: 0px 0px 5px 5px;
+}
+
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {
     display: block;
