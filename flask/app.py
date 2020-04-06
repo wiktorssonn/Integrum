@@ -82,7 +82,7 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        '''
+        
         #Ansluter till databasen 
         try:
             connection = psycopg2.connect(user = "aj8772",
@@ -96,36 +96,22 @@ def login():
             
         #Emailen som angetts i formuläret läggs i variabeln email
         email = form.email.data
-        password = bcrypt.generate_password_hash(form.password.data).decode("utf-8")
-        print("Email: {}".format(email))
-        print("Lösenord: {}".format(password))
-
+        password = form.password.data
 
         #Hämtar alla email från users table i databasen
         cursor.execute("select * from users")
         all_users = cursor.fetchall()
-        
-        user_exist = False
+    
         for user in all_users:
-            if email.lower() == user[2].lower and password == user[3]:
-                print(user[2],user[3])
-                user_exist = True
-            else:
-                print(user[2],user[3])
-                print("hej")
-        #Om emailen redan finns, skriv ut felmeddelande
-        #if email_in_use == True:
-            #raise ValidationError("Denna mail finns redan registrerad!")
-        
-        
-        
-        user = User.query.filter_by(username=username.lower()).first()
-        if user:
-            if login_user(user):
+            #Kontrollerar att email och lösenord stämmer överens med email och lösenord i databasen
+            #Jämför lösenordet som skrivits in gentemot det krypterade lösenordet i databasen
+            if email.lower() == user[2].lower() and bcrypt.check_password_hash(user[3], password):
                 flash("Inloggning lyckades!", "success")
                 return redirect(url_for("hem"))
-        else:
-            flash("Inloggning misslyckades, Kontrollera användarnamn och lösenord", "danger")'''
+            #Om inte email och lösenord matchar så ska flash-meddelande komma upp
+            else:
+                flash("Inloggning misslyckades, Kontrollera användarnamn och lösenord", "danger")
+
     return render_template("login.html", title="Logga in", form=form)
 
 
@@ -138,10 +124,12 @@ if __name__ == "__main__":  # Startar servern automatiskt och kör den i debug-m
     app.run(debug=True)
 
 
+
 #pip install Flask
 
 #pip install Flask-WTF      -Validering av formulär etc
 
 #pip install flask-bcrypt       -Kryptering av lösenord 
+
 
 
