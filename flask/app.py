@@ -48,6 +48,10 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
+@app.route("/profil")
+def profile():
+    return render_template("profile.html", title="Profil")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
