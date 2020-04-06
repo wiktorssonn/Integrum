@@ -9,8 +9,8 @@
     <meta charset="utf-8">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
+    <!-- CSS -->
     <link href="static/css/style.css" type="text/css" rel="stylesheet">
 
     <!-- Om sidan har en titel, skriv ut den. Annars använd Integrum som titel -->
@@ -19,23 +19,55 @@
     {% else %}
     <title>Integrum</title>
     {% endif %}
+
+    {% block head %} {% endblock head %}
 </head>
 <body>
 
     <div id="wrapper">
 
         <header>
-            <h1>Integrum</h1>
+            
         </header>
 
         <nav>
 
             <a href="hem" id="home"><i class="fa fa-home"></i></a>
+
+            <!-- Dropdown för Program -->
+            <div class="dropdown">
+                <button class="dropbtn">Program</button>
+                <div class="dropdown-content">
+                  <a href="ia">Informationsarkitekt</a>
+                  <a href="#">Systemutvecklare</a>
+                  <a href="#">Spelutveckling</a>
+                </div>
+            </div>
+
+
             <a href="schema">Schema</a>
-            <a href="kontakt">Kontakt</a>
+
+            <!-- Dropdown för Kontakt -->
+            <div class="dropdown">    
+                <button class="dropbtn">Kontakt</button>
+                <div class="dropdown-content">
+                    <a href="kontakt">Kontakt</a>
+                    <a href="forum">Forum</a>
+                </div>
+            </div>
+
+
             <a href="om_oss">Om oss</a>
             <a href="faq">FAQ</a>
-            <a href="register"><i class="fa fa-sign-in" id="log_in"></i>Logga in / Registrera</a>
+
+            <!-- Dropdown för Logga in / Registrera -->
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa fa-sign-in" id="log_in"></i>Logga in / Registrera</button>
+                <div class="dropdown-content">
+                    <a href="register">Logga in / Registrera</a>
+                    <a href="profil">Profil</a>
+                </div>
+            </div>
 
         </nav>
 
@@ -51,6 +83,8 @@
     </div>
 
     <!-- Optional JavaScript -->
+    <!-- Javascript till schemat 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script> -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
