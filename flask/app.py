@@ -82,7 +82,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         '''
-        #Ansluter till databasen
+        #Ansluter till databasen 
         try:
             connection = psycopg2.connect(user = "aj8772",
                                     password = "z7zz9fgh",
