@@ -1,11 +1,14 @@
 *, *:before, *:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
     }
+
+    body > h2{
+
+      color: black;
+    }
     
     body {
 
-     
-     
      font-family: 'Baloo Chettan 2', cursive;
      font-weight: 100;
      color: rgba(255, 255, 255, 1);
@@ -19,6 +22,8 @@
      -ms-user-select: none;
      user-select: none;
     }
+
+    
 
     #schema{
       color: black;
