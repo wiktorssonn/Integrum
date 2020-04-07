@@ -211,6 +211,11 @@ th, td {
     padding: 10px;
 }
 
+#todo_lists > h2{
+    width:40%;
+    margin:0;
+}
+
 todo_table{
     padding: 30px;
 }
