@@ -28,6 +28,9 @@ def ia():
 def schema():
     return render_template("schema.html", title="Schema")
 
+@app.route("/todo")
+def todo():
+    return render_template("todo.html", title="Todo")
 
 @app.route("/om_oss")
 def om_oss():
