@@ -199,7 +199,7 @@ h2 {
 .kursinfo_table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
-    }
+}
 
 th {
     color: white;
@@ -209,6 +209,16 @@ th {
 
 th, td {
     padding: 10px;
+}
+
+todo_table{
+    padding: 30px;
+}
+
+.todo_table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 40%;
 }
 
 #user_picture {
