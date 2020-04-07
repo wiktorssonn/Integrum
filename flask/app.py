@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect
 
-from forms import RegistrationForm, LoginForm, ValidationError
+from forms import RegistrationForm, LoginForm, ValidationError, PostForm
 #Kryperar användarnas lösenord
 from flask_bcrypt import Bcrypt
 #Login funktion
@@ -45,6 +45,10 @@ def kontakt():
 def forum():
     return render_template("forum.html", title="Forum")
 
+@app.route("/new_post", methods=['GET','POST'])
+def new_post():
+    form = PostForm()
+    return render_template("create_post.html", title="New Post", form =form)
 
 @login_manager.user_loader
 def load_user(user_id):
