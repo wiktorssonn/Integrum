@@ -75,13 +75,14 @@ h2 {
 
 
 
-#wrapper > main > #forum_links > li {
-    list-style: none;
-    color: black;
+#wrapper > main > ul > li > a{
     line-height: 0.5em;
     font-size: 2em;
 }
 
+#wrapper > main > ul > li {
+    list-style-type: none;
+}
 
 #home{
     flex-shrink: 1.5;

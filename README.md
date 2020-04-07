@@ -13,6 +13,7 @@ Instruktioner för att öppna programmet via Flask (om du jobbar via GitHub):
 5. För att välja ett directory skriver du: cd --namn på directory--
 
 
+
 Programmet är byggt med Python biblioteket Flask och måste därför startas via en terminal tills vidare utveckling möjliggör andra startalternativ.
 Alla HTML sidor ligger i mappen templates. För att ändra den övergripande strukturen på samtliga sidor skall endast "layout" ändras. 
 Om mindre eller unika ändringar skall ske för en specifik sida så ändras detta i respektive HTML dokument (t.ex schema.html).
