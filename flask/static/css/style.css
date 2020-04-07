@@ -63,9 +63,17 @@ body {
 }
 
 h2 {
-    padding: 10px;
-    margin-top: 10px;
+    padding-top: 30px;
 }
+
+
+.details {
+    width: 25%;
+    padding-bottom: 10px;
+    border-top: 2px solid #2E789E;
+}
+
+
 
 #wrapper > main > #forum_links > li {
     list-style: none;
@@ -87,7 +95,7 @@ h2 {
 
 #wrapper > main {
     grid-area: main;
-    background-color: #ccc;
+    background-color: rgb(230, 230, 230);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -201,4 +209,10 @@ th {
 
 th, td {
     padding: 10px;
+}
+
+#user_picture {
+    padding: 10px;
+    font-size: 150px;
+    color: #2E789E;
 }
