@@ -321,11 +321,17 @@
   
   !function() {
     var data = [
+      { eventName: 'Inlämning: Reflektiv text', calendar: 'Informationsarkitektur', color: 'orange' },
+      { eventName: 'Tentamen: Systemutveckling', calendar: 'Tentamen', color: 'green' },
+      { eventName: 'Projektmöte: Systemutveckling', calendar: 'Projekt', color: 'blue' },
+      
+
     ];
   
     
   
     function addDate(ev) {
+      
       
     }
   
