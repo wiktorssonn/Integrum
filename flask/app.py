@@ -45,6 +45,9 @@ def kontakt():
 def forum():
     return render_template("forum.html", title="Forum")
 
+@app.route("/discus")
+def discus():
+    return render_template("discus.html", title="Diskussioner")
 
 @login_manager.user_loader
 def load_user(user_id):
