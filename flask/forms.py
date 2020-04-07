@@ -110,4 +110,4 @@ class PostForm(FlaskForm):
                         validators=[DataRequired()])
     content = TextAreaField('Innehåll',
                             validators=[DataRequired()])
-    submit = SubmitField('Post')
+    submit = SubmitField('Skicka')
