@@ -211,19 +211,26 @@ th, td {
     padding: 10px;
 }
 
-#todo_lists > h2{
+.todo_table{
+    padding: 30px;
     width:40%;
     margin:0;
 }
 
-todo_table{
-    padding: 30px;
+#todo_lists{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#todo_lists > h2{
+    width: 44%;
+    margin-left: 3%;
 }
 
 .todo_table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
-    width: 40%;
 }
 
 #user_picture {
