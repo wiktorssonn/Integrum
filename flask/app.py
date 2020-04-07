@@ -32,6 +32,10 @@ def schema():
 def todo():
     return render_template("todo.html", title="Todo")
 
+@app.route("/uppgift")
+def uppgift():
+    return render_template("uppgift.html", title="Uppgift")
+
 @app.route("/om_oss")
 def om_oss():
     return render_template("om_oss.html", title="Om Oss")
