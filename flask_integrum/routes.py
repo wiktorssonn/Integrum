@@ -10,7 +10,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 def hem():
     return render_template("index.html")
 
-
 @app.route("/ia")
 def ia():
     return render_template("ia.html", title="Informationsarkitekt")
@@ -32,7 +31,6 @@ def kontakt():
 @app.route("/forum")
 def forum():
     return render_template("forum.html", title="Forum")
-
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
