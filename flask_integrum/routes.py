@@ -90,7 +90,7 @@ def konto():
 def faq():
     return render_template("faq.html", title="FAQ")
 
-@app.route("/post/new", methods=['GET','POST'])
+@app.route("/create_post", methods=['GET','POST'])
 @login_required
 def new_post():
     form = PostForm()
