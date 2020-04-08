@@ -100,6 +100,7 @@ def faq():
 
 #pip install flask-sqlalchemy   -Databas
 
-#11:15 - 
+#pip install flask-login    -Loginfunktioner
+
 
 

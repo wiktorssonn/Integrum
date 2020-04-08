@@ -84,7 +84,7 @@ h2 {
     list-style-type: none;
 }
 
-#home{
+#home { 
     flex-shrink: 1.5;
 }
 
