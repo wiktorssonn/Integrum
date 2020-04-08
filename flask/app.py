@@ -40,7 +40,6 @@ def uppgift():
 def om_oss():
     return render_template("om_oss.html", title="Om Oss")
 
-
 @app.route("/kontakt")
 def kontakt():
     return render_template("kontakt.html", title="Kontakt")
@@ -60,7 +59,7 @@ def load_user(user_id):
 
 
 @app.route("/profil")
-def profile():
+def profile():  
     return render_template("profile.html", title="Profil")
 
 
