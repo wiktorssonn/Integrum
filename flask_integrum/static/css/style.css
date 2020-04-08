@@ -82,6 +82,10 @@ h2 {
     font-size: 2em;
 }
 
+#wrapper > main > ul > li {
+    list-style-type: none;
+}
+
 /* Flash meddelande som kommer upp vid inloggning och felaktig inloggning */
 #wrapper > main > .row {
     justify-content: center;
@@ -134,9 +138,6 @@ h2 {
     width: 65%; 
     margin: 0 auto; 
 }
-
-
-
 
 
 /* Dropdown Button */
