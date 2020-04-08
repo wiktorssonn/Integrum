@@ -84,6 +84,11 @@ h2 {
     list-style-type: none;
 }
 
+#wrapper > main > .row {
+    justify-content: center;
+    text-align: center;
+}
+
 #home { 
     flex-shrink: 1.5;
 }
