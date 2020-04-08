@@ -82,6 +82,12 @@ h2 {
     font-size: 2em;
 }
 
+/* Flash meddelande som kommer upp vid inloggning och felaktig inloggning */
+#wrapper > main > .row {
+    justify-content: center;
+    text-align: center;
+}
+
 
 #home{
     flex-shrink: 1.5;
