@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_integrum import app, db, bcrypt
-from flask_integrum.forms import RegistrationForm, LoginForm
+from flask_integrum.forms import RegistrationForm, LoginForm, PostForm
 from flask_integrum.models import User
 #Används för att logga in användaren
 from flask_login import login_user, current_user, logout_user, login_required
@@ -90,7 +90,14 @@ def konto():
 def faq():
     return render_template("faq.html", title="FAQ")
 
-
+@app.route("/create_post", methods=['GET','POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Ditt inlägg har publicerats!', 'success')
+        return redirect(url_for('forum'))
+    return render_template('create_post.html', title='Nytt inlägg', form=form)
 
 #pip install Flask
 

@@ -1,7 +1,7 @@
 # Importerar FlaskForm som har färdiga formulärfunktioner!
 from flask_wtf import FlaskForm
 # Importerar Olika sorters field för olika typer av fält
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 # Importerar olika validators så att rätt information fylls i
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 #Importerar User från models.py
@@ -55,3 +55,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Login")
     
 
+class PostForm(FlaskForm):
+    title = StringField('Titel', validators=[DataRequired()])
+    content = TextAreaField('Innehåll', validators=[DataRequired()])
+    submit = SubmitField('Skicka')
