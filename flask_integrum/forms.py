@@ -29,14 +29,14 @@ class RegistrationForm(FlaskForm):
         #Kollar om användarnamnet som anges redan finns i databasen
         user = User.query.filter_by(username=username.data).first()
         #Om användaren redan finns, skriv ut felmeddelande. Annars gå vidare
-        if user == True:
+        if user:
             raise ValidationError("Användarnamnet är upptaget!")
 
     def validate_email(self, email):
         #Kollar om emailen som anges redan finns i databasen
         user = User.query.filter_by(email=email.data).first()
         #Om emailen redan finns, skriv ut felmeddelande. Annars gå vidare
-        if user == True:
+        if user:
             raise ValidationError("Emailen finns redan registrerad!")
         
 

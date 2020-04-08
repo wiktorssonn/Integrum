@@ -18,11 +18,9 @@ def ia():
 def schema():
     return render_template("schema.html", title="Schema")
 
-
 @app.route("/om_oss")
 def om_oss():
     return render_template("om_oss.html", title="Om Oss")
-
 
 @app.route("/kontakt")
 def kontakt():
@@ -31,6 +29,10 @@ def kontakt():
 @app.route("/forum")
 def forum():
     return render_template("forum.html", title="Forum")
+
+@app.route("/todo")
+def todo():
+    return render_template("todo.html", title="Att göra")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
