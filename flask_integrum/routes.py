@@ -34,6 +34,10 @@ def forum():
 def todo():
     return render_template("todo.html", title="Att göra")
 
+@app.route("/uppgift")
+def uppgift():
+    return render_template("uppgift.html", title="Uppgift")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     #Om användaren redan är inloggad kommer man inte till inloggningen igen
