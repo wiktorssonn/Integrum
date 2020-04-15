@@ -40,7 +40,7 @@ def create_post():
 
 @app.route("/uppgift/<filename>")
 def uppgift(filename):
-    text = open("uppgift_folder/{}.txt".format(filename), "r")
+    text = open("uppgifter_folder/{}.txt".format(filename), "r")
     text = text.read()
     return render_template("uppgift.html", title="Uppgift")
 
