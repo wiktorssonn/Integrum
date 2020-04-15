@@ -34,12 +34,13 @@ def forum():
 def todo():
     return render_template("todo.html", title="Att göra")
 
-@app.route("/uppgift")
-def uppgift():
-    return render_template("uppgift.html", title="Uppgift")
 @app.route("/create_post")
 def create_post():
     return render_template("create_post.html", title="Skapa inlägg")
+
+@app.route("/uppgift")
+def uppgift():
+    return render_template("uppgift.html", title="Uppgift")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
