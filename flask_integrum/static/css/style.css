@@ -11,7 +11,7 @@ body {
     "nav"
     "main"
     "footer";
-    grid-template-rows: 300px auto auto auto;
+    grid-template-rows: 300px auto auto 100px;
     grid-template-columns: 100%;
 
 }
@@ -62,20 +62,18 @@ body {
     font-size: 2em;
 }
 
-h2 {
-    padding-top: 30px;
+#wrapper > main {
+    grid-area: main;
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2em;
 }
 
-
-.details {
-    width: 25%;
-    padding-bottom: 10px;
-    border-top: 2px solid #2E789E;
-}
-
-
-
-#wrapper > main > ul > li > a{
+#wrapper > main > ul > li > a {
     line-height: 0.5em;
     font-size: 2em;
 }
@@ -89,6 +87,61 @@ h2 {
     text-align: center;
 }
 
+#wrapper > main > .border-top {
+    width: 50%;
+}
+
+#wrapper > main > .content-section {    /* Användarinformation under profil */
+    margin: 0 auto;
+    padding: 0.5em;
+    width: 50%;
+}
+
+#wrapper > main > .content-section img {    /* Profilbild */
+    width: 175px;
+    height: 175px;
+}
+
+#wrapper > main > .content-section > .media > .media-body {     /* Texten bredvid profilbilden */
+    padding-left: 2em;
+    margin-top: 1.5em;
+}
+
+#wrapper > main > .content-section > form {
+    margin-top: 2em;
+}
+
+
+#wrapper > main > p {
+    width: 50%;
+}
+
+#wrapper > footer {
+    grid-area: footer;
+    background-color: black;
+    color: white;
+    line-height: 100px;
+    text-align: center;
+    border: none;   
+}
+
+#wrapper > footer > p {
+    margin-bottom: 0;
+}
+
+
+h2 {
+    padding-top: 30px;
+}
+
+
+.details {
+    width: 25%;
+    padding-bottom: 10px;
+    border-top: 2px solid #2E789E;
+}
+
+
 #home { 
     flex-shrink: 1.5;
 }
@@ -99,35 +152,6 @@ h2 {
     font-size: 1em;
 }
 
-#wrapper > main {
-    grid-area: main;
-    background-color: rgb(230, 230, 230);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-    padding: 2em;
-}
-
-#wrapper > main > p {
-    width: 50%;
-}
-
-#wrapper > footer {
-    grid-area: footer;
-    background-color: black;
-    color: white;
-
-    text-align: center;
-    
-}
-
-/* Klassen för formulären */
-.content-section {
-    width: 65%;
-    margin: 0 auto;
-    
-}
 
 /* Klassen för Logga in / Registrera under formulären */
 .border-top {
