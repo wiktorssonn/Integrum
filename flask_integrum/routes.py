@@ -38,8 +38,10 @@ def todo():
 def create_post():
     return render_template("create_post.html", title="Skapa inlägg")
 
-@app.route("/uppgift")
-def uppgift():
+@app.route("/uppgift/<filename>")
+def uppgift(filename):
+    text = open("uppgift_folder/{}.txt".format(filename), "r")
+    text = text.read()
     return render_template("uppgift.html", title="Uppgift")
 
 @app.route("/register", methods=["GET", "POST"])
