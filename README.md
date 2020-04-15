@@ -16,6 +16,20 @@ Instruktioner för att öppna programmet via Flask (om du jobbar via GitHub):
 
 Pip-installs som behövs:
 
+
+
+För web-scraping:
+
+#pip install requests
+
+#pip install bs4
+
+
+
+
+
+För Flask:
+
 #pip install Flask
 
 #pip install Flask-WTF      -Validering av formulär etc
