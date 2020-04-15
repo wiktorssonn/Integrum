@@ -37,6 +37,9 @@ def todo():
 @app.route("/uppgift")
 def uppgift():
     return render_template("uppgift.html", title="Uppgift")
+@app.route("/create_post")
+def create_post():
+    return render_template("create_post.html", title="Skapa inlägg")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
