@@ -18,6 +18,10 @@ def ia():
 def schema():
     return render_template("schema.html", title="Schema")
 
+@app.route("/calendar")
+def calendar():
+    return render_template("calendar.html", title="Calendar")
+
 @app.route("/om_oss")
 def om_oss():
     return render_template("om_oss.html", title="Om Oss")

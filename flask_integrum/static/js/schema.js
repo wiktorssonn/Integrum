@@ -1,3 +1,4 @@
+/*
 !function() {
 
     var today = moment();
@@ -337,5 +338,6 @@
   
     var calendar = new Calendar('#calendar', data);
   
-  }();
+  }();*/
+  
   
