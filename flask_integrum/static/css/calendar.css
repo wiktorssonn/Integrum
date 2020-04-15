@@ -12,7 +12,8 @@ table{
     border-collapse: collapse;
     border-radius: 15px;
     border-style: hidden; 
-    box-shadow: 0 0 0 1px black; 
+    box-shadow: 0 0 0 1px black;
+}
 
 thead{
     background-color: black ;
