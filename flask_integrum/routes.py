@@ -42,7 +42,7 @@ def create_post():
 def uppgift(filename):
     text = open("uppgifter_folder/{}.txt".format(filename), "r")
     text = text.read()
-    return render_template("uppgift.html", title="Uppgift")
+    return render_template("uppgift.html", text = text, title=filename)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
