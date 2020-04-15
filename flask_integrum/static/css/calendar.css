@@ -1,0 +1,32 @@
+
+td {
+    border: 1px solid black;
+}
+table{
+    width: 65%;
+    height: 600px;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    display: inline-table;
+    border-collapse: collapse;
+    border-radius: 15px;
+    border-style: hidden; 
+    box-shadow: 0 0 0 1px black;
+}
+
+thead{
+    background-color: black ;
+    border-radius: 10px;
+    
+    
+}
+table tr.weekday > td > p{
+    color: white;
+}
+
+table td.nextmonth{
+    opacity: 50%;
+}
+
+
