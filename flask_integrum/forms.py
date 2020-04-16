@@ -56,7 +56,7 @@ class LoginForm(FlaskForm):
     #Frågar om användaren om hen vill spara sitt lösenord
     remember = BooleanField("Kom ihåg mig")
 
-    submit = SubmitField("Login")
+    submit = SubmitField("Logga in")
 
 
 

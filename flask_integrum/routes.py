@@ -1,14 +1,15 @@
+import os
+#Används för att göra om filnamn till ett random hextal/hexsträng
+import secrets
+#För att skala profilbilderna
+from PIL import Image
+
 from flask import Flask, render_template, url_for, flash, redirect, request, abort
 from flask_integrum import app, db, bcrypt
 from flask_integrum.forms import RegistrationForm, LoginForm, PostForm, UpdateAccountForm
 from flask_integrum.models import User, Post
 #Används för att logga in användaren
 from flask_login import login_user, current_user, logout_user, login_required
-#Används för att göra om filnamn till ett random hextal/hexsträng
-import secrets
-import os
-#För att skala profilbilderna
-from PIL import Image
 
 
 
@@ -38,8 +39,10 @@ def kontakt():
 
 @app.route("/forum")
 def forum():
-    #Hämtar alla inlägg från databasen
-    posts = Post.query.all()
+    #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
+    page = request.args.get("page", 1, type=int)
+    #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=2)
     return render_template("forum.html", title="Forum", posts=posts)
     
 @app.route("/faq")
@@ -209,6 +212,18 @@ def delete_post(post_id):
     return redirect(url_for("forum"))
 
 
+#Visar alla inlägg en viss användare gjort (När man klickar på användarnamnet på ett inlägg)
+@app.route("/user/<string:username>")
+def user_posts(username):
+    #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
+    page = request.args.get("page", 1, type=int)
+    #Om användaren inte hittas, returnera en 404-error
+    user = User.query.filter_by(username=username).first_or_404()
+    #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template("user_posts.html", posts=posts, user=user)
 
 
 
