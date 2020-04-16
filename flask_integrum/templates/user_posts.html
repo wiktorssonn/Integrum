@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Studentforum</h1>
-
+    <h1 class="mb-3">Inlägg av: {{ user.username }} ({{ posts.total }})</h1>
     {% for post in posts.items %}
         <article class="media forum-content-section">
             <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
             <div class="media-body">
             <div class="article-metadata">
+                <!-- Länkar till den specifika användaren man klickar på och visar alla hens inlägg-->
                 <a class="mr-2" href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
                 <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
             </div>
@@ -18,39 +18,20 @@
     {% endfor %}
     <div class="forum-buttons">
         <!-- Visar sidonummer så man kan bläddra för att se fler inlägg -->
-        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
             <!-- Om sidonumret finns, gå till sidan-->
             {% if page_num %}
                 <!-- Gör så att knappen för sidan vi är på just nu är helmarkerad tillskillnad från övriga knappar -->
                 {% if posts.page == page_num %}
-                    <a class="btn btn-info mb-4" href="{{ url_for('forum', page=page_num) }}">{{ page_num }}</a>
+                    <a class="btn btn-info mb-4" href="{{ url_for('user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
                     
                 {% else %}
-                    <a class="btn btn-outline-info mb-4" href="{{ url_for('forum', page=page_num) }}">{{ page_num }}</a>
+                    <a class="btn btn-outline-info mb-4" href="{{ url_for('user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
                 {% endif %}
             {% else %}
             ...
             {% endif %}
         {% endfor %}
     </div>
-
-    <h2>Sammanfattning</h2>
-
-    {% if current_user.is_authenticated %}
-    <ul>
-        <li><a href="#">Tips om kurslitteratur</a></li>
-        <li><a href="#">Samband mellan kurser</a></li>
-        <li><a href="#">Rating</a></li>
-        <li><a href="#">Köpa / Sälj</a></li>
-        <li><a href="create_post">Skapa inlägg</a></li>
-    </ul>
-    {% else %}
-    <ul>
-        <li><a href="#">Tips om kurslitteratur</a></li>
-        <li><a href="#">Samband mellan kurser</a></li>
-        <li><a href="#">Rating</a></li>
-    </ul>  
-    {% endif %}
-
 
 {% endblock content %}
