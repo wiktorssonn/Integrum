@@ -34,7 +34,7 @@ XML Kronox = https://schema.mau.se/appserver-ejb/RapportEJB?wsdl
 Programmet är byggt med Python biblioteket Flask och måste därför startas via en terminal tills vidare utveckling möjliggör andra startalternativ.
 Alla HTML sidor ligger i mappen templates. För att ändra den övergripande strukturen på samtliga sidor skall endast "layout" ändras. 
 Om mindre eller unika ändringar skall ske för en specifik sida så ändras detta i respektive HTML dokument (t.ex schema.html).
-Använd då följande exempel för att lägga in nya element, där "<p>text</p>" är exempel på det som blir unikt på respektive sida. Övrigt utseende
+Använd då följande exempel för att lägga in nya element, där "text" är exempel på det som blir unikt på respektive sida. Övrigt utseende
 tas från layout.html som ligger som grund för samtliga sidor.
     
     {% extends "layout.html" %}
