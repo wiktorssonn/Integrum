@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
-<!-- Denna del är <main> i layouten och är den enda som är unik per sida-->
 {% block content %} 
+    <!-- Registreringsforumlär som referar till validering under models.py -->
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
