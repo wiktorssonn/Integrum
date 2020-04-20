@@ -68,10 +68,10 @@ class PostForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
-    username = StringField("Användarnamn",
+    username = StringField("Nytt användarnamn",
                            [DataRequired(), Length(min=3, max=20, message="Användarnamnet måste vara mellan 3-20 tecken!")])
 
-    email = StringField("Email",
+    email = StringField("Ny email",
                         validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
 
     picture = FileField("Uppdatera profilbild", validators=[FileAllowed(["jpg", "png"], message="Ogiltigt filformat, använd filformat 'jpg' eller 'png'")])
