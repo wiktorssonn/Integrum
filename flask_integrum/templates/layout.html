@@ -35,13 +35,13 @@
 
             <!-- Kollar om användaren är inloggad, isåfall visar den andra menyaval -->
             {% if current_user.is_authenticated %}
-                <a href="hem" id="home"><i class="fa fa-home"></i></a>
+                <a href="/hem" id="home"><i class="fa fa-home"></i></a>
 
                 <!-- Dropdown för Program -->
                 <div class="dropdown">
                     <button class="dropbtn">Program</button>
                     <div class="dropdown-content">
-                    <a href="ia">Informationsarkitekt</a>
+                    <a href="/ia">Informationsarkitekt</a>
                     <a href="#">Systemutveckling</a>
                     <a href="#">Spelutveckling</a>
                     </div>
@@ -53,6 +53,8 @@
                     <div class="dropdown-content">
                     <a href="calendar">Schema</a>
                     <a href="todo">Att göra</a>
+                    <a href="/schema">Schema</a>
+                    <a href="/todo">Att göra</a>
                     </div>
                 </div>
 
@@ -60,24 +62,22 @@
                 <div class="dropdown">    
                     <button class="dropbtn">Kontakt</button>
                     <div class="dropdown-content">
-                        <a href="kontakt">Kontakt</a>
-                        <a href="forum">Forum</a>
+                        <a href="/kontakt">Kontakt</a>
+                        <a href="/forum">Forum</a>
                     </div>
                 </div>
-
-
-                <a href="om_oss">Om oss</a>
-                <a href="faq">FAQ</a>
-
-                <a href="profil">Min profil</a>
-                <a href="logout">Logga ut</a>
+                
+                <a href="/om_oss">Om oss</a>
+                <a href="/faq">FAQ</a>
+                <a href="/profil">Min profil</a>
+                <a href="/logout">Logga ut</a>
             {% else %}
-                <a href="login">Logga in</a>
-                <a href="register">Registrera</a>
-                <a href="om_oss">Om oss</a>
-                <a href="kontakt">Kontakt</a>
-                <a href="forum">Forum</a>
-                <a href="faq">FAQ</a>
+                <a href="/login">Logga in</a>
+                <a href="/register">Registrera</a>
+                <a href="/om_oss">Om oss</a>
+                <a href="/kontakt">Kontakt</a>
+                <a href="/forum">Forum</a>
+                <a href="/faq">FAQ</a>
             {% endif %}
                 
            
