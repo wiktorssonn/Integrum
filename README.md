@@ -27,6 +27,8 @@ pip install flask-login    -Loginfunktioner
 
 pip install Pillow     -Gör att vi kan skala profilbilderna
 
+pip install flask-mail      -För att skicka mail genom flask
+
 
 Programmet är byggt med Python biblioteket Flask och måste därför startas via en terminal tills vidare utveckling möjliggör andra startalternativ.
 Alla HTML sidor ligger i mappen templates. För att ändra den övergripande strukturen på samtliga sidor skall endast "layout" ändras. 
