@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
-<!-- Denna del är <main> i layouten och är den enda som är unik per sida-->
 {% block content %}
+    <!-- Inloggningsida som refererar till validering under models.py -->
     <div class="content-section">
-        <form method="POST" action="">
+        <form method="POST" action="/login">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Logga In</legend>
@@ -40,10 +40,10 @@
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
+                <small class="text-muted ml-2">
+                    <a href="{{ url_for('reset_request') }}">Glömt ditt lösenord?</a>
+                </small>
             </div>
-            <small class="text-muted ml-2">
-                <a href="#">Glömt ditt lösenord?</a>
-            </small>
         </form>
     </div>
     <div class="border-top pt-3">

@@ -5,11 +5,13 @@ import secrets
 from PIL import Image
 
 from flask import Flask, render_template, url_for, flash, redirect, request, abort
-from flask_integrum import app, db, bcrypt
-from flask_integrum.forms import RegistrationForm, LoginForm, PostForm, UpdateAccountForm
+from flask_integrum import app, db, bcrypt, mail
+from flask_integrum.forms import RegistrationForm, LoginForm, PostForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
 from flask_integrum.models import User, Post
 #Används för att logga in användaren
 from flask_login import login_user, current_user, logout_user, login_required
+#För att skicka mail genom flask_mail
+from flask_mail import Message
 
 
 
@@ -152,7 +154,7 @@ def profil():
 
 
 
-@app.route("/create_post", methods=['GET','POST'])
+@app.route("/create_post", methods=["GET","POST"])
 @login_required
 def new_post():
     form = PostForm()
@@ -160,13 +162,13 @@ def new_post():
         post = Post(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Ditt inlägg har publicerats!', 'success')
-        return redirect(url_for('forum'))
-    return render_template('create_post.html', title='Nytt inlägg', form=form, legend="Nytt Inlägg")
+        flash("Ditt inlägg har publicerats!", "success")
+        return redirect(url_for("forum"))
+    return render_template("create_post.html", title="Nytt inlägg", form=form, legend="Nytt Inlägg")
 
 
 #Varje post får en unik sökväg
-@app.route("/<int:post_id>")
+@app.route("/post/<int:post_id>")
 def post(post_id):
     #Om sökvägen inte finns, returnera 404
     post = Post.query.get_or_404(post_id)
@@ -174,7 +176,7 @@ def post(post_id):
 
 
 #Uppdatera inlägg
-@app.route("/<int:post_id>/update", methods=["GET", "POST"])
+@app.route("/post/<int:post_id>/update", methods=["GET", "POST"])
 @login_required
 def update_post(post_id):
     #Om sökvägen inte finns, returnera 404
@@ -197,7 +199,7 @@ def update_post(post_id):
     return render_template("create_post.html", title="Update Post", form=form, legend="Uppdatera Inlägg")
 
 #Ta bort inlägg
-@app.route("/<int:post_id>/delete", methods=["GET", "POST"])
+@app.route("/post/<int:post_id>/delete", methods=["GET", "POST"])
 @login_required
 def delete_post(post_id):
     #Om sökvägen inte finns, returnera 404
@@ -226,6 +228,56 @@ def user_posts(username):
     return render_template("user_posts.html", posts=posts, user=user)
 
 
+#Skickar mail till användaren som vill återställa lösenord
+def send_reset_email(user):
+    token = user.get_reset_token()
+    msg = Message("Återställ Lösenord", sender="noreply@integrum.com", recipients=[user.email])
+    #_external=True används för att göra url:en absolut
+    msg.body = f''' För att återställa ditt lösenord, klicka på länken: {url_for("reset_token", token=token, _external=True)}
+
+    Om du inte skickat en förfrågan om att återställa ditt lösenord, ignorera detta meddelande så kommer inga ändringar att göras.
+    '''
+    #Skickar mailet
+    mail.send(msg)
+
+#Formuläret om förfrågan att återställa lösenordet, validering av email för att kontrollera att kontot finns
+@app.route("/reset_password", methods=['GET','POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for("hem"))
+    form = RequestResetForm()
+    if form.validate_on_submit():
+        #Om formuläret validerat, hämta ut angiven email från databasen och lagrar i variabeln "user"
+        user = User.query.filter_by(email=form.email.data).first()
+        #Skicka email till användaren
+        send_reset_email(user)
+        flash("Ett email har skickats med instruktioner för att återställa lösenordet!", "info")
+        return redirect(url_for("login"))
+    return render_template("reset_request.html", title="Återställ Lösenord", form=form)
+
+
+#Formuläret där återställningen av lösenordet faktiskt sker, anger nytt lösenord
+@app.route("/reset_password/<token>", methods=['GET','POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for("hem"))
+    user = User.verify_reset_token(token)
+    if user is None:
+        #Om user = None, alltså om token är fel eller har utgått visa felmeddlenade och returnera sidan för att återställa lösenord
+        flash("Återställningsnyckeln är felaktig eller har utgått!", "warning")
+        return redirect(url_for("reset_request"))
+    
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        #Krypterar lösenordet som skrivs in i formuläret, görs om till sträng
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode("utf-8")
+        user.password = hashed_password
+        db.session.commit()
+        flash("Ditt lösenord har uppdaterats!", "success")
+        return redirect(url_for("login"))
+    return render_template("reset_token.html", title="Återtställ Lösenord", form=form)
+
+
 
 
 
@@ -241,3 +293,4 @@ def user_posts(username):
 
 #pip install Pillow     -Gör att vi kan skala profilbilderna
 
+#pip install flask-mail     -För att skicka mail genom flask
