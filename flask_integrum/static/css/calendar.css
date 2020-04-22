@@ -1,32 +1,68 @@
+.calendar-body {
 
-td {
-    border: 1px solid black;
-}
-table{
-    width: 65%;
-    height: 600px;
-    text-align: center;
-    font-weight: bold;
-    overflow: hidden;
-    display: inline-table;
-    border-collapse: collapse;
-    border-radius: 15px;
-    border-style: hidden; 
-    box-shadow: 0 0 0 1px black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height: 100vh;
 }
 
-thead{
-    background-color: black ;
-    border-radius: 10px;
+.calendar{
+
+    width: 60%;
+    height: 50%;
+    background: white;
+    box-sizing: border-box;
+}
+
+.calendar .date{
+
+    padding: 20px;
+    display: grid;
     
+    grid-template-columns: repeat(7, minmax(50px, 3fr));
+    box-sizing: border-box;
     
 }
-table tr.weekday > td > p{
+
+.calendar .date div{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    height: 65px;
+    
+}
+
+.calendar .date div.day{
+
+    font-weight: 1000;
+    background-color: black;
     color: white;
 }
 
-table td.nextmonth{
-    opacity: 50%;
+#sun{
+    color: firebrick;
 }
 
 
+.calendar .date div.number:nth-child(7n+7)
+{
+    color: firebrick;
+    font-weight: 700;
+}
+
+.calendar .date div.number{
+
+    font-weight: 700;
+}
+
+
+.calendar .date div.number:hover{
+
+    background-color: gray;
+    transition: ease-in-out 0.2s;
+
+}
