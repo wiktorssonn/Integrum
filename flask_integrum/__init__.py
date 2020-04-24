@@ -5,10 +5,11 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 
+DB_URL = "postgresql+psycopg2://aj8772:z7zz9fgh@pgserver.mah.se/integrum_db"
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "fbc07874e91feeaa1b0e8dcb400930bf"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = DB_URL
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
