@@ -6,6 +6,7 @@ Skapa en enklare och mer användbar "Canvas" främst för Informationsarkitekter
 
 Instruktioner för att öppna programmet via Flask (om du jobbar via GitHub):
 ---------------------------------------------------------------------------
+(Kolla pip-install nedanför instruktionerna innan du påbörjar stegen i instruktionerna)
 1. Skriv "python app.py" alternativt "python3 app.py" i terminalen (Funkar inte detta så är du inte i rätt directory).
 2. Om inte 1 fungerar skriv "ls" i terminalen för att se var du står just nu. Navigera sedan till /Users/användarnamn/Documents/GitHub/Integrum/flask_integrum med hjälp av "cd" kommandot. (För att gå tillbaka skriv "cd .." på Windows och cd ../ på Mac, cd ../../ tar dig två steg tillbaka) Se guide om navigering via terminal, https://courses.cs.washington.edu/courses/cse140/13wi/shell-usage.html
 3. Skriv python3 app.py för att starta applikationen och surfa in på http://127.0.0.1:5000.
