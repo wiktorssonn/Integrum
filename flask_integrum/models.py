@@ -13,6 +13,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+
 #Hur vårt "User" table är uppbyggt samt hur det sparas i databasen
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -42,6 +43,8 @@ class User(db.Model, UserMixin):
     #Hur vår model printas ut
     def __repr__(self):
         return "User('{}', '{}', '{}')" .format(self.username, self.email, self.image_file)
+
+
 
 #Hur vårt "Post" table är uppbyggt samt hur det sparas i databasen
 class Post(db.Model):
