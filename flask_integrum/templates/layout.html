@@ -41,9 +41,9 @@
                 <div class="dropdown">
                     <button class="dropbtn">Program</button>
                     <div class="dropdown-content">
-                    <a href="/ia">Informationsarkitekt</a>
-                    <a href="#">Systemutveckling</a>
-                    <a href="#">Spelutveckling</a>
+                    <a href="{{ url_for('main.ia') }}">Informationsarkitekt</a>
+                    <a href="{{ url_for('main.hem') }}">Systemutveckling</a>
+                    <a href="{{ url_for('main.hem') }}">Spelutveckling</a>
                     </div>
                 </div>
 
@@ -51,8 +51,8 @@
                 <div class="dropdown">
                     <button class="dropbtn">Schema</button>
                     <div class="dropdown-content">
-                    <a href="/schema">Schema</a>
-                    <a href="/todo">Att göra</a>
+                    <a href="{{ url_for('main.schema') }}">Schema</a>
+                    <a href="{{ url_for('main.todo') }}">Att göra</a>
                     </div>
                 </div>
 
@@ -60,22 +60,22 @@
                 <div class="dropdown">    
                     <button class="dropbtn">Kontakt</button>
                     <div class="dropdown-content">
-                        <a href="/kontakt">Kontakt</a>
-                        <a href="/forum">Forum</a>
+                        <a href="{{ url_for('main.kontakt') }}">Kontakt</a>
+                        <a href="{{ url_for('main.forum') }}">Forum</a>
                     </div>
                 </div>
                 
-                <a href="/om_oss">Om oss</a>
-                <a href="/faq">FAQ</a>
-                <a href="/profil">Min profil</a>
-                <a href="/logout">Logga ut</a>
+                <a href="{{ url_for('main.om_oss') }}">Om oss</a>
+                <a href="{{ url_for('main.faq') }}">FAQ</a>
+                <a href="{{ url_for('users.profil') }}">Min profil</a>
+                <a href="{{ url_for('users.logout') }}">Logga ut</a>
             {% else %}
-                <a href="/login">Logga in</a>
-                <a href="/register">Registrera</a>
-                <a href="/om_oss">Om oss</a>
-                <a href="/kontakt">Kontakt</a>
-                <a href="/forum">Forum</a>
-                <a href="/faq">FAQ</a>
+                <a href="{{ url_for('users.login') }}">Logga in</a>
+                <a href="{{ url_for('users.register') }}">Registrera</a>
+                <a href="{{ url_for('main.om_oss') }}">Om oss</a>
+                <a href="{{ url_for('main.kontakt') }}">Kontakt</a>
+                <a href="{{ url_for('main.forum') }}">Forum</a>
+                <a href="{{ url_for('main.faq') }}">FAQ</a>
             {% endif %}
                 
            
