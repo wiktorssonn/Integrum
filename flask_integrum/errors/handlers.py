@@ -4,7 +4,6 @@ errors = Blueprint("errors", __name__)
 
 
 
-
 #Felhantering för "error 403"
 @errors.app_errorhandler(403)
 def error_403(error):
