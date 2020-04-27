@@ -1,10 +1,11 @@
-from flask_integrum import db, login_manager, app
+from flask_integrum import db, login_manager
 #Ger oss en nyckel som blir ogiltig efter utsatt tid, för återställning av lösenord
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 #Funktioner för att kontrollera att användaren är autentiserad etc.
 from flask_login import UserMixin
 #Tid och datum
 from datetime import datetime
+from flask import current_app
 
 #Hämtar ut användare genom id
 @login_manager.user_loader
@@ -23,14 +24,14 @@ class User(db.Model, UserMixin):
 
     #Sätter koden som används för återställning av lösenord till att gå ut efter 30minuter
     def get_reset_token(self, expires_sec=1800):
-        #Hämtar secret_key från init.py genom app.config
-        s = Serializer(app.config["SECRET_KEY"], expires_sec)
+        #Hämtar secret_key från init.py genom current_app.config
+        s = Serializer(current_app.config["SECRET_KEY"], expires_sec)
         return s.dumps({"user_id": self.id}).decode("utf-8")
 
     #Verifiera återställningskoden
     @staticmethod #Vi tar bara emot token som argument, inte self
     def verify_reset_token(token):
-        s = Serializer(app.config["SECRET_KEY"])
+        s = Serializer(current_app.config["SECRET_KEY"])
         try:
             #Ta fram token/återställningskod
             user_id = s.loads(token)["user_id"]
