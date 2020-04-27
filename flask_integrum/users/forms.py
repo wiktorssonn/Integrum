@@ -1,15 +1,10 @@
-# Importerar FlaskForm som har färdiga formulärfunktioner!
 from flask_wtf import FlaskForm
-#Vilka filer som får laddas upp som profilbild
 from flask_wtf.file import FileField, FileAllowed
-#Importerar aktuell användare som är inloggad
-from flask_login import current_user
-# Importerar Olika sorters field för olika typer av fält
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-# Importerar olika validators så att rätt information fylls i
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-#Importerar User från models.py
+from flask_login import current_user
 from flask_integrum.models import User
+
 
 
 #Registreringsformuläret med inbyggda valideringar genom wtforms
@@ -56,22 +51,16 @@ class LoginForm(FlaskForm):
     #Frågar om användaren om hen vill spara sitt lösenord
     remember = BooleanField("Kom ihåg mig")
 
-    submit = SubmitField("Login")
+    submit = SubmitField("Logga in")
 
 
 
-class PostForm(FlaskForm):
-    title = StringField('Titel', validators=[DataRequired(message="Du måste ange en titel!")])
-    content = TextAreaField('Innehåll', validators=[DataRequired(message="Du måste skriva något!")])
-    submit = SubmitField('Skicka')
-
-
-
+#Formuläret under profilsidan där man kan uppdatera användarnamn och email
 class UpdateAccountForm(FlaskForm):
-    username = StringField("Användarnamn",
+    username = StringField("Nytt användarnamn",
                            [DataRequired(), Length(min=3, max=20, message="Användarnamnet måste vara mellan 3-20 tecken!")])
 
-    email = StringField("Email",
+    email = StringField("Ny email",
                         validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
 
     picture = FileField("Uppdatera profilbild", validators=[FileAllowed(["jpg", "png"], message="Ogiltigt filformat, använd filformat 'jpg' eller 'png'")])
@@ -95,3 +84,31 @@ class UpdateAccountForm(FlaskForm):
             #Om emailen redan finns, skriv ut felmeddelande. Annars gå vidare
             if user:
                 raise ValidationError("Emailen finns redan registrerad!")
+
+
+
+#Formuläret där man anger sin email för att återställa sitt lösenord, kontrollerar om emailen finns registrerad
+class RequestResetForm(FlaskForm):
+    email = StringField("Ange Email",
+                        validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
+    submit = SubmitField("Validera Email")
+
+    #Validera att email som anges finns i databasen
+    def validate_email(self, email):
+        #Kollar om emailen som anges finns i databasen
+        user = User.query.filter_by(email=email.data).first()
+        #Om emailen inte finns, skriv ut felmeddelande. Annars gå vidare
+        if user is None:
+            raise ValidationError("Det finns inget konto med angiven email!")
+
+
+
+#Formuläret där man anger sitt nya lösenord
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField("Lösenord", 
+                        validators=[DataRequired(), Length(min=6, max=100, message="Lösenordet måste vara minst 6 tecken långt!")])
+
+    confirm_password = PasswordField("Bekräfta lösenord",
+                        validators=[DataRequired(), EqualTo("password", message="Lösenorden matchar inte!")])
+    
+    submit = SubmitField("Återställ Lösenord")

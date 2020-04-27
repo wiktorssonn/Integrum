@@ -65,12 +65,25 @@ body {
 #wrapper > main {
     grid-area: main;
     background-color: rgb(230, 230, 230);
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
     width: 100%;
     padding: 2em;
+}
+
+/* Allt innehåll i registrering och inloggninsformulären */
+#wrapper > main > .content-section {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#wrapper > main > h1 {
+    text-align: center;
+}
+
+#wrapper > main > p, h2 {
+    width: 50%;
+    margin: 0 auto;
 }
 
 #wrapper > main > ul > li > a {
@@ -91,30 +104,69 @@ body {
     width: 50%;
 }
 
-#wrapper > main > .content-section {    /* Användarinformation under profil */
+
+/* Profilsidan */
+
+#wrapper > main > .profile-content-section {    /* Diven som håller hela innehållet på profilsidan */
     margin: 0 auto;
     padding: 0.5em;
     width: 50%;
 }
 
-#wrapper > main > .content-section img {    /* Profilbild */
+#wrapper > main > .profile-content-section img {    /* Profilbild */
     width: 175px;
     height: 175px;
 }
 
-#wrapper > main > .content-section > .media > .media-body {     /* Texten bredvid profilbilden */
+#wrapper > main > .profile-content-section > .media > .media-body {     /* Texten bredvid profilbilden */
     padding-left: 2em;
     margin-top: 1.5em;
 }
 
-#wrapper > main > .content-section > form {
+#wrapper > main > .profile-content-section > form {     /* Formuläret under profilsidan */
     margin-top: 2em;
 }
 
 
-#wrapper > main > p {
+/* Forumsidan */
+
+#wrapper > main > .forum-content-section {      /* Diven som håller hela innehållet på forumsidan */
+    margin: 20px auto;
+    padding: 0.5em;
     width: 50%;
+    background-color: #eee;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 8px;
+    border: 2px solid #ccc;
 }
+
+#wrapper > main > .forum-content-section img {    /* Profilbild vid inlägget */
+    width: 100px;
+    height: 100px;
+}
+
+#wrapper > main > .forum-content-section .article-metadata {     /* Texten bredvid profilbilden, skapare och datum */
+    padding: 0;
+    margin-left: 15px;
+    border-bottom: 1.5px solid #ccc;
+
+}
+
+#wrapper > main > .forum-content-section h2 {       /* Titel i inläggen */
+    padding-top: 0;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#wrapper > main > .forum-content-section p {        /* Texten i inläggen */
+    margin-left: 15px;
+}
+
+#wrapper > main > .forum-buttons {      /* Diven som håller knapparna för de olika sidorna med inlägg */
+    margin: 50px auto;
+    text-align: center;
+}
+
 
 #wrapper > footer {
     grid-area: footer;
