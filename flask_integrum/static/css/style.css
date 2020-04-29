@@ -62,6 +62,10 @@ body {
     font-size: 2em;
 }
 
+#src_bar {
+    border-radius: 5px 5px 5px 5px;
+}
+
 #wrapper > main {
     grid-area: main;
     background-color: rgb(230, 230, 230);
