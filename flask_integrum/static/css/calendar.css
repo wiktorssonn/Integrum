@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     color: #262626;
-    height: 65px;
+    
     
 }
 
@@ -54,15 +54,27 @@
     font-weight: 700;
 }
 
-.calendar .date div.number{
+.calendar .date button.number{
 
     font-weight: 700;
+    min-height: 60px;
 }
 
 
-.calendar .date div.number:hover{
+.calendar .date button.number:hover{
 
     background-color: gray;
-    transition: ease-in-out 0.2s;
+    transition: ease-in 0.2s;
+    transition: ease-out 0.2s;
 
 }
+
+.number > p{
+
+    width: 50px;
+    height: 50px;
+    padding: 50px;
+    display: none;
+    
+}
+

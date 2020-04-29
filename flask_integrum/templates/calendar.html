@@ -3,6 +3,12 @@
 {% block head %} 
     <!-- CSS -->
     <link href="static/css/calendar.css" type="text/css" rel="stylesheet">
+    <!-- importerar jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous">
+    </script>
     
     
 {% endblock head %}
@@ -10,51 +16,77 @@
 
 {% block content %}
 
+
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+        $("p").toggle("swing");
+        });
+    });
+</script>
+
 <div class="calendar-body">
 
     <div class="calendar">
         <div class="date">
-            <div class="day">Mån</div>
-            <div class="day">Tis</div>
-            <div class="day">Ons</div>
-            <div class="day">Tors</div>
-            <div class="day">Fre</div>
-            <div class="day">Lör</div>
-            <div class="day" id="sun">Sön</div>
-            <div class="number">1</div>
-            <div class="number">2</div>
-            <div class="number">3</div>
-            <div class="number">4</div>
-            <div class="number">5</div>
-            <div class="number">6</div>
-            <div class="number">7</div>
-            <div class="number">8</div>
-            <div class="number">9</div>
-            <div class="number">10</div>
-            <div class="number">11</div>
-            <div class="number">12</div>
-            <div class="number">13</div>
-            <div class="number">14</div>
-            <div class="number">15</div>
-            <div class="number">16</div>
-            <div class="number">17</div>
-            <div class="number">18</div>
-            <div class="number">19</div>
-            <div class="number">20</div>
-            <div class="number">21</div>
-            <div class="number">22</div>
-            <div class="number">23</div>
-            <div class="number">24</div>
-            <div class="number">25</div>
-            <div class="number">26</div>
-            <div class="number">27</div>
-            <div class="number">28</div>
-            <div class="number">29</div>
-            <div class="number">30</div>
-            <div class="number">31</div>
+            <button class="day">Mån</button>
+            <button class="day">Tis</button>
+            <button class="day">Ons</button>
+            <button class="day">Tors</button>
+            <button class="day">Fre</button>
+            <button class="day">Lör</button>
+            <button class="day" id="sun">Sön</button>
+            <button class="number">1
+                <p class="info">
+                    här är info
+                </p>  
+            </button>
+            
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="number">10</button>
+            <button class="number">11</button>
+            <button class="number">12</button>
+            <button class="number">13</button>
+            <button class="number">14</button>
+            <button class="number">15</button>
+            <button class="number">16</button>
+            <button class="number">17</button>
+            <button class="number">18</button>
+            <button class="number">19</button>
+            <button class="number">20</button>
+            <button class="number">21</button>
+            <button class="number">22</button>
+            <button class="number">23</button>
+            <button class="number">24</button>
+            <button class="number">25</button>
+            <button class="number">26</button>
+            <button class="number">27</button>
+            <button class="number">28</button>
+            <button class="number">29</button>
+            <button class="number">30</button>
+            <button class="number">31</button>
         </div>
     </div>
 </div>
 
+
+
+
+
+
+<!--
+<script>
+    $(".test").click(function(){
+        
+    });
+</script>
+-->
 
 {% endblock content %}
