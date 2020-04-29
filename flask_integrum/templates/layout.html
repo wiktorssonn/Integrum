@@ -51,7 +51,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Schema</button>
                     <div class="dropdown-content">
-                    <a href="{{ url_for('main.schema') }}">Schema</a>
+                    <a href="{{ url_for('main.calendar') }}">Kalender</a>
                     <a href="{{ url_for('main.todo') }}">Att göra</a>
                     </div>
                 </div>
@@ -60,14 +60,15 @@
                 <div class="dropdown">    
                     <button class="dropbtn">Kontakt</button>
                     <div class="dropdown-content">
+                        <a href="{{ url_for('main.om_oss') }}">Om oss</a>
+                        <a href="{{ url_for('main.faq') }}">FAQ</a>
                         <a href="{{ url_for('main.kontakt') }}">Kontakt</a>
                         <a href="{{ url_for('main.forum') }}">Forum</a>
                     </div>
                 </div>
-                
-                <a href="{{ url_for('main.om_oss') }}">Om oss</a>
-                <a href="{{ url_for('main.faq') }}">FAQ</a>
+            
                 <a href="{{ url_for('users.profil') }}">Min profil</a>
+                <input type="text" id="src_bar" placeholder="Sök..">
                 <a href="{{ url_for('users.logout') }}">Logga ut</a>
             {% else %}
                 <a href="{{ url_for('users.login') }}">Logga in</a>
