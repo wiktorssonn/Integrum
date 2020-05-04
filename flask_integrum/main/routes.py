@@ -1,9 +1,16 @@
-from flask import render_template, request, Blueprint, jsonify
+from flask import (render_template, request, Blueprint, jsonify, flash,
+                    redirect, url_for)
+from flask_login import login_required, current_user
+from flask_integrum import db
 from flask_integrum.models import Post
+from flask_integrum.posts.forms import PostForm
 import requests
 from bs4 import BeautifulSoup
 
+
+
 main = Blueprint("main", __name__)
+
 
 
 @main.route("/schema.json")
@@ -56,7 +63,12 @@ def json_schema():
 
 @main.route("/hem")
 def hem():
-    return render_template("index.html")
+    #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
+    page = request.args.get("page", 1, type=int)
+    #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
+    
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=3)
+    return render_template("index.html", posts=posts)
 
 
 
@@ -90,14 +102,24 @@ def kontakt():
 
 
 
-@main.route("/forum")
+@main.route("/forum", methods=["GET", "POST"])
 def forum():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash("Ditt inlägg har publicerats!", "success")
+        return redirect(url_for("main.forum"))
+
+
     #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
     page = request.args.get("page", 1, type=int)
     #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template("forum.html", title="Forum", posts=posts)
-    
+    return render_template("forum.html", title="Forum", posts=posts, form=form, legend="Nytt inlägg")
+
+
 
 
 @main.route("/faq")
