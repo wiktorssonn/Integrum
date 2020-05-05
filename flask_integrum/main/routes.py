@@ -13,8 +13,8 @@ main = Blueprint("main", __name__)
 
 
 
-@main.route("/schema.json")
-def json_schema():
+@main.route("/schema")
+def schema():
     url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -55,7 +55,9 @@ def json_schema():
         schema_data.append(data)
 
     # En rad
-    return jsonify(schema_data)
+    # return jsonify(schema_data)
+
+    return render_template("schema.html", schema=schema_data, title="Schema")
 
     # JSON
     # print(json.dumps(schema_data))
@@ -75,13 +77,6 @@ def hem():
 @main.route("/ia")
 def ia():
     return render_template("ia.html", title="Informationsarkitekt")
-
-
-
-@main.route("/schema")
-def schema():
-    return render_template("schema.html", title="Schema")
-
 
 
 @main.route("/calendar")

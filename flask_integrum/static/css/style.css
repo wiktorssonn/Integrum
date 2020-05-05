@@ -171,6 +171,11 @@ body {
     text-align: center;
 }
 
+#wrapper > main > .schema {     /* Texten i schema-tabellen */
+    color: black
+}
+
+
 
 #wrapper > footer {
     grid-area: footer;
