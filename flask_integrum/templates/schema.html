@@ -11,7 +11,40 @@
 {% block content %}
     
     <h2 id="schema">SCHEMA</h2>
-    <div id="calendar"></div>
+    <table class="schema">
+        
+        <!-- De olika rubrikerna till schemat -->
+        <tr>
+            <th>Dag</th>
+            <th>Datum</th>
+            <th>Tid</th>
+            <th>Kurs</th>
+            <th>Lärare</th>
+            <th>Lokal</th>
+            <th>Resurs</th>
+            <th>Moment</th>
+            <th>Uppdaterat</th>
+        </tr>
+       
+        <!-- Skriver ut varje kolumn i schemat-->
+        {% for row in schema %}
+            <tr>
+                <td> {{row['day']}} </td>
+                <td> {{row['date']}} </td>
+                <td> {{row['time']}} </td>
+                <td> {{row['course']}} </td>
+                <td> {{row['teacher']}} </td>
+                <td> {{row['room']}} </td>
+                <td> {{row['resource']}} </td>
+                <td> {{row['moment']}} </td>
+                <td> {{row['updated']}} </td>
+            </tr>
+        {% endfor %} 
+    </table>
+    
+    
+    <!-- Behövs denna? -->
+    <!-- <div id="calendar"></div> -->
 
     
 
