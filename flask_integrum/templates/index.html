@@ -4,6 +4,27 @@
 
     <h1>Hej och jättevälkomen! </h1>
 
+    
+        {% for post in posts.items %}
+            <article class="media forum-content-section">
+                <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
+                <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                    <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                </div>
+                <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
+        
+        <div class="mb-5">
+            <medium class="text-muted">
+                Vill du se fler inlägg?<a class="ml-2" href="{{ url_for('main.forum') }}">Klicka här</a> för att komma till forumet!
+            </medium>
+        </div>
+
     <p>MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACKMASSA SNACK
         MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK
         MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK MASSA SNACK

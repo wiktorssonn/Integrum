@@ -171,6 +171,10 @@ body {
     text-align: center;
 }
 
+#wrapper > main > .mb-5 {       /* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
+    text-align: center;
+}
+
 
 #wrapper > footer {
     grid-area: footer;
