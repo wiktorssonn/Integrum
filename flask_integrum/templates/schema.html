@@ -3,7 +3,7 @@
 
 {% block head %} 
     <!-- CSS -->
-    <link href="static/css/schema.css" type="text/css" rel="stylesheet">
+    <link href="static/css/style.css" type="text/css" rel="stylesheet">
     <!-- Javscript -->
     
 {% endblock head %}
@@ -11,6 +11,13 @@
 {% block content %}
     
     <h2 id="schema">SCHEMA</h2>
+    <p>Med start 2017</p>
+    <ul>
+        <li><a href="#">Schema 2017</a></li>
+        <li><a href="#">Schema 2018</a></li>
+        <li><a href="#">Schema 2019</a></li>
+        <li><a href="#">Schema 2020</a></li>
+    </ul>
     <table class="schema">
         
         <!-- De olika rubrikerna till schemat -->
@@ -26,7 +33,7 @@
             <th>Uppdaterat</th>
         </tr>
        
-        <!-- Skriver ut varje kolumn i schemat-->
+        <!-- Skriver ut varje kolumn i schemat -->
         {% for row in schema %}
             <tr>
                 <td> {{row['day']}} </td>
