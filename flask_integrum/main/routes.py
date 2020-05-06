@@ -16,7 +16,9 @@ main = Blueprint("main", __name__)
 
 @main.route("/schema")
 def schema():
-    url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h'
+    #https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h
+    #https://schema.mau.se/programinstans.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&id=TGIAA19h
+    url = 'https://schema.mau.se/programinstans.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&id=TGIAA19h'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     schema = soup.select(".schemaTabell .data-grey, .schemaTabell .data-white")
@@ -66,9 +68,11 @@ def schema():
 
 @main.route("/hem")
 def hem():
-    #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
+    # Sätter sida 1 till default, försöker man ange något annat än en
+    # int blir det ValueError.
     page = request.args.get("page", 1, type=int)
-    #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
+    # Hämtar inlägg från databasen och sorterar efter senaste datum
+    # paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
     
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=3)
     return render_template("index.html", posts=posts)

@@ -7,6 +7,8 @@ from flask_login import UserMixin
 from datetime import datetime
 from flask import current_app
 
+
+
 #Hämtar ut användare genom id
 @login_manager.user_loader
 def load_user(user_id):
@@ -68,5 +70,5 @@ class Todo(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     #Hur vår model printas ut
-    def repr(self):
+    def __repr__(self):
         return "Todo('{}, '{}', '{}')".format(self.assignment, self.description, self.user_id)
