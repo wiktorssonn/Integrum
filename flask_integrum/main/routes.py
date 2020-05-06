@@ -123,12 +123,25 @@ def faq():
 
 
 
-@main.route("/todo")
+@main.route("/todo", methods=["GET", "POST"])
 def todo():
+    task = PostAssignment()
+    if task.validate_on_submit():
+        assignment = Assignment(title=assignment.title.data, content=assignment-description.data, date=assignment.date.data
+        db.session.add(assignment)
+        de.session.commit()
+        flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
+        return redirect(url_for("main.todo"))
     return render_template("todo.html", title="Att göra")
+
+
+    
 
 
 
 @main.route("/uppgift")
 def uppgift():
     return render_template("uppgift.html", title="Uppgift")
+
+   
+

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
+<!---
     <h1>Att göra</h1>
 
     
@@ -70,4 +70,19 @@
             </tr>
         </table>
     </div>
+-->
+
+    <form id="todo" method="POST" action="">
+        <fieldset class="todo_item">
+            <legend>Skapa ny uppgift:</legend>
+            <label class="item" for="title">Uppgift:</label>
+            <input class="item" type="text" id="title">
+            <label class="item" for="description">Beskrivning:</label>
+            <input class="item" type="text" id="description">
+            <label class="item" for="date">Inlämningsdatum:</label>
+            <input class="item" type="date" id="date">
+        </fieldset>
+    </form>
+
+
 {% endblock content %}
