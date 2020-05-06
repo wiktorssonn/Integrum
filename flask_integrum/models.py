@@ -57,3 +57,16 @@ class Post(db.Model):
     #Hur vår model printas ut
     def __repr__(self):
         return "Post('{}, '{}')".format(self.title, self.date_posted)
+
+
+
+#Hur vårt "Todo" table är uppbyggt samt hur det sparas i databasen
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    assignment = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    #Hur vår model printas ut
+    def repr(self):
+        return "Todo('{}, '{}', '{}')".format(self.assignment, self.description, self.user_id)

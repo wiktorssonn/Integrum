@@ -2,10 +2,11 @@ from flask import (render_template, request, Blueprint, jsonify, flash,
                     redirect, url_for)
 from flask_login import login_required, current_user
 from flask_integrum import db
-from flask_integrum.models import Post
+from flask_integrum.models import Post, Todo
 from flask_integrum.posts.forms import PostForm
 import requests
 from bs4 import BeautifulSoup
+from flask_integrum.main.forms import PostAssignment
 
 
 
@@ -127,12 +128,12 @@ def faq():
 def todo():
     task = PostAssignment()
     if task.validate_on_submit():
-        assignment = Assignment(title=assignment.title.data, content=assignment-description.data, date=assignment.date.data
+        assignment = Todo(title=task.title.data, description=task.description.data)
         db.session.add(assignment)
-        de.session.commit()
+        db.session.commit()
         flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
         return redirect(url_for("main.todo"))
-    return render_template("todo.html", title="Att göra")
+    return render_template("todo.html", task=task, title="Att göra")
 
 
     

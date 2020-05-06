@@ -71,7 +71,7 @@
         </table>
     </div>
 -->
-
+<!--
     <form id="todo" method="POST" action="">
         <fieldset class="todo_item">
             <legend>Skapa ny uppgift:</legend>
@@ -84,5 +84,58 @@
         </fieldset>
     </form>
 
+-->
 
+
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ task.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">{{ legend }}</legend>
+                <div class="form-group">
+                    {{ task.title.label(class="form-control-label") }}
+                    {% if task.title.errors %}
+                        {{ task.title(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ task.title(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ task.description.label(class="form-control-label") }}
+                    {% if task.description.errors %}
+                        {{ task.description(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in task.description.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ task.description(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <!---<div class="form-group">
+                    {{ task.date.label(class="form-control-label") }}
+                    {% if task.date.errors %}
+                        {{ task.date(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.date.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ task.date(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                --->
+            </fieldset>
+            <div class="form-group">
+                {{ task.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
 {% endblock content %}
