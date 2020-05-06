@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_integrum.config import Config
 
+
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
@@ -27,6 +28,7 @@ def create_app(config_class=Config):
 
     from flask_integrum.users.routes import users
     from flask_integrum.posts.routes import posts
+    from flask_integrum.users.routes import users
     from flask_integrum.main.routes import main
     from flask_integrum.errors.handlers import errors
 

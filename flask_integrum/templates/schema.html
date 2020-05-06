@@ -3,7 +3,7 @@
 
 {% block head %} 
     <!-- CSS -->
-    <link href="static/css/schema.css" type="text/css" rel="stylesheet">
+    <link href="static/css/style.css" type="text/css" rel="stylesheet">
     <!-- Javscript -->
     
 {% endblock head %}
@@ -21,7 +21,6 @@
             <th>Kurs</th>
             <th>Lärare</th>
             <th>Lokal</th>
-            <th>Resurs</th>
             <th>Moment</th>
             <th>Uppdaterat</th>
         </tr>
@@ -35,7 +34,6 @@
                 <td> {{row['course']}} </td>
                 <td> {{row['teacher']}} </td>
                 <td> {{row['room']}} </td>
-                <td> {{row['resource']}} </td>
                 <td> {{row['moment']}} </td>
                 <td> {{row['updated']}} </td>
             </tr>
