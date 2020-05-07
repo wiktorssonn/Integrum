@@ -132,7 +132,7 @@ def faq():
 def todo():
     task = PostAssignment()
     if task.validate_on_submit():
-        assignment = Todo(title=task.title.data, description=task.description.data)
+        assignment = Todo(assignment=task.title.data, description=task.description.data)
         db.session.add(assignment)
         db.session.commit()
         flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
