@@ -137,7 +137,8 @@ def todo():
         db.session.commit()
         flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
         return redirect(url_for("main.todo"))
-    return render_template("todo.html", task=task, title="Att göra")
+    assignments = Todo.query.all()
+    return render_template("todo.html", task=task, title="Att göra", assignments=assignments, legend="Lägg till ny uppgift")
 
 
     

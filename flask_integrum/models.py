@@ -42,7 +42,7 @@ class User(db.Model, UserMixin):
             return None
         return User.query.get(user_id)
 
-    #Hur vår model printas ut
+    #Hur vår model skrivs ut
     def __repr__(self):
         return "User('{}', '{}', '{}')" .format(self.username, self.email, self.image_file)
 
@@ -56,7 +56,7 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
-    #Hur vår model printas ut
+    #Hur vår model skrivs ut
     def __repr__(self):
         return "Post('{}, '{}')".format(self.title, self.date_posted)
 
@@ -67,8 +67,9 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     assignment = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    #user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-
-    #Hur vår model printas ut
+   #user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    
+    #Hur vår model skrivs ut
     def __repr__(self):
-        return "Todo('{}, '{}', '{}')".format(self.assignment, self.description, self.user_id)
+        return "Todo('{}, '{}')".format(self.assignment, self.description)
+    
