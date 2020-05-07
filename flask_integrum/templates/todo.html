@@ -118,20 +118,6 @@
                         {{ task.description(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <!---<div class="form-group">
-                    {{ task.date.label(class="form-control-label") }}
-                    {% if task.date.errors %}
-                        {{ task.date(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.date.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ task.date(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                --->
             </fieldset>
             <div class="form-group">
                 {{ task.submit(class="btn btn-outline-info") }}
