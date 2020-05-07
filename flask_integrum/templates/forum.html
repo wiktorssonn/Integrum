@@ -12,6 +12,7 @@
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4">{{ legend }}</legend>
+
                     <div class="form-group">
                         {{ form.title.label(class="form-control-label") }}
                         {% if form.title.errors %}
@@ -25,6 +26,7 @@
                             {{ form.title(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+
                     <div class="form-group">
                         {{ form.content.label(class="form-control-label") }}
                         {% if form.content.errors %}
@@ -39,6 +41,7 @@
                         {% endif %}
                     </div>
                 </fieldset>
+
                 <div class="form-group">
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
@@ -49,13 +52,14 @@
             <article class="media forum-content-section">
                 <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
                 <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-                    <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-                </div>
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
                 <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
                 <p class="article-content">{{ post.content }}</p>
                 </div>
+
             </article>
         {% endfor %}
         <div class="forum-buttons">
@@ -83,10 +87,10 @@
             <article class="media forum-content-section">
                 <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
                 <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-                    <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-                </div>
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
                 <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
                 <p class="article-content">{{ post.content }}</p>
                 </div>
@@ -112,24 +116,5 @@
         </div>
     
     {% endif %}
-
-    <h2>Sammanfattning</h2>
-
-    {% if current_user.is_authenticated %}
-    <ul>
-        <li><a href="#">Tips om kurslitteratur</a></li>
-        <li><a href="#">Samband mellan kurser</a></li>
-        <li><a href="#">Rating</a></li>
-        <li><a href="#">Köpa / Sälj</a></li>
-        <li><a href="create_post">Skapa inlägg</a></li>
-    </ul>
-    {% else %}
-    <ul>
-        <li><a href="#">Tips om kurslitteratur</a></li>
-        <li><a href="#">Samband mellan kurser</a></li>
-        <li><a href="#">Rating</a></li>
-    </ul>  
-    {% endif %}
-
 
 {% endblock content %}
