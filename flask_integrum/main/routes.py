@@ -13,53 +13,91 @@ from flask_integrum.main.forms import PostAssignment
 main = Blueprint("main", __name__)
 
 
-
 @main.route("/schema")
 def schema():
-    #https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h
-    #https://schema.mau.se/programinstans.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&id=TGIAA19h
-    url = 'https://schema.mau.se/programinstans.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&id=TGIAA19h'
+    year1 = request.args.get('resurser', 'p.TGIAA19h')
+    year2 = request.args.get('resurser', 'p.TGIAA18h')
+    year3 = request.args.get('resurser', 'p.TGIAA17h')
+    
+    url_test = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser={}'.format(year1)
+    url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA19h'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     schema = soup.select(".schemaTabell .data-grey, .schemaTabell .data-white")
     schema_data = []
-
     for i, row in enumerate(schema):
         row_data = [child for child in row.children]
+        num_cols = len(row_data)
+        print(row_data[7].string)
+        print(row_data[8].string)
+        print(row_data[9].string)
+        print(row_data[10].string)
+        print(row_data[11].string)
+        if num_cols == 11:
 
-        day = row_data[2].string.replace(u"\xa0", "")
-        date = row_data[3].string.replace(u"\xa0", "")
+            day = row_data[2].string.replace(u"\xa0", "")
+            date = row_data[3].string.replace(u"\xa0", "")
 
-        if day == "" and date == "":
-            prev_row_data = [child for child in schema[i - 1].children]
-            day = prev_row_data[2].string.replace(u"\xa0", "")
-            date = prev_row_data[3].string.replace(u"\xa0", "")
+            if day == "" and date == "":
+                prev_row_data = [child for child in schema[i - 1].children]
+                day = prev_row_data[2].string.replace(u"\xa0", "")
+                date = prev_row_data[3].string.replace(u"\xa0", "")
 
-        time = row_data[4].string.replace(u"\xa0", "")
-        course = "".join([c.string for c in row_data[5].children]).replace(u"\xa0", "")
-        teacher = "".join([t.string for t in row_data[6].children]).replace(u"\xa0", "")
-        room = "".join([r.string for r in row_data[7].children]).replace(u"\xa0", "")
-        resource = row_data[8].string.replace(u"\xa0", "")
-        moment = row_data[9].string.replace(u"\xa0", "")
-        updated = row_data[10].string.replace(u"\xa0", "")
+            time = row_data[4].string.replace(u"\xa0", "")
+            course = "".join([c.string for c in row_data[5].children]).replace(u"\xa0", "")
+            teacher = "".join([t.string for t in row_data[6].children]).replace(u"\xa0", "")
+            room = "".join([r.string for r in row_data[7].children]).replace(u"\xa0", "")
+            resource = row_data[8].string.replace(u"\xa0", "")
+            moment = row_data[9].string.replace(u"\xa0", "")
+            updated = row_data[10].string.replace(u"\xa0", "")
 
-        data = {
-            "day": day,
-            "date": date,
-            "time": time,
-            "course": course,
-            "teacher": teacher,
-            "room": room,
-            "resource": resource,
-            "moment": moment,
-            "updated": updated
-        }
+            data = {
+                "day": day,
+                "date": date,
+                "time": time,
+                "course": course,
+                "teacher": teacher,
+                "room": room,
+                "resource": resource,
+                "moment": moment,
+                "updated": updated
+            }
 
-        schema_data.append(data)
+            schema_data.append(data)
+        else:
+            day = row_data[2].string.replace(u"\xa0", "")
+            date = row_data[3].string.replace(u"\xa0", "")
 
+            if day == "" and date == "":
+                prev_row_data = [child for child in schema[i - 1].children]
+                day = prev_row_data[2].string.replace(u"\xa0", "")
+                date = prev_row_data[3].string.replace(u"\xa0", "")
+            time = row_data[4].string.replace(u"\xa0", "")
+            course = "".join([c.string for c in row_data[5].children]).replace(u"\xa0", "")
+            group = "".join([g.string for g in row_data[6].children]).replace(u"\xa0", "")
+            teacher = "".join([t.string for t in row_data[7].children]).replace(u"\xa0", "")
+            room = "".join([r.string for r in row_data[8].children]).replace(u"\xa0", "")
+            resource = row_data[9].string.replace(u"\xa0", "")
+            moment = row_data[10].string.replace(u"\xa0", "")
+            updated = row_data[11].string.replace(u"\xa0", "")
+
+            data = {
+                "day": day,
+                "date": date,
+                "time": time,
+                "course": course,
+                "group": group,
+                "teacher": teacher,
+                "room": room,
+                "resource": resource,
+                "moment": moment,
+                "updated": updated
+            }
+
+            schema_data.append(data)
+    
     # En rad
     # return jsonify(schema_data)
-
     return render_template("schema.html", schema=schema_data, title="Schema")
 
     # JSON
@@ -121,27 +159,26 @@ def forum():
 
 
 
-
-@main.route("/faq")
-def faq():
-    return render_template("faq.html", title="FAQ")
-
-
-
 @main.route("/todo", methods=["GET", "POST"])
 def todo():
     task = PostAssignment()
     if task.validate_on_submit():
-        assignment = Todo(assignment=task.title.data, description=task.description.data)
+        task = PostAssignment()
+        assignment = Todo(assignment=task.title.data, description=task.description.data, assignment_author=current_user)
         db.session.add(assignment)
         db.session.commit()
         flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
         return redirect(url_for("main.todo"))
-    assignments = Todo.query.all()
-    return render_template("todo.html", task=task, title="Att göra", assignments=assignments, legend="Lägg till ny uppgift")
+    #assignments = Todo.query.all(
+    assignments = Todo.query.filter_by(user_id=assignment_author)
+    #ASSIGMENT AUTHOR FUCKAR
+    return render_template("todo.html", title="Att göra", task=task, assignments=assignments, legend="Lägg till ny uppgift")
 
 
     
+@main.route("/faq")
+def faq():
+    return render_template("faq.html", title="FAQ")
 
 
 

@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship("Post", backref="author", lazy=True)
+    todo = db.relationship("Todo", backref="assignment_author", lazy=True)
 
     #Sätter koden som används för återställning av lösenord till att gå ut efter 30minuter
     def get_reset_token(self, expires_sec=1800):
@@ -42,7 +43,7 @@ class User(db.Model, UserMixin):
             return None
         return User.query.get(user_id)
 
-    #Hur vår model skrivs ut
+    #Hur vår modell skrivs ut
     def __repr__(self):
         return "User('{}', '{}', '{}')" .format(self.username, self.email, self.image_file)
 
@@ -56,7 +57,7 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
-    #Hur vår model skrivs ut
+    #Hur vår modell skrivs ut
     def __repr__(self):
         return "Post('{}, '{}')".format(self.title, self.date_posted)
 
@@ -67,9 +68,9 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     assignment = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
-   #user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     
-    #Hur vår model skrivs ut
+    #Hur vår modell skrivs ut
     def __repr__(self):
         return "Todo('{}, '{}')".format(self.assignment, self.description)
     
