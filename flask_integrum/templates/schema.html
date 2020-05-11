@@ -3,7 +3,7 @@
 
 {% block head %} 
     <!-- CSS -->
-    <link href="static/css/schema.css" type="text/css" rel="stylesheet">
+    <link href="static/css/style.css" type="text/css" rel="stylesheet">
     <!-- Javscript -->
     
 {% endblock head %}
@@ -11,7 +11,47 @@
 {% block content %}
     
     <h2 id="schema">SCHEMA</h2>
-    <div id="calendar"></div>
+    <p>Med start 2017</p>
+    <ul>
+        <li><a href="#">Schema 2017</a></li>
+        <li><a href="#">Schema 2018</a></li>
+        <li><a href="#">Schema 2019</a></li>
+        <li><a href="#">Schema 2020</a></li>
+    </ul>
+    <table class="schema">
+        
+        <!-- De olika rubrikerna till schemat -->
+        <tr>
+            <th>Dag</th>
+            <th>Datum</th>
+            <th>Tid</th>
+            <th>Kurs</th>
+            <th>Lärare</th>
+            <th>Lokal</th>
+            <th>Moment</th>
+            <th>Uppdaterat</th>
+        </tr>
+       
+        <!-- Skriver ut varje kolumn i schemat -->
+        {% for row in schema %}
+            <tr>
+                <td> {{row['day']}} </td>
+                <td> {{row['date']}} </td>
+                <td> {{row['time']}} </td>
+                <td> {{row['course']}} </td>
+                <td> {{row['teacher']}} </td>
+                <td> {{row['room']}} </td>
+                <td> {{row['moment']}} </td>
+                <td> {{row['updated']}} </td>
+            </tr>
+        {% endfor %} 
+    </table>
+    
+    
+    <!-- Behövs denna? -->
+    <!-- <div id="calendar"></div> -->
+
+    
 
 {% endblock content %}
         

@@ -11,7 +11,7 @@ body {
     "nav"
     "main"
     "footer";
-    grid-template-rows: 300px auto auto auto;
+    grid-template-rows: 300px auto auto 100px;
     grid-template-columns: 100%;
 
 }
@@ -62,20 +62,35 @@ body {
     font-size: 2em;
 }
 
-h2 {
-    padding-top: 30px;
+#src_bar {
+    border-radius: 5px 5px 5px 5px;
 }
 
-
-.details {
-    width: 25%;
-    padding-bottom: 10px;
-    border-top: 2px solid #2E789E;
+#wrapper > main {
+    grid-area: main;
+    background-color: rgb(230, 230, 230);
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2em;
 }
 
+/* Allt innehåll i registrering och inloggninsformulären */
+#wrapper > main > .content-section {
+    width: 50%;
+    margin: 0 auto;
+}
 
+#wrapper > main > h1 {
+    text-align: center;
+}
 
-#wrapper > main > ul > li > a{
+#wrapper > main > p, h2 {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#wrapper > main > ul > li > a {
     line-height: 0.5em;
     font-size: 2em;
 }
@@ -89,6 +104,125 @@ h2 {
     text-align: center;
 }
 
+#wrapper > main > .border-top {
+    width: 50%;
+}
+
+
+/* Profilsidan */
+
+#wrapper > main > .profile-content-section {    /* Diven som håller hela innehållet på profilsidan */
+    margin: 0 auto;
+    padding: 0.5em;
+    width: 50%;
+}
+
+#wrapper > main > .profile-content-section img {    /* Profilbild */
+    width: 175px;
+    height: 175px;
+}
+
+#wrapper > main > .profile-content-section > .media > .media-body {     /* Texten bredvid profilbilden */
+    padding-left: 2em;
+    margin-top: 1.5em;
+}
+
+#wrapper > main > .profile-content-section > form {     /* Formuläret under profilsidan */
+    margin-top: 2em;
+}
+
+
+/* Forumsidan */
+
+#wrapper > main > .forum-content-section {      /* Diven som håller hela innehållet på forumsidan */
+    margin: 20px auto;
+    padding: 0.5em;
+    width: 50%;
+    background-color: #eee;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+#wrapper > main > .forum-content-section img {    /* Profilbild vid inlägget */
+    width: 100px;
+    height: 100px;
+}
+
+#wrapper > main > .forum-content-section .article-metadata {     /* Texten bredvid profilbilden, skapare och datum */
+    padding: 0;
+    margin-left: 15px;
+    border-bottom: 1.5px solid #ccc;
+
+}
+
+#wrapper > main > .forum-content-section h2 {       /* Titel i inläggen */
+    padding-top: 0;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#wrapper > main > .forum-content-section p {        /* Texten i inläggen */
+    margin-left: 15px;
+}
+
+#wrapper > main > .forum-buttons {      /* Diven som håller knapparna för de olika sidorna med inlägg */
+    margin: 50px auto;
+    text-align: center;
+}
+
+#wrapper > main > .mb-5 {       /* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
+    text-align: center;
+}
+
+#wrapper > main > .schema {     /* Texten i schema-tabellen */
+    color: black
+}
+/* Forumsidan SLUTAR */
+
+
+
+/* Att göra sidan */
+#wrapper > main > .list-group {
+    width: 50%;
+    margin: 2em auto 5em auto;
+    border: 1px solid black;
+}
+
+#wrapper > main > ul > li:nth-child(3n + 3) {
+    background-color: grey;
+}
+
+/* Att göra sidan SLUTAR */
+
+
+
+#wrapper > footer {
+    grid-area: footer;
+    background-color: black;
+    color: white;
+    line-height: 100px;
+    text-align: center;
+    border: none;   
+}
+
+#wrapper > footer > p {
+    margin-bottom: 0;
+}
+
+
+h2 {
+    padding-top: 30px;
+}
+
+
+.details {
+    width: 25%;
+    padding-bottom: 10px;
+    border-top: 2px solid #2E789E;
+}
+
+
 #home { 
     flex-shrink: 1.5;
 }
@@ -99,35 +233,6 @@ h2 {
     font-size: 1em;
 }
 
-#wrapper > main {
-    grid-area: main;
-    background-color: rgb(230, 230, 230);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-    padding: 2em;
-}
-
-#wrapper > main > p {
-    width: 50%;
-}
-
-#wrapper > footer {
-    grid-area: footer;
-    background-color: black;
-    color: white;
-
-    text-align: center;
-    
-}
-
-/* Klassen för formulären */
-.content-section {
-    width: 65%;
-    margin: 0 auto;
-    
-}
 
 /* Klassen för Logga in / Registrera under formulären */
 .border-top {
@@ -240,4 +345,11 @@ th, td {
     padding: 10px;
     font-size: 150px;
     color: #2E789E;
+}
+
+/* todo skapa uppgift */
+
+.todo_item > .item {
+
+    display: block;
 }

@@ -2,16 +2,40 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
+from flask_integrum.config import Config
 
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "fbc07874e91feeaa1b0e8dcb400930bf"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-login_manager.login_view = "login" #Om en sida är login_required kommer man till login sidan
+
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
+login_manager.login_view = "users.login" #Om en sida är login_required kommer man till login sidan
 login_manager.login_message_category = "info" #Visar ett meddelande när man kommer till en sida där man måste logga in
 
+#Skickar mejl med länk för återställning av lösenord
+mail = Mail()
 
-from flask_integrum import routes
+
+#Funktionen som skapar själva applikationen/hemsidan
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    mail.init_app(app)
+
+    from flask_integrum.users.routes import users
+    from flask_integrum.posts.routes import posts
+    from flask_integrum.users.routes import users
+    from flask_integrum.main.routes import main
+    from flask_integrum.errors.handlers import errors
+
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+    app.register_blueprint(errors)
+
+    return app
