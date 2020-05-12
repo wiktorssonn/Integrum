@@ -20,7 +20,7 @@ def schema():
     year3 = request.args.get('resurser', 'p.TGIAA17h')
     
     url_test = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser={}'.format(year1)
-    url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA19h'
+    url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     schema = soup.select(".schemaTabell .data-grey, .schemaTabell .data-white")
@@ -28,11 +28,6 @@ def schema():
     for i, row in enumerate(schema):
         row_data = [child for child in row.children]
         num_cols = len(row_data)
-        print(row_data[7].string)
-        print(row_data[8].string)
-        print(row_data[9].string)
-        print(row_data[10].string)
-        print(row_data[11].string)
         if num_cols == 11:
 
             day = row_data[2].string.replace(u"\xa0", "")
@@ -150,7 +145,6 @@ def forum():
         flash("Ditt inlägg har publicerats!", "success")
         return redirect(url_for("main.forum"))
 
-
     #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
     page = request.args.get("page", 1, type=int)
     #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
@@ -158,20 +152,18 @@ def forum():
     return render_template("forum.html", title="Forum", posts=posts, form=form, legend="Nytt inlägg")
 
 
-
+#"Att-göra" listan där man kan lägga till uppgifter som ska göras
 @main.route("/todo", methods=["GET", "POST"])
 def todo():
     task = PostAssignment()
     if task.validate_on_submit():
-        task = PostAssignment()
-        assignment = Todo(assignment=task.title.data, description=task.description.data, assignment_author=current_user)
+        assignment = Todo(assignment=task.title.data, description=task.description.data, user_id=current_user.id)
         db.session.add(assignment)
         db.session.commit()
         flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
         return redirect(url_for("main.todo"))
-    #assignments = Todo.query.all(
-    assignments = Todo.query.filter_by(user_id=assignment_author)
-    #ASSIGMENT AUTHOR FUCKAR
+    #Hämtar ut alla assignments som tillhör current_user, alltså kollar att user_id i databasen == current_user
+    assignments = Todo.query.filter(Todo.user_id == current_user.id).all()
     return render_template("todo.html", title="Att göra", task=task, assignments=assignments, legend="Lägg till ny uppgift")
 
 
