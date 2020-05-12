@@ -41,7 +41,13 @@ def update_post(post_id):
         #Fyller i fälten med texten som finns i nuläget
         form.title.data = post.title
         form.content.data = post.content
-    return render_template("create_post.html", title="Update Post", form=form, legend="Uppdatera Inlägg")
+    
+    
+    #Sätter sida 1 till default, försöker man ange något annat än en int blir det ValueError.
+    page = request.args.get("page", 1, type=int)
+    #Hämtar inlägg från databasen och sorterar efter senaste datum, paginate ger oss möjlighet att styra hur många inlägg som ska visas per sida etc.
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template("update_post.html", title="Update Post", form=form, posts=posts, legend="Uppdatera Inlägg")
 
 
 
