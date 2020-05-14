@@ -69,6 +69,7 @@ class Todo(db.Model):
     assignment = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    completed = db.Column(db.Boolean)
     
     #Hur vår modell skrivs ut
     def __repr__(self):

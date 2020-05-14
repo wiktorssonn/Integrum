@@ -4,8 +4,8 @@ from flask_login import login_required, current_user
 from flask_integrum import db
 from flask_integrum.models import Post, Todo
 from flask_integrum.posts.forms import PostForm
-import requests
 from bs4 import BeautifulSoup
+import requests
 from flask_integrum.main.forms import PostAssignment
 
 
@@ -152,19 +152,42 @@ def forum():
     return render_template("forum.html", title="Forum", posts=posts, form=form, legend="Nytt inlägg")
 
 
-#"Att-göra" listan där man kan lägga till uppgifter som ska göras
-@main.route("/todo", methods=["GET", "POST"])
-def todo():
+
+#Lägg till upggiften till "att-göra" listan
+@main.route("/add_todo", methods=["POST"])
+def add_todo():
     task = PostAssignment()
     if task.validate_on_submit():
-        assignment = Todo(assignment=task.title.data, description=task.description.data, user_id=current_user.id)
-        db.session.add(assignment)
+        todo = Todo(assignment=task.assignment.data, description=task.description.data, completed=False, user_id=current_user.id)
+        db.session.add(todo)
         db.session.commit()
-        flash("En ny uppgift har skapats!", "Din lista har blivit uppdaterad!")
+        flash("En ny uppgift har skapats!", "success")
         return redirect(url_for("main.todo"))
+    
+    return render_template("todo.html", title="Att göra", legend="Lägg till ny uppgift", task=task)
+
+
+
+#Ta bort uppgift från "att-göra" listan
+@main.route("/delete_todo/<id>")
+def delete_todo(id):
+    
+    #Tar bort uppgiften med id:et man klickat på i "att-göra" listan från databasen
+    todo = Todo.query.filter_by(id=int(id)).first()
+    db.session.delete(todo)
+    db.session.commit()
+
+    return redirect(url_for("main.todo"))
+    
+
+
+#"Att-göra" listan där man kan lägga till uppgifter som ska göras
+@main.route("/todo")
+def todo():
+    task = PostAssignment()
     #Hämtar ut alla assignments som tillhör current_user, alltså kollar att user_id i databasen == current_user
     assignments = Todo.query.filter(Todo.user_id == current_user.id).all()
-    return render_template("todo.html", title="Att göra", task=task, assignments=assignments, legend="Lägg till ny uppgift")
+    return render_template("todo.html", title="Att göra", assignments=assignments, task=task)
 
 
     
