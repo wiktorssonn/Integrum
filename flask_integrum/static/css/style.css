@@ -183,14 +183,47 @@ body {
 
 
 /* Att göra sidan */
-#wrapper > main > .list-group {
-    width: 50%;
-    margin: 2em auto 5em auto;
-    border: 1px solid black;
+#wrapper > main > #todo {       /* Div:en som håller hela "att-göra" listan */
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #666;
 }
 
-#wrapper > main > ul > li:nth-child(3n + 3) {
-    background-color: grey;
+#wrapper > main > .list-group {     /* Ul som håller i listorna */
+    width: 50%;
+    margin: 2em auto 5em auto;
+}
+
+#wrapper > main .list-group-item {      /* Listorna i "att-göra" */
+    border: 0px;
+}
+
+#wrapper > main > ul:nth-child(3n + 3) {
+    background-color: yellow;
+}
+
+#wrapper > main > .content-section > form button {      /* Knappen för att ta bort uppgifter i "att-göra" listan */
+    float: right;
+    margin-top: -0.2em;
+} 
+
+#wrapper > main > .content-section > form > ul > li > p:nth-child(1) {  /* Ojämna raderna i "att-göra" listan */
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-bottom: 0.5em;
+} 
+
+#wrapper > main > .content-section > form > ul > li:nth-child(odd) {       /* Jämna list-items, alltså beskrivning av uppgiften */
+    border-radius: 0;
+} 
+
+#wrapper > main > .content-section > form > ul > li:nth-child(even) {       /* Jämna list-items, alltså beskrivning av uppgiften */
+    background-color: #ccc;
+    border-radius: 0;
+} 
+
+#wrapper > main > #new_assignment {     /* Id för div:en som håller hela "Lägg till ny uppgift" formuläret */
+    margin-top: 3em;
 }
 
 /* Att göra sidan SLUTAR */

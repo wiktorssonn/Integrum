@@ -14,7 +14,7 @@
             {% if post.author == current_user %}
                 <div>
                     <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Uppdatera</a>
-                    <buton type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Ta bort</button>
+                    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Ta bort</button>
             {% endif %}
         </div>
         <h2 class="article-title">{{ post.title }}</h2>

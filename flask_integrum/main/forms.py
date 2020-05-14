@@ -8,6 +8,6 @@ from flask_login import current_user
 
 
 class PostAssignment(FlaskForm):
-    title = StringField('Uppgift:', validators=[DataRequired(message="Du måste ange ett uppgiftsnamn!")])
+    assignment = StringField('Uppgift:', validators=[DataRequired(message="Du måste ange ett uppgiftsnamn!")])
     description = TextAreaField('Beskrivning:', validators=[DataRequired(message="Du måste skriva något!")])
-    submit = SubmitField('Skicka')
+    submit = SubmitField('Lägg till')
