@@ -4,37 +4,40 @@
 <h1>Informationsarkitekt </h1>
 
 <h2>Sammanfattning</h2>
-<p>
-    Vi lever idag i ett informationsintensivt samhälle. Som informationsarkitekt blir din uppgift att bringa 
-    ordning i myllret av informationsflöden. På utbildningen lär du dig att analysera, organisera och integrera 
-    information och informationsflöden. Ämnen som ingår är bland annat informationsteknik, webbdesign, 
-    webbkonstruktion, informationsdesign, programmering, kvalitet, kognitionsvetenskap, människa–datorinteraktion, 
-    projektledning, informationssäkerhet samt mycket mer. Undervisningen bygger i första hand på ett projektdrivet 
-    lärande, vilket innebär att projektarbeten genomsyrar hela utbildningen. Projekten genomförs i samverkan med 
-    näringslivet, vilket inte bara gör att utbildningen ständigt är aktuell och uppdaterad, utan också ger dig 
-    möjlighet att redan under studietiden knyta kontakter med arbetsmarknaden. Studieformen är planerad för att 
-    ge dig möjlighet att växa i förmågan att arbeta såväl i grupp som självständigt.
-</p>
+<section class="content-section">
+    <p>
+        Vi lever idag i ett informationsintensivt samhälle. Som informationsarkitekt blir din uppgift att bringa 
+        ordning i myllret av informationsflöden. På utbildningen lär du dig att analysera, organisera och integrera 
+        information och informationsflöden. Ämnen som ingår är bland annat informationsteknik, webbdesign, 
+        webbkonstruktion, informationsdesign, programmering, kvalitet, kognitionsvetenskap, människa–datorinteraktion, 
+        projektledning, informationssäkerhet samt mycket mer. Undervisningen bygger i första hand på ett projektdrivet 
+        lärande, vilket innebär att projektarbeten genomsyrar hela utbildningen. Projekten genomförs i samverkan med 
+        näringslivet, vilket inte bara gör att utbildningen ständigt är aktuell och uppdaterad, utan också ger dig 
+        möjlighet att redan under studietiden knyta kontakter med arbetsmarknaden. Studieformen är planerad för att 
+        ge dig möjlighet att växa i förmågan att arbeta såväl i grupp som självständigt.
+    </p>
+</section>
 
 
-<table class="utbildningsplan">
-    
-   
-    <!-- Skriver ut varje kolumn i schemat -->
-    {% for item in data %}
-        <tr>
-            <td> {{ item[0] }} </td>
-            <td> {{ item[1] }} </td>
-            <td> {{ item[2] }} </td>
-            <td> {{ item[3] }} </td>
-            <td> {{ item[4] }} </td>
-            <td> {{ item[5] }} </td>
-            <td> {{ item[6] }} </td>
-            <td> {{ item[7] }} </td>
-            <td> {{ item[8] }} </td>
-        </tr>
-    {% endfor %} 
-</table>
+<!-- Skriver ut varje kolumn i schemat -->
+{% for item in tabledata %}
+    <dl id="kursinfo_dl">
+        <dt> {{ item['Programkod'] }} </dt>
+        <dd> {{ item['Data1'] }} </dd>
+        <dt> {{ item['Engelsk_benämning'] }} </dt>
+        <dd> {{ item['Data2'] }} </dd>
+        <dt> {{ item['Undervisningsspråk'] }} </dt>
+        <dd> {{ item['Data3'] }} </dd>
+        <dt> {{ item['Inrättandedatum'] }} </dt>
+        <dd> {{ item['Data4'] }} </dd>
+        <dt> {{ item['Fastställandedatum'] }} </dt>
+        <dd> {{ item['Data5'] }} </dd>
+        <dt> {{ item['Gäller_från'] }} </dt>
+        <dd> {{ item['Data7'] }} </dd>
+        <dt> {{ item['Ersätter'] }} </dt>
+        <dd> {{ item['Data8'] }} </dd>
+    </tr>
+{% endfor %} 
 
 
 <h1>Innehåll</h1>
@@ -101,7 +104,7 @@
 </table>
 
 <h2>Höst- Termin 3</h2>
-<table>
+<table class="kursinfo_table">
     <tr>
         <th>Kurs</th>
         <th>Kurspoäng</th>

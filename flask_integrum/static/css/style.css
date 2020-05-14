@@ -299,16 +299,6 @@ h2 {
     transition: 0.2s;
     }
 
-
-.kursinfo_table {
-    padding: 30px;
-}    
-
-.kursinfo_table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
 th {
     color: white;
     background-color: black;
@@ -352,4 +342,26 @@ th, td {
 .todo_item > .item {
 
     display: block;
+}
+
+/* Informationsarkitekt (ia.html) */
+
+#kursinfo_dl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+.kursinfo_table {
+    padding: 30px;
+    margin: auto;
+}    
+
+.kursinfo_table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }

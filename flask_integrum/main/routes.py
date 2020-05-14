@@ -114,13 +114,6 @@ def hem():
 
 @main.route("/ia")
 def ia():
-    import requests
-    import urllib.request
-    import time
-    from bs4 import BeautifulSoup
-    import json
-
-
     url = 'https://edu.mau.se/sv/program/tgiaa'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -135,25 +128,6 @@ def ia():
         i = i.strip(' ')
 
         lista.append(i)
-
-
-    # Sparar listans innehåll i variabler
-    programkod = lista[0]
-    data1 = lista[1]
-    engelsk_benämning = lista[2]
-    data2 = lista[3]
-    undervisningsspråk = lista[4]
-    data3 = lista[5]
-    inrättandedatum = lista[6]
-    data4 = lista[7]
-    fastställandedatum = lista[8]
-    data5 = lista[9]
-    beslutande_instans = lista[10]
-    data6 = lista[11]
-    gäller_från = lista[12]
-    data7 = lista[13]
-    ersätter = lista[14]
-    data8 = lista[15]
 
 
     # Sparar variablerna i ett dict
@@ -178,7 +152,7 @@ def ia():
 
     utb_data.append(data)
 
-    return render_template("ia.html", data=utb_data, title="Informationsarkitekt")
+    return render_template("ia.html", tabledata=utb_data, title="Informationsarkitekt")
 
 
 @main.route("/calendar")
