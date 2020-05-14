@@ -114,7 +114,71 @@ def hem():
 
 @main.route("/ia")
 def ia():
-    return render_template("ia.html", title="Informationsarkitekt")
+    import requests
+    import urllib.request
+    import time
+    from bs4 import BeautifulSoup
+    import json
+
+
+    url = 'https://edu.mau.se/sv/program/tgiaa'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    utb_data=[]
+
+
+    utb_plan = soup.select('.edu-plan__term, .edu-plan__description')
+    lista=[]
+
+    for i in utb_plan:
+        i = i.text
+        i = i.strip(' ')
+
+        lista.append(i)
+
+
+    # Sparar listans innehåll i variabler
+    programkod = lista[0]
+    data1 = lista[1]
+    engelsk_benämning = lista[2]
+    data2 = lista[3]
+    undervisningsspråk = lista[4]
+    data3 = lista[5]
+    inrättandedatum = lista[6]
+    data4 = lista[7]
+    fastställandedatum = lista[8]
+    data5 = lista[9]
+    beslutande_instans = lista[10]
+    data6 = lista[11]
+    gäller_från = lista[12]
+    data7 = lista[13]
+    ersätter = lista[14]
+    data8 = lista[15]
+
+
+    # Sparar variablerna i ett dict
+    data = {
+        "Programkod": lista[0],
+        "Data1": lista[1],
+        "Engelsk_benämning": lista[2],
+        "Data2": lista[3],
+        "Undervisningsspråk": lista[4],
+        "Data3": lista[5],
+        "Inrättandedatum": lista[6], 
+        "Data4": lista[7],
+        "Fastställandedatum": lista[8],
+        "Data5": lista[9],
+        "Beslutande_instans": lista[10],
+        "Data6": lista[11],
+        "Gäller_från": lista[12],
+        "Data7": lista[13],
+        "Ersätter": lista[14],
+        "Data8": lista[15],
+    }
+
+    utb_data.append(data)
+
+    return render_template("ia.html", data=utb_data, title="Informationsarkitekt")
 
 
 @main.route("/calendar")
