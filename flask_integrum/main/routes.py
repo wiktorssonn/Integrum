@@ -114,7 +114,45 @@ def hem():
 
 @main.route("/ia")
 def ia():
-    return render_template("ia.html", title="Informationsarkitekt")
+    url = 'https://edu.mau.se/sv/program/tgiaa'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    utb_data=[]
+
+
+    utb_plan = soup.select('.edu-plan__term, .edu-plan__description')
+    lista=[]
+
+    for i in utb_plan:
+        i = i.text
+        i = i.strip(' ')
+
+        lista.append(i)
+
+
+    # Sparar variablerna i ett dict
+    data = {
+        "Programkod": lista[0],
+        "Data1": lista[1],
+        "Engelsk_benämning": lista[2],
+        "Data2": lista[3],
+        "Undervisningsspråk": lista[4],
+        "Data3": lista[5],
+        "Inrättandedatum": lista[6], 
+        "Data4": lista[7],
+        "Fastställandedatum": lista[8],
+        "Data5": lista[9],
+        "Beslutande_instans": lista[10],
+        "Data6": lista[11],
+        "Gäller_från": lista[12],
+        "Data7": lista[13],
+        "Ersätter": lista[14],
+        "Data8": lista[15],
+    }
+
+    utb_data.append(data)
+
+    return render_template("ia.html", tabledata=utb_data, title="Informationsarkitekt")
 
 
 @main.route("/calendar")
