@@ -56,20 +56,18 @@ body {
     text-align: center;
 }
 
-/* När man håller över länkarna i naven */
-#wrapper > nav > a:hover {
-    background-color: #2E789E;
-    transition: 0.2s;
-}
-
-
-
-/*  */
-#home { 
+/* Hem-ikonen i naven */
+#wrapper > nav > a > i { 
     flex-shrink: 1;
     color: white;
     line-height: 0.8em;
     font-size: 2em;
+}
+
+/* När man håller över länkarna i naven */
+#wrapper > nav > a:hover {
+    background-color: #2E789E;
+    transition: 0.2s;
 }
 
 /* Dropdown Button */
@@ -422,12 +420,3 @@ body {
     margin-bottom: 0;
 }
 /* Footern SLUTAR */
-
-
-
-
-
-
-#home { 
-    flex-shrink: 1.5;
-}
