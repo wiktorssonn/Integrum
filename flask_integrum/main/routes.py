@@ -13,14 +13,21 @@ from flask_integrum.main.forms import PostAssignment
 main = Blueprint("main", __name__)
 
 
+
+def fix_row_data(row):
+    if row.string is None:
+        return "".join([r.string if r.string is not None else "" for r in row.contents]).replace(u"\xa0", "")            
+    else: 
+        return row.string.replace(u"\xa0", "")
+
+
+
 @main.route("/schema")
 def schema():
-    year1 = request.args.get('resurser', 'p.TGIAA19h')
-    year2 = request.args.get('resurser', 'p.TGIAA18h')
-    year3 = request.args.get('resurser', 'p.TGIAA17h')
+    year = request.args.get('resurser', 'p.TGIAA19h')
     
-    url_test = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser={}'.format(year1)
-    url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser=p.TGIAA17h'
+    
+    url = 'https://schema.mau.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=m&intervallAntal=6&sprak=SV&sokMedAND=true&forklaringar=true&resurser={}'.format(year)
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     schema = soup.select(".schemaTabell .data-grey, .schemaTabell .data-white")
@@ -28,6 +35,7 @@ def schema():
     for i, row in enumerate(schema):
         row_data = [child for child in row.children]
         num_cols = len(row_data)
+    
         if num_cols == 11:
 
             day = row_data[2].string.replace(u"\xa0", "")
@@ -68,12 +76,15 @@ def schema():
                 day = prev_row_data[2].string.replace(u"\xa0", "")
                 date = prev_row_data[3].string.replace(u"\xa0", "")
             time = row_data[4].string.replace(u"\xa0", "")
-            course = "".join([c.string for c in row_data[5].children]).replace(u"\xa0", "")
+            course = fix_row_data(row_data[5])
+            course=""
             group = "".join([g.string for g in row_data[6].children]).replace(u"\xa0", "")
             teacher = "".join([t.string for t in row_data[7].children]).replace(u"\xa0", "")
             room = "".join([r.string for r in row_data[8].children]).replace(u"\xa0", "")
             resource = row_data[9].string.replace(u"\xa0", "")
-            moment = row_data[10].string.replace(u"\xa0", "")
+            moment = fix_row_data(row_data[10])
+
+
             updated = row_data[11].string.replace(u"\xa0", "")
 
             data = {
