@@ -169,6 +169,11 @@ body {
     width: 50%; 
     margin: 0 auto; 
 }
+
+/* Flash-meddelande vid inloggning/nytt inlägg etc */
+#wrapper > main .row {
+    justify-content: center;
+}
 /* Övergripande main SLUTAR */
 
 
