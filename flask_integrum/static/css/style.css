@@ -4,6 +4,7 @@ body {
     font-family: 'Baloo Chettan 2', cursive;
 }
 
+
 #wrapper {
     display: grid;
     grid-template-areas:
@@ -25,21 +26,21 @@ body {
     background-position: center;
 }
 
+
+/* Navigeringsmeny */
+
 #wrapper > nav {
     grid-area: nav;
-    
     background-color: black;
-    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     height: 50px;
-
     font-size: 1.2em;
-
 }
 
+/* Länkarna i naven */
 #wrapper > nav > a {
     text-decoration: none;
     color: white;
@@ -51,20 +52,81 @@ body {
     text-align: center;
 }
 
+/* När man håller över länkarna i naven */
 #wrapper > nav > a:hover {
     background-color: #2E789E;
     transition: 0.2s;
 }
 
-#wrapper > nav > a > i {  /* Hem-loggan i navmenu */
+/* Hem-loggan i navmenu */
+#wrapper > nav > a > i { 
     color: white;
     line-height: 0.5em;
     font-size: 2em;
 }
 
-#src_bar {
-    border-radius: 5px 5px 5px 5px;
+/* Dropdown Button */
+#wrapper > nav .dropbtn {
+    color: white;
+    background-color: black;
+    padding: 11px;
+    font-size: 1em;
+    width: 15em;
+    border: none;
+    text-align: center;
 }
+  
+/* The container <div> - needed to position the dropdown content */
+#wrapper > nav .dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+/* Dropdown Content (Hidden by Default) */
+#wrapper > nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 15em;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 0px 0px 5px 5px;
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+#wrapper > nav .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+/* Change color of dropdown links on hover */
+#wrapper > nav .dropdown-content a:hover {
+    background-color: #2E789E;
+    transition: 0.2s;
+}
+  
+#wrapper > nav .dropdown-content a:last-child {
+    border-radius: 0px 0px 5px 5px;
+}
+
+/* Show the dropdown menu on hover */
+#wrapper > nav .dropdown:hover .dropdown-content {
+    display: block;
+    transition: 0.2s;
+}
+  
+/* Change the background color of the dropdown button when the dropdown content is shown */
+#wrapper > nav .dropdown:hover .dropbtn {
+    background-color: #2E789E;
+    transition: 0.2s;
+}
+/* Navigeringsmeny SLUTAR */
+
+
+
+/* Allt som ligger i main*/
 
 #wrapper > main {
     grid-area: main;
@@ -81,60 +143,69 @@ body {
     margin: 0 auto;
 }
 
+/* Alla huvudrubriker i main */
 #wrapper > main > h1 {
     text-align: center;
 }
 
+/* Alla paragrafer och underrubriker i main */
 #wrapper > main > p, h2 {
     width: 50%;
     margin: 0 auto;
 }
 
-#wrapper > main > ul > li > a {
-    line-height: 0.5em;
-    font-size: 2em;
+/* Ger padding till alla h2 i main */
+#wrapper > main > h2 {
+    padding-top: 1em;
 }
 
+/* Länkarna på schema-sidan */
 #wrapper > main > ul > li {
     list-style-type: none;
 }
 
-#wrapper > main > .row {
-    justify-content: center;
-    text-align: center;
+/* Länkarna på schenma-sidan */
+#wrapper > main > ul > li > a {
+    line-height: 0.5em;
+    font-size: 2em;
 }
+/* Main SLUTAR */
 
-#wrapper > main > .border-top {
-    width: 50%;
-}
 
 
 /* Profilsidan */
 
-#wrapper > main > .profile-content-section {    /* Diven som håller hela innehållet på profilsidan */
+/* Diven som håller hela innehållet på profilsidan */
+#wrapper > main > .profile-content-section {    
     margin: 0 auto;
     padding: 0.5em;
     width: 50%;
 }
 
-#wrapper > main > .profile-content-section img {    /* Profilbild */
+/* Profilbild */
+#wrapper > main > .profile-content-section img {    
     width: 175px;
     height: 175px;
 }
 
-#wrapper > main > .profile-content-section > .media > .media-body {     /* Texten bredvid profilbilden */
+/* Texten bredvid profilbilden */
+#wrapper > main > .profile-content-section > .media > .media-body {     
     padding-left: 2em;
     margin-top: 1.5em;
 }
 
-#wrapper > main > .profile-content-section > form {     /* Formuläret under profilsidan */
+/* Formuläret under profilsidan */
+#wrapper > main > .profile-content-section > form {     
     margin-top: 2em;
 }
+/* Profilsidan SLUTAR */
+
 
 
 /* Forumsidan */
 
-#wrapper > main > .forum-content-section {      /* Diven som håller hela innehållet på forumsidan */
+/* Diven som håller hela innehållet på forumsidan */
+#wrapper > main > .forum-content-section {      
     margin: 20px auto;
     padding: 0.5em;
     width: 50%;
@@ -144,38 +215,49 @@ body {
     border: 2px solid #ccc;
 }
 
-#wrapper > main > .forum-content-section img {    /* Profilbild vid inlägget */
+/* Tar bort border under "Nytt inlägg" */
+#wrapper > main > .content-section .border-bottom {
+    border: none !important;
+}
+
+/* Profilbild vid inlägget */
+#wrapper > main > .forum-content-section img {
     width: 100px;
     height: 100px;
 }
 
-#wrapper > main > .forum-content-section .article-metadata {     /* Texten bredvid profilbilden, skapare och datum */
+/* Texten bredvid profilbilden, skapare och datum */
+#wrapper > main > .forum-content-section .article-metadata {
     padding: 0;
     margin-left: 15px;
     border-bottom: 1.5px solid #ccc;
-
 }
 
-#wrapper > main > .forum-content-section h2 {       /* Titel i inläggen */
+/* Titel i inläggen */
+#wrapper > main > .forum-content-section h2 {
     padding-top: 0;
     margin-top: 10px;
     margin-left: 15px;
 }
 
-#wrapper > main > .forum-content-section p {        /* Texten i inläggen */
+/* Texten i inläggen */
+#wrapper > main > .forum-content-section p {        
     margin-left: 15px;
 }
 
-#wrapper > main > .forum-buttons {      /* Diven som håller knapparna för de olika sidorna med inlägg */
+/* Diven som håller knapparna för de olika sidorna med inlägg */
+#wrapper > main > .forum-buttons {      
     margin: 50px auto;
     text-align: center;
 }
 
-#wrapper > main > .mb-5 {       /* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
+/* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
+#wrapper > main > .mb-5 {       
     text-align: center;
 }
 
-#wrapper > main > .schema {     /* Texten i schema-tabellen */
+/* Texten i schema-tabellen */
+#wrapper > main > .schema {     
     color: black
 }
 /* Forumsidan SLUTAR */
@@ -183,52 +265,69 @@ body {
 
 
 /* Att göra sidan */
-#wrapper > main > #todo {       /* Div:en som håller hela "att-göra" listan */
+
+/* Div:en som håller hela "att-göra" listan */
+#wrapper > main > #todo {       
     border: 1px solid #ccc;
     box-shadow: 2px 2px 2px #666;
+    margin-top: 0.5em;
 }
 
-#wrapper > main > .list-group {     /* Ul som håller i listorna */
+/* Ul som håller i listorna */
+#wrapper > main > .list-group {
     width: 50%;
     margin: 2em auto 5em auto;
 }
 
-#wrapper > main .list-group-item {      /* Listorna i "att-göra" */
+/* Listorna i "att-göra" */
+#wrapper > main .list-group-item {
     border: 0px;
 }
 
-#wrapper > main > ul:nth-child(3n + 3) {
-    background-color: yellow;
-}
-
-#wrapper > main > .content-section > form button {      /* Knappen för att ta bort uppgifter i "att-göra" listan */
+/* Knappen för att ta bort uppgifter i "att-göra" listan */
+#wrapper > main > .content-section > form button {
     float: right;
     margin-top: -0.2em;
 } 
 
-#wrapper > main > .content-section > form > ul > li > p:nth-child(1) {  /* Ojämna raderna i "att-göra" listan */
+/* Ojämna raderna i "att-göra" listan */
+#wrapper > main > .content-section > form > ul > li > p:nth-child(1) { 
     border-bottom: 1px solid black;
     font-weight: bold;
     font-size: 1.2em;
     padding-bottom: 0.5em;
 } 
 
-#wrapper > main > .content-section > form > ul > li:nth-child(odd) {       /* Jämna list-items, alltså beskrivning av uppgiften */
+/* Udda list-items, alltså beskrivning av uppgiften */
+#wrapper > main > .content-section > form > ul > li:nth-child(odd) {       
     border-radius: 0;
 } 
 
-#wrapper > main > .content-section > form > ul > li:nth-child(even) {       /* Jämna list-items, alltså beskrivning av uppgiften */
+/* Jämna list-items, alltså beskrivning av uppgiften */
+#wrapper > main > .content-section > form > ul > li:nth-child(even) {       
     background-color: #ccc;
     border-radius: 0;
 } 
 
-#wrapper > main > #new_assignment {     /* Id för div:en som håller hela "Lägg till ny uppgift" formuläret */
+/* Id för div:en som håller hela "Lägg till ny uppgift" formuläret */
+#wrapper > main > #new_assignment {
     margin-top: 3em;
+}
+
+/* Centrerar H2 "Lägg till ny uppgift" */
+#wrapper > main > #new_assignment h2 {
+    text-align: center;
+}
+
+/* Tar bort border från legend till "Lägg till ny uppgift" */
+#wrapper > main > #new_assignment legend {
+    border: none;
 }
 
 /* Att göra sidan SLUTAR */
 
 
+/* Footern */
 
 #wrapper > footer {
     grid-area: footer;
@@ -242,11 +341,9 @@ body {
 #wrapper > footer > p {
     margin-bottom: 0;
 }
+/* Footern SLUTAR */
 
 
-h2 {
-    padding-top: 30px;
-}
 
 
 .details {
@@ -273,64 +370,6 @@ h2 {
     margin: 0 auto; 
 }
 
-
-/* Dropdown Button */
-.dropbtn {
-    color: white;
-    background-color: black;
-    padding: 11px;
-    font-size: 1em;
-    width: 15em;
-    border: none;
-    text-align: center;
-    }
-  
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    }
-  
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: black;
-    width: 15em;
-    box-shadow: 2px 2px 10px black;
-    border-radius: 0px 0px 5px 5px;
-    z-index: 1;
-    }
-  
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
-  
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #2E789E;
-    transition: 0.2s;
-    }
-  
-.dropdown-content a:last-child {
-    border-radius: 0px 0px 5px 5px;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-    transition: 0.2s;
-    }
-  
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #2E789E;
-    transition: 0.2s;
-    }
 
 th {
     color: white;
