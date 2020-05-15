@@ -164,23 +164,59 @@ body {
     padding-top: 1em;
 }
 
-/* Länkarna på schema-sidan */
-#wrapper > main > ul > li {
-    list-style-type: none;
-}
-
-/* Länkarna på schenma-sidan */
-#wrapper > main > ul > li > a {
-    line-height: 0.5em;
-    font-size: 2em;
-}
-
 /* Klassen för Logga in / Registrera under formulären */
 .border-top {
     width: 50%; 
     margin: 0 auto; 
 }
 /* Övergripande main SLUTAR */
+
+
+
+/* Schema-sidan */
+
+/* Diven som håller schema-knapparna */
+#wrapper > main > .schema_year {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+/*Schema-knapparna*/
+#wrapper > main > .schema_year > .btn-info {
+    background-color: rgb(46, 46, 46);
+    border: none;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+/* Hover till schema-knapparna*/
+#wrapper > main > .schema_year .btn-info:hover {
+    background-color: #2E789E;
+}
+
+/*Länkarna i schema-knapparna */
+#wrapper > main > .schema_year a {
+    text-decoration: none;
+    color: white;
+}
+
+#wrapper > main .schema {
+    width: 85%;
+    margin: auto;
+}
+
+#wrapper > main .schema th, td {
+    border: 1px solid black;
+    padding: 1em;
+    color: white;
+    min-width: 8em;
+    text-align: center;
+}
+
+/* Schema-sidan SLUTAR */
 
 
 
@@ -270,6 +306,11 @@ body {
 #wrapper > main > .profile-content-section > .media > .media-body {     
     padding-left: 2em;
     margin-top: 1.5em;
+}
+
+/* Användarnamnet bredbid profilbilden */
+#wrapper > main > .profile-content-section > .media > .media-body > h2 { 
+    margin-left: 0;    
 }
 
 /* Formuläret under profilsidan */
