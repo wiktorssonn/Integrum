@@ -41,6 +41,7 @@ body {
     position: sticky;
     top: 0;
     font-size: 1.2em;
+    z-index: 1;
 }
 
 /* Länkarna i naven */
@@ -175,7 +176,80 @@ body {
     line-height: 0.5em;
     font-size: 2em;
 }
-/* Main SLUTAR */
+
+/* Klassen för Logga in / Registrera under formulären */
+.border-top {
+    width: 50%; 
+    margin: 0 auto; 
+}
+/* Övergripande main SLUTAR */
+
+
+
+/* Informationsarkitekt sidan */
+
+/* Div:en som håller tabellerna om kursplan */
+#kursinfo_dl {
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    width: 55%;
+    border-bottom: 0;
+    font-size: .8125rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* Raderna i tabellen kursinfo_dl(vänster) */
+#wrapper > main dt {
+    width: 30%;
+    background: rgb(46, 46, 46);
+    color: white;
+    box-sizing: border-box;
+    padding: .5rem;
+    border-style: solid;
+    border-right: none;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+/* Raderna i tabellen kursinfo_dl (höger) */
+#wrapper > main dd {
+    display: flex;
+    margin: 0;
+    width: 70%;
+    padding: .5rem;
+    background: #2E789E;
+    align-items: center;
+    border-style: solid;
+    border-left: none;
+    border-color: #fff;
+    color: white;
+    border-width: 0 1px 1px 1px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+/* Tabellerna för kursinfo */
+#wrapper > main tbody > .kursinfo_table {
+    padding: 30px;
+    margin: auto;
+    border-radius: 5px;
+}    
+
+/* TH i tabellerna för kursinfo */
+#wrapper > main .kursinfo_table, th {
+    background-color: rgb(46, 46, 46);
+
+}
+
+/* TD i tabellerna för kursinfo */
+#wrapper > main .kursinfo_table, td {
+    color: white;
+    background-color: #2E789E;
+}
+/* Informationsarkitektsidan SLUTAR */
 
 
 
@@ -354,121 +428,6 @@ body {
 
 
 
-
-#log_in {
-    color: white;
-    line-height: 0.5em;
-    font-size: 1em;
-}
-
-
-/* Klassen för Logga in / Registrera under formulären */
-.border-top {
-    width: 65%; 
-    margin: 0 auto; 
-}
-
-th {
-    color: white;
-    background-color: black;
-    text-align: center;
-}
-
-th, td {
-    padding: 10px;
-}
-
-.todo_table{
-    padding: 30px;
-    width:40%;
-    margin:0;
-}
-
-#todo_lists{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-#todo_lists > h2{
-    width: 44%;
-    margin-left: 3%;
-}
-
-.todo_table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-#user_picture {
-    padding: 10px;
-    font-size: 150px;
-    color: #2E789E;
-}
-
-/* todo skapa uppgift */
-
-.todo_item > .item {
-
-    display: block;
-}
-
-/* Informationsarkitekt (ia.html) */
-
-#kursinfo_dl {
-    display: flex;
-    margin: auto;
-    padding: 50px;
-    width: 55%;
-    border-bottom: 0;
-    font-size: .8125rem;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: center;
-}
-
-/* Raderna i tabellen kursinfo_dl(vänster) */
-dt {
-    width: 30%;
-    background: rgb(46, 46, 46);
-    color: white;
-    box-sizing: border-box;
-    padding: .5rem;
-    border-style: solid;
-    border-right: none;
-    border-color: #ccc;
-    border-width: 0 1px 1px 1px;
-    border-radius: 5px 0px 0px 5px;
-}
-
-/* Raderna i tabellen kursinfo_dl (höger) */
-dd {
-    display: flex;
-    margin: 0;
-    width: 70%;
-    padding: .5rem;
-    background: #2E789E;
-    align-items: center;
-    border-style: solid;
-    border-left: none;
-    border-color: #fff;
-    color: white;
-    border-width: 0 1px 1px 1px;
-    border-radius: 0px 5px 5px 0px;
-}
-
-tbody > .kursinfo_table {
-    padding: 30px;
-    margin: auto;
-    border-radius: 5px;
-}    
-
-.kursinfo_table, th {
-    background-color: rgb(46, 46, 46);
-
-}
-
-.kursinfo_table, td {
-    color: white;
-    background-color: #2E789E;
+#home { 
+    flex-shrink: 1.5;
 }
