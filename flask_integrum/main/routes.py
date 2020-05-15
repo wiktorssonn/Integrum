@@ -16,7 +16,7 @@ main = Blueprint("main", __name__)
 
 def fix_row_data(row):
     if row.string is None:
-        return "".join([r.string if r.string is not None else "" for r in row.contents]).replace(u"\xa0", "")            
+        return "".join([r.string if r.string is not None else "" for r in row.contents]).replace(u"\xa0", "")           
     else: 
         return row.string.replace(u"\xa0", "")
 
@@ -37,67 +37,34 @@ def schema():
         num_cols = len(row_data)
     
         if num_cols == 11:
-
-            day = row_data[2].string.replace(u"\xa0", "")
-            date = row_data[3].string.replace(u"\xa0", "")
-
-            if day == "" and date == "":
-                prev_row_data = [child for child in schema[i - 1].children]
-                day = prev_row_data[2].string.replace(u"\xa0", "")
-                date = prev_row_data[3].string.replace(u"\xa0", "")
-
-            time = row_data[4].string.replace(u"\xa0", "")
-            course = "".join([c.string for c in row_data[5].children]).replace(u"\xa0", "")
-            teacher = "".join([t.string for t in row_data[6].children]).replace(u"\xa0", "")
-            room = "".join([r.string for r in row_data[7].children]).replace(u"\xa0", "")
-            resource = row_data[8].string.replace(u"\xa0", "")
-            moment = row_data[9].string.replace(u"\xa0", "")
-            updated = row_data[10].string.replace(u"\xa0", "")
-
+            
+            # Kallar på funktionen fix_row_data() med respektive index(kolumn) från kronox
             data = {
-                "day": day,
-                "date": date,
-                "time": time,
-                "course": course,
-                "teacher": teacher,
-                "room": room,
-                "resource": resource,
-                "moment": moment,
-                "updated": updated
+                "day": fix_row_data(row_data[2]),
+                "date": fix_row_data(row_data[3]),
+                "time": fix_row_data(row_data[4]),
+                "course": fix_row_data(row_data[5]),
+                "teacher": fix_row_data(row_data[6]),
+                "room": fix_row_data(row_data[7]),
+                "resource": fix_row_data(row_data[8]),
+                "moment": fix_row_data(row_data[9]),
+                "updated": fix_row_data(row_data[10])
             }
 
             schema_data.append(data)
         else:
-            day = row_data[2].string.replace(u"\xa0", "")
-            date = row_data[3].string.replace(u"\xa0", "")
-
-            if day == "" and date == "":
-                prev_row_data = [child for child in schema[i - 1].children]
-                day = prev_row_data[2].string.replace(u"\xa0", "")
-                date = prev_row_data[3].string.replace(u"\xa0", "")
-            time = row_data[4].string.replace(u"\xa0", "")
-            course = fix_row_data(row_data[5])
-            course=""
-            group = "".join([g.string for g in row_data[6].children]).replace(u"\xa0", "")
-            teacher = "".join([t.string for t in row_data[7].children]).replace(u"\xa0", "")
-            room = "".join([r.string for r in row_data[8].children]).replace(u"\xa0", "")
-            resource = row_data[9].string.replace(u"\xa0", "")
-            moment = fix_row_data(row_data[10])
-
-
-            updated = row_data[11].string.replace(u"\xa0", "")
-
+            
             data = {
-                "day": day,
-                "date": date,
-                "time": time,
-                "course": course,
-                "group": group,
-                "teacher": teacher,
-                "room": room,
-                "resource": resource,
-                "moment": moment,
-                "updated": updated
+                "day": fix_row_data(row_data[2]),
+                "date": fix_row_data(row_data[3]),
+                "time": fix_row_data(row_data[4]),
+                "course": fix_row_data(row_data[5]),
+                "group": fix_row_data(row_data[6]),
+                "teacher": fix_row_data(row_data[7]),
+                "room": fix_row_data(row_data[8]),
+                "resource": fix_row_data(row_data[9]),
+                "moment": fix_row_data(row_data[10]),
+                "updated": fix_row_data(row_data[11])
             }
 
             schema_data.append(data)
