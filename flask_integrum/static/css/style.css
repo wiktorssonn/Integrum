@@ -236,7 +236,7 @@ body {
 }
 
 /* Raderna i tabellen kursinfo_dl(vänster) */
-#wrapper > main dt {
+#wrapper > main > #kursinfo_dl > dt {
     width: 30%;
     background: rgb(46, 46, 46);
     color: white;
@@ -250,7 +250,7 @@ body {
 }
 
 /* Raderna i tabellen kursinfo_dl (höger) */
-#wrapper > main dd {
+#wrapper > main > #kursinfo_dl > dd {
     display: flex;
     margin: 0;
     width: 70%;
@@ -332,6 +332,42 @@ body {
     margin-top: 2em;
 }
 /* Profilsidan SLUTAR */
+
+
+
+/* Förstasidan (index.html) */
+
+/* Diven som håller cards */
+#wrapper > main > .row {
+    width: 50%;
+    margin: 0 auto;
+    background-color: rgb(46, 46, 46);
+}
+
+/* Hela kortet/korten inlkusive texten */
+#wrapper > main .card-body {
+    background-color: rgb(46, 46, 46);
+    width: 250px;
+    height:150px;
+    color: white;
+}
+
+#wrapper > main .card {
+    border-style: none;
+}
+
+#wrapper > main .card-img-top {
+    border: rgb(46, 46, 46);
+    height: 200px;
+    width: 250px;
+}
+
+/* Knappen i korten */
+#wrapper > main .btn-primary {
+    background-color: #2E789E;
+    color: white;
+    border-style: none;
+}
 
 
 
@@ -458,6 +494,56 @@ body {
 }
 
 /* Att göra sidan SLUTAR */
+
+
+
+/* Kontaktsidan */
+
+/* Div:en för kontakt med lärare */
+#contact_dl {
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    width: 80%;
+    border-bottom: 1px #fff;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#contact_dl dt {
+    width: 20%;
+    background: rgb(46, 46, 46);
+    color: white;
+    box-sizing: border-box;
+    padding: .5rem; 
+    border-style: solid;
+    border-right: none;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+    border-radius: 5px 0px 0px 5px; 
+}
+
+/* Raderna i tabellen kursinfo_dl (höger) */
+#contact_dl dd {
+    margin: 0;
+    width: 35%;
+    padding: .5rem;
+    background: #2E789E;
+    align-items: center;
+    color: white;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+}
+
+/* Länkar i dl */
+#contact_dl a {
+    color: white;
+}
+
 
 
 /* Footern */
