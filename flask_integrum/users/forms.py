@@ -15,7 +15,7 @@ class RegistrationForm(FlaskForm):
     email = StringField("Email",
                         validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
 
-    password = PasswordField("Lösenord", 
+    password = PasswordField("Lösenord (Minst 6 tecken långt)", 
                         validators=[DataRequired(), Length(min=6, max=100, message="Lösenordet måste vara minst 6 tecken långt!")])
 
     confirm_password = PasswordField("Bekräfta lösenord",
