@@ -207,42 +207,6 @@ def todo():
 
 
 
-#Lägg till annons i "köp/sälj"
-@main.route("/add_buy_sell", methods=["POST"])
-def add_buy_sell():
-    items = PostItem()
-    if item.validate_on_submit():
-        buy_sell = buy_sell(title=item.title.data, course=item.course.data, contact=item.contact.data, completed=False, user_id=current_user.id)
-        db.session.add(buy_sell)
-        db.session.commit()
-        flash("En ny annons har skapats!", "success")
-        return redirect(url_for("main.buy_sell"))
-    
-    return render_template("buy_sell.html", title="Köp och Sälj", legend="Lägg till ny annons", items=item)
-
-
-
-#Ta bort uppgift från "köp/sälj" listan
-@main.route("/delete_buy_sell/<id>")
-def delete_buy_sell(id):
-    
-    #Tar bort uppgiften med id:et man klickat på i "köp/sälj" listan från databasen
-    buy_sell = buy_sell.query.filter_by(id=int(id)).first()
-    db.session.delete(buy_sell)
-    db.session.commit()
-
-    return redirect(url_for("main.buy_sell"))
-    
-
-
-#"köp/sälj" listan där man kan lägga till böcker till försäljning
-@main.route("/buy_sell")
-def buy_sell():
-    item = PostItem()
-    #Hämtar ut alla items som tillhör current_user, alltså kollar att user_id i databasen == current_user
-    items = buy_sell.query.filter(buy_sell.user_id == current_user.id).all()
-    return render_template("buy_sell.html", title="Köp och sälj", items=items, item=item)
-
 
     
 @main.route("/faq")
