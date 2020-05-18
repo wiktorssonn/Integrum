@@ -75,3 +75,18 @@ class Todo(db.Model):
     def __repr__(self):
         return "Todo('{}, '{}', {})".format(self.assignment, self.description, self.user_id)
     
+
+
+#Hur vårt "köp/sälj" table är uppbyggt samt hur det sparas i databasen
+class buy_sell(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    course = db.Column(db.Text, nullable=False)
+    contact = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    completed = db.Column(db.Boolean)
+    
+    #Hur vår modell skrivs ut
+    def __repr__(self):
+        return "Buy_sell('{}, '{}', {}, {}, {})".format(self.title, self.course, self.contact, self.price, self.user_id)

@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Studentforum</h1>
+
+    <!-- Om användare är inloggad, visa "Skapa inlägg" och själva forumet-->
+    {% if current_user.is_authenticated %}
+
+        <!-- Skapa inlägg -->
+        <div class="content-section" id="buy_sell">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">{{ legend }}</legend>
+
+                    <div class="form-group">
+                        {{ item.title.label(class="form-control-label") }}
+                        {% if item.title.errors %}
+                            {{ item.title(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in item.title.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ item.title(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ item.course.label(class="form-control-label") }}
+                        {% if item.course.errors %}
+                            {{ item.course(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in item.course.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ item.course(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ item.price.label(class="form-control-label") }}
+                        {% if item.price.errors %}
+                            {{ item.price(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in item.price.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ item.price(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ item.contact.label(class="form-control-label") }}
+                        {% if item.contact.errors %}
+                            {{ item.contact(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in item.contact.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ item.contact(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+
+        {% for post in posts.items %}
+            <article class="media forum-content-section">
+                <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+                </div>
+
+            </article>
+        {% endfor %}
+        <div class="forum-buttons">
+            <!-- Visar sidonummer så man kan bläddra för att se fler inlägg -->
+            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+                <!-- Om sidonumret finns, gå till sidan-->
+                {% if page_num %}
+                    <!-- Gör så att knappen för sidan vi är på just nu är helmarkerad tillskillnad från övriga knappar -->
+                    {% if posts.page == page_num %}
+                        <a class="btn btn-info mb-4" href="{{ url_for('main.forum', page=page_num) }}">{{ page_num }}</a>
+                        
+                    {% else %}
+                        <a class="btn btn-outline-info mb-4" href="{{ url_for('main.forum', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                ...
+                {% endif %}
+            {% endfor %}
+        </div>
+    
+    <!-- Om användaren inte är inloggad, visa bara forumet och inte "Skapa inlägg"-->
+    {% else %}
+
+        {% for post in posts.items %}
+            <article class="media forum-content-section">
+                <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
+
+        <div class="forum-buttons">
+            <!-- Visar sidonummer så man kan bläddra för att se fler inlägg -->
+            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+                <!-- Om sidonumret finns, gå till sidan-->
+                {% if page_num %}
+                    <!-- Gör så att knappen för sidan vi är på just nu är helmarkerad tillskillnad från övriga knappar -->
+                    {% if posts.page == page_num %}
+                        <a class="btn btn-info mb-4" href="{{ url_for('main.forum', page=page_num) }}">{{ page_num }}</a>
+                        
+                    {% else %}
+                        <a class="btn btn-outline-info mb-4" href="{{ url_for('main.forum', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                ...
+                {% endif %}
+            {% endfor %}
+        </div>
+    
+    {% endif %}
+
+{% endblock content %}
