@@ -347,6 +347,7 @@ body {
     width: 50%;
     margin: 0 auto;
     background-color: rgb(46, 46, 46);
+    border-radius: 5px;
 }
 
 /* Hela kortet/korten inlkusive texten */
@@ -355,6 +356,7 @@ body {
     width: 250px;
     height:150px;
     color: white;
+    align-items: center;
 }
 
 #wrapper > main .card {
@@ -363,8 +365,10 @@ body {
 
 #wrapper > main .card-img-top {
     border: rgb(46, 46, 46);
+    align-self: auto;
     height: 200px;
     width: 250px;
+   
 }
 
 /* Knappen i korten */
