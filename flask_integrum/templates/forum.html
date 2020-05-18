@@ -23,7 +23,7 @@
                                 {% endfor %}
                             </div>
                         {% else %}
-                            {{ form.title(class="form-control form-control-lg") }}
+                            {{ form.title(class="form-control form-control-lg", placeholder="Titel på inlägg..") }}
                         {% endif %}
                     </div>
 
@@ -37,7 +37,7 @@
                                 {% endfor %}
                             </div>
                         {% else %}
-                            {{ form.content(class="form-control form-control-lg") }}
+                            {{ form.content(class="form-control form-control-lg", placeholder="Text i inlägget..") }}
                         {% endif %}
                     </div>
                 </fieldset>
