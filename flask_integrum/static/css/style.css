@@ -56,13 +56,16 @@ body {
     text-align: center;
 }
 
+/* Markerar aktuell sida/knapp i naven */
+#wrapper > nav > a.active {
+    background-color: #2E789E;
+}
 
 /* När man håller över länkarna i naven */
 #wrapper > nav > a:hover {
     background-color: #2E789E;
     transition: 0.2s;
 }
-
 
 /* Hem-ikonen i naven */
 #wrapper > nav > a > i { 
@@ -88,6 +91,7 @@ body {
 #wrapper > nav .dropdown {
     position: relative;
     display: inline-block;
+    
 }
   
 /* Dropdown Content (Hidden by Default) */
