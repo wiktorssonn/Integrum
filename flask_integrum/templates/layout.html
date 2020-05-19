@@ -10,29 +10,32 @@
     <meta charset="utf-8">
 
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <!-- CSS -->
     <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
 
     <!-- Om sidan har en titel, skriv ut den. Annars använd Integrum som titel -->
     {% if title %}
-    <title>Integrum - {{ title }} </title>
+        <title>Integrum - {{ title }} </title>
+
     {% else %}
-    <title>Integrum</title>
+        <title>Integrum</title>
+
     {% endif %}
 
     {% block head %} {% endblock head %}
 </head>
+
 <body>
 
     <div id="wrapper">
 
         <header>
-            
+            <!--Ligger en bild i css här-->
         </header>
 
         <nav>
-
             <!-- Kollar om användaren är inloggad, isåfall visar den andra menyaval -->
             {% if current_user.is_authenticated %}
                 <a href="/hem" id="home"><i class="fa fa-home"></i></a>
@@ -41,9 +44,9 @@
                 <div class="dropdown">
                     <button class="dropbtn">Program</button>
                     <div class="dropdown-content">
-                    <a href="{{ url_for('main.ia') }}">Informationsarkitekt</a>
-                    <a href="{{ url_for('main.hem') }}">Systemutveckling</a>
-                    <a href="{{ url_for('main.hem') }}">Spelutveckling</a>
+                        <a href="{{ url_for('main.ia') }}">Informationsarkitekt</a>
+                        <a href="{{ url_for('main.hem') }}">Systemutveckling</a>
+                        <a href="{{ url_for('main.hem') }}">Spelutveckling</a>
                     </div>
                 </div>
 
@@ -51,8 +54,8 @@
                 <div class="dropdown">
                     <button class="dropbtn">Planering</button>
                     <div class="dropdown-content">
-                    <a href="{{ url_for('main.schema') }}">Kalender</a>
-                    <a href="{{ url_for('main.todo') }}">Att göra</a>
+                        <a href="{{ url_for('main.schema') }}">Kalender</a>
+                        <a href="{{ url_for('main.todo') }}">Att göra</a>
                     </div>
                 </div>
 
@@ -69,6 +72,7 @@
             
                 <a href="{{ url_for('users.profil') }}">Min profil</a>
                 <a href="{{ url_for('users.logout') }}">Logga ut</a>
+
             {% else %}
                 <a href="{{ url_for('users.login') }}">Logga in</a>
                 <a href="{{ url_for('users.register') }}">Registrera</a>
@@ -76,10 +80,8 @@
                 <a href="{{ url_for('main.kontakt') }}">Kontakt</a>
                 <a href="{{ url_for('main.forum') }}">Forum</a>
                 <a href="{{ url_for('main.faq') }}">FAQ</a>
-            {% endif %}
-                
-           
 
+            {% endif %}
         </nav>
 
         <main>
@@ -97,7 +99,6 @@
                 </div>
             </div>
             
-            
             {% block content %} {% endblock %}
             
         </main>
@@ -108,7 +109,6 @@
 
     </div>
 
-    <!-- Optional JavaScript -->
     <!--Javascript till schemat-->  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script> 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -116,5 +116,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="static/js/schema.js"></script>
+
 </body>
+
 </html>
