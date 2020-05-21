@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block head %} 
@@ -10,16 +9,19 @@
 
 {% block content %}
     
-    <h2 id="schema">SCHEMA</h2>
-    <p>Med start 2017</p>
-    <ul>
-        <li><a href="#">Schema 2017</a></li>
-        <li><a href="#">Schema 2018</a></li>
-        <li><a href="#">Schema 2019</a></li>
-        <li><a href="#">Schema 2020</a></li>
-    </ul>
+    <div class="schema_year">
+        <button type="button" class="btn btn-info">
+            <a href="/schema?resurser=p.TGIAA17h">Schema 2017</a>
+        </button>
+        <button type="button" class="btn btn-info">
+            <a href="/schema?resurser=p.TGIAA18h">Schema 2018</a>
+        </button>
+        <button type="button" class="btn btn-info">
+            <a href="/schema?resurser=p.TGIAA19h">Schema 2019</a>
+        </button>
+    </div>
+
     <table class="schema">
-        
         <!-- De olika rubrikerna till schemat -->
         <tr>
             <th>Dag</th>
@@ -44,14 +46,7 @@
                 <td> {{row['moment']}} </td>
                 <td> {{row['updated']}} </td>
             </tr>
-        {% endfor %} 
+        {% endfor %}
     </table>
     
-    
-    <!-- Behövs denna? -->
-    <!-- <div id="calendar"></div> -->
-
-    
-
-{% endblock content %}
-        
+{% endblock content %}      

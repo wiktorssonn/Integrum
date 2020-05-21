@@ -1,118 +1,139 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Informationsarkitekt </h1>
 
-<h2>Sammanfattning</h2>
-<p>
-    Vi lever idag i ett informationsintensivt samhälle. Som informationsarkitekt blir din uppgift att bringa 
-    ordning i myllret av informationsflöden. På utbildningen lär du dig att analysera, organisera och integrera 
-    information och informationsflöden. Ämnen som ingår är bland annat informationsteknik, webbdesign, 
-    webbkonstruktion, informationsdesign, programmering, kvalitet, kognitionsvetenskap, människa–datorinteraktion, 
-    projektledning, informationssäkerhet samt mycket mer. Undervisningen bygger i första hand på ett projektdrivet 
-    lärande, vilket innebär att projektarbeten genomsyrar hela utbildningen. Projekten genomförs i samverkan med 
-    näringslivet, vilket inte bara gör att utbildningen ständigt är aktuell och uppdaterad, utan också ger dig 
-    möjlighet att redan under studietiden knyta kontakter med arbetsmarknaden. Studieformen är planerad för att 
-    ge dig möjlighet att växa i förmågan att arbeta såväl i grupp som självständigt.
-</p>
+    <h1>Informationsarkitekt </h1>
 
-<h1>Innehåll</h1>
-<h2>Höst- Termin 1</h2>
-<table class="kursinfo_table">
-    <tr>
-        <th>Kurs</th>
-        <th>Kurspoäng</th>
-        <th>Kurskod</th>
-        <th>Huvudområde</th>
-    </tr>
-    <tr>
-        <td>Introduktion till datavetenskap</td>
-        <td>7.5 hp</td>
-        <td>DA154A</td>
-        <td>Datavetenskap, Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Introduktion till webbutveckling</td>
-        <td>7.5 hp</td>
-        <td>DA106A</td>
-        <td>Datavetenskap, Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Interaktionsdesign för informationsarkitekter</td>
-        <td>7.5 hp</td>
-        <td>DA100A</td>
-        <td>Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Introduktion till programmering</td>
-        <td>7.5 hp</td>
-        <td>DA354A</td>
-        <td>Data- och informationsvetenskap</td>
-    </tr>
-</table>
+    <h2>Sammanfattning</h2>
+    <section class="content-section">
+        <p>
+            Vi lever idag i ett informationsintensivt samhälle. Som informationsarkitekt blir din uppgift att bringa 
+            ordning i myllret av informationsflöden. På utbildningen lär du dig att analysera, organisera och integrera 
+            information och informationsflöden. Ämnen som ingår är bland annat informationsteknik, webbdesign, 
+            webbkonstruktion, informationsdesign, programmering, kvalitet, kognitionsvetenskap, människa–datorinteraktion, 
+            projektledning, informationssäkerhet samt mycket mer. Undervisningen bygger i första hand på ett projektdrivet 
+            lärande, vilket innebär att projektarbeten genomsyrar hela utbildningen. Projekten genomförs i samverkan med 
+            näringslivet, vilket inte bara gör att utbildningen ständigt är aktuell och uppdaterad, utan också ger dig 
+            möjlighet att redan under studietiden knyta kontakter med arbetsmarknaden. Studieformen är planerad för att 
+            ge dig möjlighet att växa i förmågan att arbeta såväl i grupp som självständigt.
+        </p>
+    </section>
 
-<h2>Vår- Termin 2</h2>
-<table class="kursinfo_table">
-    <tr>
-        <th>Kurs</th>
-        <th>Kurspoäng</th>
-        <th>Kurskod</th>
-        <th>Huvudområde</th>
-    </tr>
-    <tr>
-        <td>Databasteknik</td>
-        <td>7.5 hp</td>
-        <td>DA297A</td>
-        <td>Datavetenskap, Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Systemutveckling och projekt I</td>
-        <td>15 hp</td>
-        <td>DA336A</td>
-        <td>Datavetenskap, Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Informationsarkitektur för flerplattformsapplikationer</td>
-        <td>7.5 hp</td>
-        <td>DA108A</td>
-        <td>Data- och informationsvetenskap</td>
-    </tr>
-</table>
+    <!-- Skriver ut varje kolumn i schemat -->
+    {% for item in tabledata %}
+        <dl id="kursinfo_dl">
+            <dt> {{ item['Programkod'] }} </dt>
+            <dd> {{ item['Data1'] }} </dd>
+            <dt> {{ item['Engelsk_benämning'] }} </dt>
+            <dd> {{ item['Data2'] }} </dd>
+            <dt> {{ item['Undervisningsspråk'] }} </dt>
+            <dd> {{ item['Data3'] }} </dd>
+            <dt> {{ item['Inrättandedatum'] }} </dt>
+            <dd> {{ item['Data4'] }} </dd>
+            <dt> {{ item['Fastställandedatum'] }} </dt>
+            <dd> {{ item['Data5'] }} </dd>
+            <dt> {{ item['Gäller_från'] }} </dt>
+            <dd> {{ item['Data7'] }} </dd>
+            <dt> {{ item['Ersätter'] }} </dt>
+            <dd> {{ item['Data8'] }} </dd>
+        </tr>
+    {% endfor %} 
 
-<h2>Höst- Termin 3</h2>
-<table>
-    <tr>
-        <th>Kurs</th>
-        <th>Kurspoäng</th>
-        <th>Kurskod</th>
-        <th>Huvudområde</th>
-    </tr>
-    <tr>
-        <td>Objektorienterad programmering och modellering för IA</td>
-        <td>7.5 hp</td>
-        <td>DA361A</td>
-        <td>Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Information bortom skärmar</td>
-        <td>7.5 hp</td>
-        <td>DA200A</td>
-        <td>Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Informationsdesign</td>
-        <td>7.5 hp</td>
-        <td>DA456A</td>
-        <td>Data- och informationsvetenskap</td>
-    </tr>
-    <tr>
-        <td>Webbtjänster</td>
-        <td>7.5 hp</td>
-        <td>DA109A</td>
-        <td>Data- och informationsvetenskap, Datavetenskap</td>
-    </tr>
-</table>
+    <h1>Innehåll</h1>
+    <h2 id="iah2">Höst- Termin 1</h2>
+    <table class="kursinfo_table">
+        <tr>
+            <th>Kurs</th>
+            <th>Kurspoäng</th>
+            <th>Kurskod</th>
+            <th>Huvudområde</th>
+        </tr>
+        <tr>
+            <td>Introduktion till datavetenskap</td>
+            <td>7.5 hp</td>
+            <td>DA154A</td>
+            <td>Datavetenskap, Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Introduktion till webbutveckling</td>
+            <td>7.5 hp</td>
+            <td>DA106A</td>
+            <td>Datavetenskap, Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Interaktionsdesign för informationsarkitekter</td>
+            <td>7.5 hp</td>
+            <td>DA100A</td>
+            <td>Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Introduktion till programmering</td>
+            <td>7.5 hp</td>
+            <td>DA354A</td>
+            <td>Data- och informationsvetenskap</td>
+        </tr>
+    </table>
 
+    <h2 id="iah2">Vår- Termin 2</h2>
+    <table class="kursinfo_table">
+        <tr>
+            <th>Kurs</th>
+            <th>Kurspoäng</th>
+            <th>Kurskod</th>
+            <th>Huvudområde</th>
+        </tr>
+        <tr>
+            <td>Databasteknik</td>
+            <td>7.5 hp</td>
+            <td>DA297A</td>
+            <td>Datavetenskap, Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Systemutveckling och projekt I</td>
+            <td>15 hp</td>
+            <td>DA336A</td>
+            <td>Datavetenskap, Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Informationsarkitektur för flerplattformsapplikationer</td>
+            <td>7.5 hp</td>
+            <td>DA108A</td>
+            <td>Data- och informationsvetenskap</td>
+        </tr>
+    </table>
 
+    <h2 id="iah2">Höst- Termin 3</h2>
+    <table class="kursinfo_table">
+        <tr>
+            <th>Kurs</th>
+            <th>Kurspoäng</th>
+            <th>Kurskod</th>
+            <th>Huvudområde</th>
+        </tr>
+        <tr>
+            <td>Objektorienterad programmering och modellering för IA</td>
+            <td>7.5 hp</td>
+            <td>DA361A</td>
+            <td>Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Information bortom skärmar</td>
+            <td>7.5 hp</td>
+            <td>DA200A</td>
+            <td>Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Informationsdesign</td>
+            <td>7.5 hp</td>
+            <td>DA456A</td>
+            <td>Data- och informationsvetenskap</td>
+        </tr>
+        <tr>
+            <td>Webbtjänster</td>
+            <td>7.5 hp</td>
+            <td>DA109A</td>
+            <td>Data- och informationsvetenskap, Datavetenskap</td>
+        </tr>
+    </table>
 
 {% endblock content %}

@@ -16,9 +16,9 @@
 
     <!-- Om sidan har en titel, skriv ut den. Annars använd Integrum som titel -->
     {% if title %}
-    <title>Integrum - {{ title }} </title>
+        <title>Integrum - {{ title }} </title>
     {% else %}
-    <title>Integrum</title>
+        <title>Integrum</title>
     {% endif %}
 
     {% block head %} {% endblock head %}
@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <header>
-            
+
         </header>
 
         <nav>
@@ -49,7 +49,7 @@
 
                 <!-- Dropdown för Schema -->
                 <div class="dropdown">
-                    <button class="dropbtn">Schema</button>
+                    <button class="dropbtn">Planering</button>
                     <div class="dropdown-content">
                     <a href="{{ url_for('main.schema') }}">Kalender</a>
                     <a href="{{ url_for('main.todo') }}">Att göra</a>
@@ -68,18 +68,15 @@
                 </div>
             
                 <a href="{{ url_for('users.profil') }}">Min profil</a>
-                <input type="text" id="src_bar" placeholder="Sök..">
                 <a href="{{ url_for('users.logout') }}">Logga ut</a>
             {% else %}
                 <a href="{{ url_for('users.login') }}">Logga in</a>
                 <a href="{{ url_for('users.register') }}">Registrera</a>
-                <a href="{{ url_for('main.om_oss') }}">Om oss</a>
+                <a href="{{ url_for('main.om_oss') }}">Om oss</a>         
                 <a href="{{ url_for('main.kontakt') }}">Kontakt</a>
                 <a href="{{ url_for('main.forum') }}">Forum</a>
                 <a href="{{ url_for('main.faq') }}">FAQ</a>
             {% endif %}
-                
-           
 
         </nav>
 
@@ -98,7 +95,6 @@
                 </div>
             </div>
             
-            
             {% block content %} {% endblock %}
             
         </main>
@@ -116,6 +112,18 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="static/js/schema.js"></script>
+    
+    <!-- Markerar aktuell sida/knapp i naven -->
+    <script type="text/javascript">
+        const currentLocation = location.href;
+        const menuItem = document.querySelectorAll("a");
+        const menuLength = menuItem.length
+        for (let i = 0; i<menuLength; i++){
+            if(menuItem[i].href === currentLocation){
+                menuItem[i].className = "active"
+            }
+        }
+    </script>
+
 </body>
 </html>

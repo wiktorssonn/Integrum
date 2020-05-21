@@ -45,7 +45,7 @@ class User(db.Model, UserMixin):
 
     #Hur vår modell skrivs ut
     def __repr__(self):
-        return "User('{}', '{}', '{}')" .format(self.username, self.email, self.image_file)
+        return "User('{}', '{}', '{}', {})" .format(self.username, self.email, self.image_file, self.id)
 
 
 
@@ -69,8 +69,10 @@ class Todo(db.Model):
     assignment = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    completed = db.Column(db.Boolean)
     
     #Hur vår modell skrivs ut
     def __repr__(self):
-        return "Todo('{}, '{}')".format(self.assignment, self.description)
+        return "Todo('{}, '{}', {})".format(self.assignment, self.description, self.user_id)
     
+

@@ -16,7 +16,9 @@ posts = Blueprint("posts", __name__)
 def post(post_id):
     #Om sökvägen inte finns, returnera 404
     post = Post.query.get_or_404(post_id)
-    return render_template("post.html", title=post.title, post=post)
+    return render_template("post.html", 
+                            title=post.title, 
+                            post=post)
 
 
 
@@ -26,10 +28,12 @@ def post(post_id):
 def update_post(post_id):
     #Om sökvägen inte finns, returnera 404
     post = Post.query.get_or_404(post_id)
-    #Om skaparen av inlägget inte är inloggad användare, raise felmeddelande
+
+    #Om skaparen av inlägget inte är inloggad, raise felmeddelande
     if post.author != current_user:
         abort(403)
     form = PostForm()
+
     #Om uppdateringen validerar, uppdatera inlägg
     if form.validate_on_submit():
         post.title = form.title.data
@@ -37,11 +41,32 @@ def update_post(post_id):
         db.session.commit()
         flash("Inlägget har uppdaterats!", "success")
         return redirect(url_for("posts.post", post_id=post.id))
+
     elif request.method == "GET":
         #Fyller i fälten med texten som finns i nuläget
         form.title.data = post.title
         form.content.data = post.content
-    return render_template("create_post.html", title="Update Post", form=form, legend="Uppdatera Inlägg")
+    
+    '''
+    Sätter sida 1 till default, försöker man ange
+    något annat än en int blir det ValueError.
+    '''
+
+    page = request.args.get("page", 1, type=int)
+
+    '''
+    Hämtar inlägg från databasen och sorterar efter senaste datum.
+    Paginate ger oss möjlighet att styra hur många 
+    inlägg som ska visas per sida etc.
+    '''
+
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page,
+                                                                 per_page=5)
+    return render_template("update_post.html", 
+                            title="Update Post",   
+                            form=form, 
+                            posts=posts, 
+                            legend="Uppdatera Inlägg")
 
 
 
@@ -49,11 +74,14 @@ def update_post(post_id):
 @posts.route("/post/<int:post_id>/delete", methods=["GET", "POST"])
 @login_required
 def delete_post(post_id):
+
     #Om sökvägen inte finns, returnera 404
     post = Post.query.get_or_404(post_id)
-    #Om skaparen av inlägget inte är inloggad användare, raise felmeddelande
+
+    #Om skaparen av inlägget inte är inloggad, raise felmeddelande
     if post.author != current_user:
         abort(403)
+        
     #Tar bort inlägget
     db.session.delete(post)
     db.session.commit()

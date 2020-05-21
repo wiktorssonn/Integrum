@@ -4,6 +4,7 @@ body {
     font-family: 'Baloo Chettan 2', cursive;
 }
 
+
 #wrapper {
     display: grid;
     grid-template-areas:
@@ -25,46 +26,119 @@ body {
     background-position: center;
 }
 
+
+/* Navigeringsmeny */
+
 #wrapper > nav {
     grid-area: nav;
-    
-    background-color: black;
-    
+    background-color: rgb(46, 46, 46);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     height: 50px;
-
+    width: 100%;
+    position: sticky;
+    top: 0;
     font-size: 1.2em;
-
+    z-index: 1;
 }
 
+/* Länkarna i naven */
 #wrapper > nav > a {
     text-decoration: none;
     color: white;
     padding: 0.5em;
-    line-height: 2em;
+    line-height: 1.7em;
     font-size: 1em;
     height:100%;
     width:50%;
     text-align: center;
 }
 
+/* Markerar aktuell sida/knapp i naven */
+#wrapper > nav > a.active {
+    background-color: #2E789E;
+}
+
+/* När man håller över länkarna i naven */
 #wrapper > nav > a:hover {
     background-color: #2E789E;
     transition: 0.2s;
 }
 
-#wrapper > nav > a > i {  /* Hem-loggan i navmenu */
+/* Hem-ikonen i naven */
+#wrapper > nav > a > i { 
+    flex-shrink: 1;
     color: white;
-    line-height: 0.5em;
+    line-height: 0.8em;
     font-size: 2em;
 }
 
-#src_bar {
-    border-radius: 5px 5px 5px 5px;
+
+/* Dropdown Button */
+#wrapper > nav .dropbtn {
+    color: white;
+    background-color: rgb(46, 46, 46);
+    padding: 11px;
+    font-size: 1em;
+    width: 15em;
+    border: none;
+    text-align: center;
 }
+  
+/* The container <div> - needed to position the dropdown content */
+#wrapper > nav .dropdown {
+    position: relative;
+    display: inline-block;
+    
+}
+  
+/* Dropdown Content (Hidden by Default) */
+#wrapper > nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(46, 46, 46);
+    width: 15em;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 0px 0px 5px 5px;
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+#wrapper > nav .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+/* Change color of dropdown links on hover */
+#wrapper > nav .dropdown-content a:hover {
+    background-color: #2E789E;
+    transition: 0.2s;
+}
+  
+#wrapper > nav .dropdown-content a:last-child {
+    border-radius: 0px 0px 5px 5px;
+}
+
+/* Show the dropdown menu on hover */
+#wrapper > nav .dropdown:hover .dropdown-content {
+    display: block;
+    transition: 0.2s;
+}
+  
+/* Change the background color of the dropdown button when the dropdown content is shown */
+#wrapper > nav .dropdown:hover .dropbtn {
+    background-color: #2E789E;
+    transition: 0.2s;
+}
+/* Navigeringsmeny SLUTAR */
+
+
+
+/* Allt som ligger i main*/
 
 #wrapper > main {
     grid-area: main;
@@ -81,60 +155,245 @@ body {
     margin: 0 auto;
 }
 
+/* Alla huvudrubriker i main */
 #wrapper > main > h1 {
     text-align: center;
 }
 
+/* Alla paragrafer och underrubriker i main */
 #wrapper > main > p, h2 {
     width: 50%;
     margin: 0 auto;
 }
 
-#wrapper > main > ul > li > a {
-    line-height: 0.5em;
-    font-size: 2em;
+/* Ger padding till alla h2 i main */
+#wrapper > main > h2 {
+    padding-top: 1em;
 }
 
-#wrapper > main > ul > li {
-    list-style-type: none;
+/* Klassen för Logga in / Registrera under formulären */
+.border-top {
+    width: 50%; 
+    margin: 0 auto; 
 }
 
-#wrapper > main > .row {
+/* Flash-meddelande vid inloggning/nytt inlägg etc */
+#wrapper > main .row {
     justify-content: center;
+}
+/* Övergripande main SLUTAR */
+
+
+
+/* Schema-sidan */
+
+/* Diven som håller schema-knapparna */
+#wrapper > main > .schema_year {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+/*Schema-knapparna*/
+#wrapper > main > .schema_year > .btn-info {
+    background-color: rgb(46, 46, 46);
+    border: none;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+/* Hover till schema-knapparna*/
+#wrapper > main > .schema_year .btn-info:hover {
+    background-color: #2E789E;
+}
+
+/*Länkarna i schema-knapparna */
+#wrapper > main > .schema_year a {
+    text-decoration: none;
+    color: white;
+}
+
+#wrapper > main .schema {
+    width: 85%;
+    margin: auto;
+}
+
+#wrapper > main .schema th, td {
+    border: 1px solid black;
+    padding: 1em;
+    color: white;
+    min-width: 8em;
     text-align: center;
 }
 
-#wrapper > main > .border-top {
-    width: 50%;
+/* Schema-sidan SLUTAR */
+
+
+
+/* Informationsarkitekt sidan */
+
+/* Div:en som håller tabellerna om kursplan */
+#kursinfo_dl {
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    width: 55%;
+    border-bottom: 0;
+    font-size: .8125rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
 }
+
+/* Raderna i tabellen kursinfo_dl(vänster) */
+#wrapper > main > #kursinfo_dl > dt {
+    width: 30%;
+    background: rgb(46, 46, 46);
+    color: white;
+    box-sizing: border-box;
+    padding: .5rem;
+    border-style: solid;
+    border-right: none;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+/* Raderna i tabellen kursinfo_dl (höger) */
+#wrapper > main > #kursinfo_dl > dd {
+    display: flex;
+    margin: 0;
+    width: 70%;
+    padding: .5rem;
+    background: #2E789E;
+    align-items: center;
+    border-style: solid;
+    border-left: none;
+    border-color: #ccc;
+    color: white;
+    border-width: 0 1px 1px 1px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+/* Tabellerna för kursinfo */
+#wrapper > main > .kursinfo_table tbody  {
+    background-color: rgb(46, 46, 46);
+    padding: 30px;
+    margin: auto;
+}  
+
+/* Alla h2 på ia.html */
+#iah2 {
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* TR i tabellerna för kursinfo */
+#wrapper > main > .kursinfo_table tbody tr {
+    border-radius: 5px;
+    background-color: rgb(46, 46, 46);
+}
+
+/* TH i tabellerna för kursinfo */
+#wrapper > main > .kursinfo_table, th {
+    background-color: rgb(46, 46, 46);
+    text-align: center; 
+    border-style: 1px solid black;  
+}
+
+/* TD i tabellerna för kursinfo */
+#wrapper > main .kursinfo_table, td {
+    color: white;
+    background-color: #2E789E;
+    border-style: 1px solid black;
+}
+/* Informationsarkitektsidan SLUTAR */
+
 
 
 /* Profilsidan */
 
-#wrapper > main > .profile-content-section {    /* Diven som håller hela innehållet på profilsidan */
+/* Diven som håller hela innehållet på profilsidan */
+#wrapper > main > .profile-content-section {    
     margin: 0 auto;
     padding: 0.5em;
     width: 50%;
 }
 
-#wrapper > main > .profile-content-section img {    /* Profilbild */
+/* Profilbild */
+#wrapper > main > .profile-content-section img {    
     width: 175px;
     height: 175px;
 }
 
-#wrapper > main > .profile-content-section > .media > .media-body {     /* Texten bredvid profilbilden */
+/* Texten bredvid profilbilden */
+#wrapper > main > .profile-content-section > .media > .media-body {     
     padding-left: 2em;
     margin-top: 1.5em;
 }
 
-#wrapper > main > .profile-content-section > form {     /* Formuläret under profilsidan */
+/* Användarnamnet bredbid profilbilden */
+#wrapper > main > .profile-content-section > .media > .media-body > h2 { 
+    margin-left: 0;    
+}
+
+/* Formuläret under profilsidan */
+#wrapper > main > .profile-content-section > form {     
     margin-top: 2em;
 }
+/* Profilsidan SLUTAR */
+
+
+
+/* Förstasidan BÖRJAR (index.html) */
+
+/* Diven som håller cards */
+#wrapper > main > .row {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+/* Hela kortet/korten inlkusive texten */
+#wrapper > main .card-body {
+    background-color: rgb(46, 46, 46);
+    width: 250px;
+    height:150px;
+    color: white;
+    align-items: center;
+}
+
+/* Behållaren för korten */
+#wrapper > main .card {
+    border-style: none;
+}
+
+/* Bilden till korten */
+#wrapper > main .card-img-top {
+    border: rgb(46, 46, 46);
+    align-self: auto;
+    height: 200px;
+    width: 250px;
+   
+}
+
+/* Knappen i korten */
+#wrapper > main .btn-primary {
+    background-color: #2E789E;
+    color: white;
+    border-style: none;
+}
+
+/* Förstasidan SLUTAR */
+
 
 
 /* Forumsidan */
 
-#wrapper > main > .forum-content-section {      /* Diven som håller hela innehållet på forumsidan */
+/* Diven som håller hela innehållet på forumsidan */
+#wrapper > main > .forum-content-section {      
     margin: 20px auto;
     padding: 0.5em;
     width: 50%;
@@ -144,38 +403,49 @@ body {
     border: 2px solid #ccc;
 }
 
-#wrapper > main > .forum-content-section img {    /* Profilbild vid inlägget */
+/* Tar bort border under "Nytt inlägg" */
+#wrapper > main > .content-section .border-bottom {
+    border: none !important;
+}
+
+/* Profilbild vid inlägget */
+#wrapper > main > .forum-content-section img {
     width: 100px;
     height: 100px;
 }
 
-#wrapper > main > .forum-content-section .article-metadata {     /* Texten bredvid profilbilden, skapare och datum */
+/* Texten bredvid profilbilden, skapare och datum */
+#wrapper > main > .forum-content-section .article-metadata {
     padding: 0;
     margin-left: 15px;
     border-bottom: 1.5px solid #ccc;
-
 }
 
-#wrapper > main > .forum-content-section h2 {       /* Titel i inläggen */
+/* Titel i inläggen */
+#wrapper > main > .forum-content-section h2 {
     padding-top: 0;
     margin-top: 10px;
     margin-left: 15px;
 }
 
-#wrapper > main > .forum-content-section p {        /* Texten i inläggen */
+/* Texten i inläggen */
+#wrapper > main > .forum-content-section p {        
     margin-left: 15px;
 }
 
-#wrapper > main > .forum-buttons {      /* Diven som håller knapparna för de olika sidorna med inlägg */
+/* Diven som håller knapparna för de olika sidorna med inlägg */
+#wrapper > main > .forum-buttons {      
     margin: 50px auto;
     text-align: center;
 }
 
-#wrapper > main > .mb-5 {       /* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
+/* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
+#wrapper > main > .mb-5 {       
     text-align: center;
 }
 
-#wrapper > main > .schema {     /* Texten i schema-tabellen */
+/* Texten i schema-tabellen */
+#wrapper > main > .schema {     
     color: black
 }
 /* Forumsidan SLUTAR */
@@ -183,23 +453,123 @@ body {
 
 
 /* Att göra sidan */
+
+/* Div:en som håller hela "att-göra" listan */
+#wrapper > main > #todo {       
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #666;
+    margin-top: 0.5em;
+}
+
+/* Ul som håller i listorna */
 #wrapper > main > .list-group {
     width: 50%;
     margin: 2em auto 5em auto;
-    border: 1px solid black;
 }
 
-#wrapper > main > ul > li:nth-child(3n + 3) {
-    background-color: grey;
+/* Listorna i "att-göra" */
+#wrapper > main .list-group-item {
+    border: 0px;
+}
+
+/* Knappen för att ta bort uppgifter i "att-göra" listan */
+#wrapper > main > .content-section > form button {
+    float: right;
+    margin-top: -0.2em;
+} 
+
+/* Ojämna raderna i "att-göra" listan */
+#wrapper > main > .content-section > form > ul > li > p:nth-child(1) { 
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-bottom: 0.5em;
+} 
+
+/* Udda list-items, alltså beskrivning av uppgiften */
+#wrapper > main > .content-section > form > ul > li:nth-child(odd) {       
+    border-radius: 0;
+} 
+
+/* Jämna list-items, alltså beskrivning av uppgiften */
+#wrapper > main > .content-section > form > ul > li:nth-child(even) {       
+    background-color: #ccc;
+    border-radius: 0;
+} 
+
+/* Id för div:en som håller hela "Lägg till ny uppgift" formuläret */
+#wrapper > main > #new_assignment {
+    margin-top: 3em;
+}
+
+/* Centrerar H2 "Lägg till ny uppgift" */
+#wrapper > main > #new_assignment h2 {
+    text-align: center;
+}
+
+/* Tar bort border från legend till "Lägg till ny uppgift" */
+#wrapper > main > #new_assignment legend {
+    border: none;
 }
 
 /* Att göra sidan SLUTAR */
 
 
 
+/* Kontaktsidan */
+
+/* Div:en för kontakt med lärare */
+#contact_dl {
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    width: 80%;
+    border-bottom: 1px #fff;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#contact_dl dt {
+    width: 20%;
+    background: rgb(46, 46, 46);
+    color: white;
+    box-sizing: border-box;
+    padding: .5rem; 
+    border-style: solid;
+    border-right: none;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+    border-radius: 5px 0px 0px 5px; 
+}
+
+/* Raderna i tabellen kursinfo_dl (höger) */
+#contact_dl dd {
+    margin: 0;
+    width: 35%;
+    padding: .5rem;
+    background: #2E789E;
+    align-items: center;
+    color: white;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+}
+
+/* Länkar i dl */
+#contact_dl a {
+    color: white;
+}
+
+
+
+/* Footern */
+
 #wrapper > footer {
     grid-area: footer;
-    background-color: black;
+    background-color: rgb(46, 46, 46);
     color: white;
     line-height: 100px;
     text-align: center;
@@ -209,147 +579,4 @@ body {
 #wrapper > footer > p {
     margin-bottom: 0;
 }
-
-
-h2 {
-    padding-top: 30px;
-}
-
-
-.details {
-    width: 25%;
-    padding-bottom: 10px;
-    border-top: 2px solid #2E789E;
-}
-
-
-#home { 
-    flex-shrink: 1.5;
-}
-
-#log_in {
-    color: white;
-    line-height: 0.5em;
-    font-size: 1em;
-}
-
-
-/* Klassen för Logga in / Registrera under formulären */
-.border-top {
-    width: 65%; 
-    margin: 0 auto; 
-}
-
-
-/* Dropdown Button */
-.dropbtn {
-    color: white;
-    background-color: black;
-    padding: 11px;
-    font-size: 1em;
-    width: 15em;
-    border: none;
-    text-align: center;
-    }
-  
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    }
-  
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: black;
-    width: 15em;
-    box-shadow: 2px 2px 10px black;
-    border-radius: 0px 0px 5px 5px;
-    z-index: 1;
-    }
-  
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
-  
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #2E789E;
-    transition: 0.2s;
-    }
-  
-.dropdown-content a:last-child {
-    border-radius: 0px 0px 5px 5px;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-    transition: 0.2s;
-    }
-  
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #2E789E;
-    transition: 0.2s;
-    }
-
-
-.kursinfo_table {
-    padding: 30px;
-}    
-
-.kursinfo_table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-th {
-    color: white;
-    background-color: black;
-    text-align: center;
-}
-
-th, td {
-    padding: 10px;
-}
-
-.todo_table{
-    padding: 30px;
-    width:40%;
-    margin:0;
-}
-
-#todo_lists{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-#todo_lists > h2{
-    width: 44%;
-    margin-left: 3%;
-}
-
-.todo_table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-#user_picture {
-    padding: 10px;
-    font-size: 150px;
-    color: #2E789E;
-}
-
-/* todo skapa uppgift */
-
-.todo_item > .item {
-
-    display: block;
-}
+/* Footern SLUTAR */
