@@ -2,20 +2,41 @@
 
 {% block content %}
 
-    <h1>Hej och jättevälkomen! </h1>
+    <h1>Välkommen till Integrum</h1>
 
     <div class="row">
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Orkanen-1.jpg" class="card-img-top" alt="Bibliotek">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text">Här kommer du direkt till Orkanens bibliotek där du hittar kurslitteratur</p>
+                    <p class="card-text">Här kommer du direkt till Orkanens bibliotek</p>
                     <a href="https://mau.se/bibliotek/" target="_blank" class="btn btn-primary">Till biblioteket</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.universitetsmediagruppen.se/wp-content/uploads/2017/07/malmo.png" class="card-img-top" alt="Studentkåren">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">Här kommer du direkt till Studentkårens hemsida</p>
+                    <a href="https://malmostudenter.se/" target="_blank" class="btn btn-primary">Till Studentkåren</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.csn.se/images/18.62fc105b15ddecaf46f27a7/csnlogo.png" class="card-img-top" alt="CSN">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">Här kommer du direkt till CSN för bidrag & lån</p>
+                    <a href="https://www.csn.se/" target="_blank" class="btn btn-primary">Till CSN</a>
                 </div>
             </div>
         </div>
     </div>
     
+        <h1>Senaste inläggen</h1>
         {% for post in posts.items %}
             <article class="media forum-content-section">
                 <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/profile_pics/' + post.author.image_file) }}">
