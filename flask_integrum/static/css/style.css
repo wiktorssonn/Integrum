@@ -585,3 +585,10 @@ body {
     margin-bottom: 0;
 }
 /* Footern SLUTAR */
+
+/*Responsive layout*/
+@media screen and (max-width: 1300px) {
+    #wrapper > main > .profile-content-section{
+        width:95%;
+    }
+}
