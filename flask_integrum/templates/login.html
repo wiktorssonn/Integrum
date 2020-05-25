@@ -41,14 +41,14 @@
                     {{ form.remember.label(class="form-check-label") }}
                 </div>
             </fieldset>
-
+            
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
                 <small class="text-muted ml-2">
                     <a href="{{ url_for('users.reset_request') }}">Glömt ditt lösenord?</a>
                 </small>
             </div>
-            
+
         </form>
     </div>
 
@@ -57,5 +57,5 @@
             Har du inget konto?<a class="ml-2" href="{{ url_for('users.register') }}">Registrera nu!</a>
         </small>
     </div>
-
+    
 {% endblock content %}
