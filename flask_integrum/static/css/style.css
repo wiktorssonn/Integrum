@@ -690,4 +690,8 @@ body {
     #wrapper > main > .profile-content-section{
         width:95%;
     }
+    #wrapper > nav {
+        background-color: green;
+    }
+
 }
