@@ -14,6 +14,9 @@
     <!-- CSS -->
     <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
 
+    <!--Responsiv-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Om sidan har en titel, skriv ut den. Annars använd Integrum som titel -->
     {% if title %}
         <title>Integrum - {{ title }} </title>
