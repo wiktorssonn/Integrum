@@ -696,7 +696,11 @@ body {
 
 /*Responsive layout under 1300px bredd*/
 @media screen and (max-width: 1300px) {
-    
+
+    #wrapper > main{
+        padding:0;
+    }
+
     /*Forum inlägg*/
     #wrapper > main > .forum-content-section {      
         width: 95%;
@@ -745,5 +749,17 @@ body {
     }
     /* Om oss sidan SLUTAR*/
 
-
+    /*FAQ sidan*/
+    #wrapper > main > .faq {
+        width: 90%;
+        text-align: center;
+        margin:auto;
+    }
+    #wrapper > main > .faq > ul > li > p {
+        font-size: 18px;
+    }
+    #wrapper > main > .faq > ul {
+        list-style-type: none;
+    }
+    /*FAQ sidan SLUTAR*/
 }
