@@ -687,11 +687,12 @@ body {
 
 /*Responsive layout*/
 @media screen and (max-width: 1300px) {
-    #wrapper > main > .profile-content-section{
-        width:95%;
+    
+    /*Forum inlägg*/
+    #wrapper > main > .forum-content-section {      
+        width: 95%;
     }
-    #wrapper > nav {
-        background-color: green;
+    #wrapper > main > .forum-content-section > .media-body > .article-content{        
+        font-size: 18px;
     }
-
 }
