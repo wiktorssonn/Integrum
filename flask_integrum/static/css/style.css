@@ -249,6 +249,15 @@ body {
 
 /* Informationsarkitekt sidan */
 
+/*Sammanfattningen*/
+#wrapper > main > .ia-content-section {
+    width: 50%;
+    margin: 0 auto;
+}
+#wrapper > main > .ia-content-section > h2 {
+    margin-left: 0;
+}
+
 /* Div:en som håller tabellerna om kursplan */
 #kursinfo_dl {
     display: flex;
@@ -788,4 +797,72 @@ body {
     }
 
 
+/*Responsive layout under 1300px bredd*/
+@media screen and (max-width: 1300px) {
+
+    #wrapper > main{
+        padding:0;
+    }
+
+    /*Forum inlägg*/
+    #wrapper > main > .forum-content-section {      
+        width: 95%;
+    }
+    #wrapper > main > .forum-content-section > .media-body > .article-content{        
+        font-size: 18px;
+    }
+    #wrapper > main > .content-section {
+        width: 90%;
+    }
+    /*Forum inlägg SLUTAR*/
+
+    /*Programsidan*/
+    #wrapper > main > .ia-content-section {
+        width: 90%;
+    }
+    #wrapper > main > .ia-content-section > p {
+        font-size: 18px;
+        text-align: center;
+    }
+    #wrapper > main > .ia-content-section > h2 {
+        text-align: center;
+        margin: auto;
+    }
+    
+    #kursinfo_dl {
+        width:90%;
+    }
+    /*Kursinfo(vänster)*/
+    #wrapper > main > #kursinfo_dl > dt{
+        width:50%;
+    }
+    /*Kursinfo(höger)*/
+    #wrapper > main > #kursinfo_dl > dd{
+        width:50%;
+    }
+    /*Programsidan SLUTAR*/
+
+    /* Om oss sidan */
+    #wrapper > main > .om_oss {
+    width: 90%;
+    text-align: center;
+    }
+    #wrapper > main > .om_oss > p{
+        font-size: 18px;
+    }
+    /* Om oss sidan SLUTAR*/
+
+    /*FAQ sidan*/
+    #wrapper > main > .faq {
+        width: 90%;
+        text-align: center;
+        margin:auto;
+    }
+    #wrapper > main > .faq > ul > li > p {
+        font-size: 18px;
+    }
+    #wrapper > main > .faq > ul {
+        list-style-type: none;
+    }
+    /*FAQ sidan SLUTAR*/
 }
