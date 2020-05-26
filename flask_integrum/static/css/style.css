@@ -704,6 +704,9 @@ body {
     #wrapper > main > .forum-content-section > .media-body > .article-content{        
         font-size: 18px;
     }
+    #wrapper > main > .content-section {
+        width: 90%;
+    }
     /*Forum inlägg SLUTAR*/
 
     /*Programsidan*/
@@ -740,4 +743,7 @@ body {
     #wrapper > main > .om_oss > p{
         font-size: 18px;
     }
+    /* Om oss sidan SLUTAR*/
+
+
 }
