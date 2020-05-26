@@ -6,29 +6,17 @@ Skapa en enklare och mer användbar "Canvas" främst för Informationsarkitekter
 
 Instruktioner för att öppna programmet via Flask (om du jobbar via GitHub):
 ---------------------------------------------------------------------------
-(Kolla pip-install nedan innan du påbörjar stegen i instruktionerna)
-1. Skriv "python app.py" alternativt "python3 app.py" i terminalen (Funkar inte detta så är du inte i rätt directory).
-2. Om inte 1 fungerar skriv "ls" i terminalen för att se var du står just nu. Navigera sedan till /Users/användarnamn/Documents/GitHub/Integrum/flask_integrum med hjälp av "cd" kommandot. (För att gå tillbaka skriv "cd .." på Windows och cd ../ på Mac, cd ../../ tar dig två steg tillbaka) Se guide om navigering via terminal, https://courses.cs.washington.edu/courses/cse140/13wi/shell-usage.html
-3. Skriv python3 app.py för att starta applikationen och surfa in på http://127.0.0.1:5000.
-4. Om ovanstånde inte funkar så är du antagligen fortfarande i fel directory. Följ då steg 2 till 3 igen.
-5. Om det fortfarande inte fungerar så behövs antagligen moduler installeras (se Pip-installs som behövs längre ner på denna sidan).
+1. Börja med att installera alla pip installs som krävs för att starta servern.
+   Detta gör du genom att navigera till integrum mappen och skriv sedan i valfri
+   terminal/kommandotolk: pip install -r requirements.txt
 
-
-Pip-installs som behövs:
-
-pip install Flask
-
-pip install Flask-WTF      -Validering av formulär etc
-
-pip install flask-bcrypt       -Kryptering av lösenord 
-
-pip install flask-sqlalchemy   -Databas
-
-pip install flask-login    -Loginfunktioner
-
-pip install Pillow     -Gör att vi kan skala profilbilderna
-
-pip install flask-mail      -För att skicka mail genom flask
+2. När alla pip installs är klara, skriv: python3 app.py eller python app.py för att starta servern.
+ 
+3. Om servern startar utan några felmeddelande, öppna valfri webbläsare och surfa till
+   127:0:0:1:5000.
+   
+4. Om du får upp felmeddelande om att någon modul saknas, läs vilken modul som saknas och skriv
+   pip install <saknad_modul> och upprepa steg 2 igen.
 
 
 Programmet är byggt med Python biblioteket Flask och måste därför startas via en terminal tills vidare utveckling möjliggör andra startalternativ.
@@ -45,6 +33,4 @@ tas från layout.html som ligger som grund för samtliga sidor.
 
     {% endblock content %}
     
-    
-    
-   XML Kronox = https://schema.mau.se/appserver-ejb/RapportEJB?wsdl
+   
