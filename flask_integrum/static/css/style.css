@@ -248,6 +248,15 @@ body {
 
 /* Informationsarkitekt sidan */
 
+/*Sammanfattningen*/
+#wrapper > main > .ia-content-section {
+    width: 50%;
+    margin: 0 auto;
+}
+#wrapper > main > .ia-content-section > h2 {
+    margin-left: 0;
+}
+
 /* Div:en som håller tabellerna om kursplan */
 #kursinfo_dl {
     display: flex;
@@ -685,7 +694,7 @@ body {
 }
 /* Footern SLUTAR */
 
-/*Responsive layout*/
+/*Responsive layout under 1300px bredd*/
 @media screen and (max-width: 1300px) {
     
     /*Forum inlägg*/
@@ -695,4 +704,31 @@ body {
     #wrapper > main > .forum-content-section > .media-body > .article-content{        
         font-size: 18px;
     }
+    /*Forum inlägg SLUTAR*/
+
+    /*Programsidan*/
+    #wrapper > main > .ia-content-section {
+        width: 95%;
+    }
+    #wrapper > main > .ia-content-section > p {
+        font-size: 18px;
+        text-align: center;
+    }
+    #wrapper > main > .ia-content-section > h2 {
+        text-align: center;
+        margin: auto;
+    }
+    
+    #kursinfo_dl {
+        width:90%;
+    }
+    /*Kursinfo(vänster)*/
+    #wrapper > main > #kursinfo_dl > dt{
+        width:50%;
+    }
+    /*Kursinfo(höger)*/
+    #wrapper > main > #kursinfo_dl > dd{
+        width:50%;
+    }
+    /*Programsidan SLUTAR*/
 }
