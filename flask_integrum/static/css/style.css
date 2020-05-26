@@ -644,6 +644,8 @@ body {
 }
 /* FAQ-sidan SLUTAR */
 
+
+
 /* Om oss sidan */
 
 #wrapper > main > .om_oss {
@@ -685,3 +687,105 @@ body {
     margin-bottom: 0;
 }
 /* Footern SLUTAR */
+
+
+/* När skärmen är 1280px eller mindre */
+@media only screen and (max-width: 1280px) {
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    /* Kontaktsidan */
+
+    /* Div:en för kontakt med lärare */
+    #contact_dl {
+        font-size: 0.8em;
+    }
+
+    /* Raderna i tabellen kursinfo_dl (vänster) */
+    #contact_dl dt {
+        min-height: 50px;
+    }
+    
+    /* Raderna i tabellen kursinfo_dl (höger) */
+    #contact_dl dd {
+        min-height: 50px;
+    }
+
+
+}
+
+
+
+/* När skärmen är 1080px eller mindre */
+@media only screen and (max-width: 1080px) {
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    /* Kontaktsidan */
+
+    /* Div:en för kontakt med lärare */
+    #contact_dl {
+        font-size: 0.7em;
+    }
+
+}
+
+
+
+/* När skärmen är 680px eller mindre */
+@media only screen and (max-width: 680px) {
+     
+    /* Kontaktsidan */
+    
+    /* Div:en för kontakt med lärare */
+     #contact_dl {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        border-bottom: 1px #fff;
+        text-align: center;
+
+     }
+
+     /* Raderna i tabellen kursinfo_dl (vänster) */
+    #contact_dl dt {
+        min-height: 50px;
+        width: 100%;
+        border-radius: 0;
+        min-width: 0;
+        padding: 0.5em;
+        
+    }
+    
+    /* Raderna i tabellen kursinfo_dl (höger) */
+    #contact_dl dd {
+        min-height: 50px;
+        width: 100%;
+        min-width: 0;
+        padding: 0.5em;
+
+    }
+
+    #contact_dl dd:nth-child(3n + 3) {
+        margin-bottom: 0.5em;
+    }
+
+}
+
+
+/* När skärmen är 400px eller mindre */
+@media only screen and (max-width: 400px) {
+    h2 {
+        font-size: 1em;
+    }
+
+
+}
