@@ -708,7 +708,7 @@ body {
 
     /*Programsidan*/
     #wrapper > main > .ia-content-section {
-        width: 95%;
+        width: 90%;
     }
     #wrapper > main > .ia-content-section > p {
         font-size: 18px;
@@ -731,4 +731,13 @@ body {
         width:50%;
     }
     /*Programsidan SLUTAR*/
+
+    /* Om oss sidan */
+    #wrapper > main > .om_oss {
+    width: 90%;
+    text-align: center;
+    }
+    #wrapper > main > .om_oss > p{
+        font-size: 18px;
+    }
 }
