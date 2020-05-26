@@ -177,6 +177,7 @@ body {
 .border-top {
     width: 50%; 
     margin: 0 auto; 
+    padding-bottom: 5em;
 }
 
 /* Flash-meddelande vid inloggning/nytt inlägg etc */
