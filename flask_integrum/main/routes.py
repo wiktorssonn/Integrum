@@ -90,8 +90,10 @@ def hem():
     # Hämtar inlägg från databasen och sorterar efter senaste datum
     # paginate ger möjlighet att styra antalet inlägg som visas/sida
     
-    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page,
-                                                                per_page=3)
+    posts = Post.query \
+                .order_by(Post.date_posted.desc()) \
+                .paginate(page=page, per_page=3)
+    
     return render_template("index.html", posts=posts)
 
 

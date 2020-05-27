@@ -56,6 +56,17 @@ body {
     text-align: center;
 }
 
+/* Markerar aktuell sida/knapp i naven */
+#wrapper > nav > a.active {
+    background-color: #2E789E;
+}
+
+/* När man håller över länkarna i naven */
+#wrapper > nav > a:hover {
+    background-color: #2E789E;
+    transition: 0.2s;
+}
+
 /* Hem-ikonen i naven */
 #wrapper > nav > a > i { 
     flex-shrink: 1;
@@ -64,11 +75,6 @@ body {
     font-size: 2em;
 }
 
-/* När man håller över länkarna i naven */
-#wrapper > nav > a:hover {
-    background-color: #2E789E;
-    transition: 0.2s;
-}
 
 /* Dropdown Button */
 #wrapper > nav .dropbtn {
@@ -85,6 +91,7 @@ body {
 #wrapper > nav .dropdown {
     position: relative;
     display: inline-block;
+    
 }
   
 /* Dropdown Content (Hidden by Default) */
@@ -150,6 +157,8 @@ body {
 
 /* Alla huvudrubriker i main */
 #wrapper > main > h1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
     text-align: center;
 }
 
@@ -211,6 +220,8 @@ body {
 #wrapper > main .schema {
     width: 85%;
     margin: auto;
+    background-color: none;
+    color: black;
 }
 
 #wrapper > main .schema th, td {
@@ -221,11 +232,30 @@ body {
     text-align: center;
 }
 
+/* Ojämna rader i schema-tabellen */
+#wrapper > main .schema tr:nth-child(odd) {
+    background-color: #2E789E;
+}
+
+/* Jämna rader i schema-tabellen */
+#wrapper > main .schema tr:nth-child(even) {
+    background-color: #61acd1;
+}
+
 /* Schema-sidan SLUTAR */
 
 
 
 /* Informationsarkitekt sidan */
+
+/*Sammanfattningen*/
+#wrapper > main > .ia-content-section {
+    width: 50%;
+    margin: 0 auto;
+}
+#wrapper > main > .ia-content-section > h2 {
+    margin-left: 0;
+}
 
 /* Div:en som håller tabellerna om kursplan */
 #kursinfo_dl {
@@ -270,6 +300,12 @@ body {
     border-radius: 0px 5px 5px 0px;
 }
 
+/* Håller i hela tabellen */
+#wrapper > main > .kursinfo_table {
+    margin: 0 auto;
+    width: 65%;
+}
+
 /* Tabellerna för kursinfo */
 #wrapper > main > .kursinfo_table tbody  {
     background-color: rgb(46, 46, 46);
@@ -279,8 +315,10 @@ body {
 
 /* Alla h2 på ia.html */
 #iah2 {
-    margin: 0 auto;
-    padding: 30px;
+    width: 65%;
+    text-align: left;
+    padding: 0 0 0.2em 0.5em;
+
 }
 
 /* TR i tabellerna för kursinfo */
@@ -289,17 +327,26 @@ body {
     background-color: rgb(46, 46, 46);
 }
 
+/* Ojämna rader i tabellen */
+#wrapper > main > .kursinfo_table tbody tr:nth-child(odd) {
+    background-color: #2E789E;
+}
+
+/* jämna rader i tabellen */
+#wrapper > main > .kursinfo_table tbody tr:nth-child(even) {
+    background-color: #61acd1;
+}
+
 /* TH i tabellerna för kursinfo */
 #wrapper > main > .kursinfo_table, th {
     background-color: rgb(46, 46, 46);
     text-align: center; 
-    border-style: 1px solid black;  
+    border: 1px solid black;  
+    color: white;
 }
 
 /* TD i tabellerna för kursinfo */
-#wrapper > main .kursinfo_table, td {
-    color: white;
-    background-color: #2E789E;
+#wrapper > main .kursinfo_table td {
     border-style: 1px solid black;
 }
 /* Informationsarkitektsidan SLUTAR */
@@ -340,13 +387,15 @@ body {
 
 
 
-/* Förstasidan (index.html) */
+/* Förstasidan BÖRJAR (index.html) */
 
 /* Diven som håller cards */
 #wrapper > main > .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     width: 50%;
     margin: 0 auto;
-    background-color: rgb(46, 46, 46);
     border-radius: 5px;
 }
 
@@ -359,10 +408,12 @@ body {
     align-items: center;
 }
 
+/* Behållaren för korten */
 #wrapper > main .card {
     border-style: none;
 }
 
+/* Bilden till korten */
 #wrapper > main .card-img-top {
     border: rgb(46, 46, 46);
     align-self: auto;
@@ -377,6 +428,8 @@ body {
     color: white;
     border-style: none;
 }
+
+/* Förstasidan SLUTAR */
 
 
 
@@ -423,6 +476,11 @@ body {
     margin-left: 15px;
 }
 
+/* När man klickat in på ett visst inlägg */
+#wrapper > main > .content-section > .media-body {
+    margin-left: 15px;
+}
+
 /* Diven som håller knapparna för de olika sidorna med inlägg */
 #wrapper > main > .forum-buttons {      
     margin: 50px auto;
@@ -432,11 +490,6 @@ body {
 /* Texten för att komma vidare till forumet, under "hem" där vi visar några inlägg */
 #wrapper > main > .mb-5 {       
     text-align: center;
-}
-
-/* Texten i schema-tabellen */
-#wrapper > main > .schema {     
-    color: black
 }
 /* Forumsidan SLUTAR */
 
@@ -508,6 +561,23 @@ body {
 
 /* Kontaktsidan */
 
+/* H1 överst på kontakt-sidan */
+#wrapper > main > .block-contact_details h1 {
+    text-align: center;
+}
+
+
+#wrapper > main > .block-contact_details {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+/* H2 i sektionsklassen som allt under kontaktsidan ligger i */
+#wrapper > main > .kontakt > h2{
+    margin-top: 2em;
+    text-align: center;
+}
 /* Div:en för kontakt med lärare */
 #contact_dl {
     display: flex;
@@ -521,7 +591,7 @@ body {
 }
 
 #contact_dl dt {
-    width: 20%;
+    width: 30%;
     background: rgb(46, 46, 46);
     color: white;
     box-sizing: border-box;
@@ -552,6 +622,59 @@ body {
 #contact_dl a {
     color: white;
 }
+/* Kontaktsidan SLUTAR */
+
+
+
+/* FAQ-sidan */
+
+/* Diven för allt på FAQ-sidan */
+#wrapper > main > .faq {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* H1 i faq-diven */
+#wrapper > main > .faq > h1 {
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+/* Alla paragrafer i FAQ */
+#wrapper > main > .faq > ul > li > p {
+    padding-bottom: 2em;
+    text-align: left;
+}
+
+/* Sista paragrafen med med länk till vår mail */
+#wrapper > main > .faq p {
+    text-align: center;
+}
+/* FAQ-sidan SLUTAR */
+
+/* Om oss sidan */
+
+#wrapper > main > .om_oss {
+    width: 65%;
+    margin: 0 auto;
+}
+
+#wrapper > main > .om_oss > h1 {
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+#wrapper > main > .om_oss > h2 {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+
+#wrapper > main > .om_oss > h5 {
+    text-align: center;
+}
+
+/* Om oss SLUTAR */
 
 
 
@@ -570,3 +693,73 @@ body {
     margin-bottom: 0;
 }
 /* Footern SLUTAR */
+
+/*Responsive layout under 1300px bredd*/
+@media screen and (max-width: 1300px) {
+
+    #wrapper > main{
+        padding:0;
+    }
+
+    /*Forum inlägg*/
+    #wrapper > main > .forum-content-section {      
+        width: 95%;
+    }
+    #wrapper > main > .forum-content-section > .media-body > .article-content{        
+        font-size: 18px;
+    }
+    #wrapper > main > .content-section {
+        width: 90%;
+    }
+    /*Forum inlägg SLUTAR*/
+
+    /*Programsidan*/
+    #wrapper > main > .ia-content-section {
+        width: 90%;
+    }
+    #wrapper > main > .ia-content-section > p {
+        font-size: 18px;
+        text-align: center;
+    }
+    #wrapper > main > .ia-content-section > h2 {
+        text-align: center;
+        margin: auto;
+    }
+    
+    #kursinfo_dl {
+        width:90%;
+    }
+    /*Kursinfo(vänster)*/
+    #wrapper > main > #kursinfo_dl > dt{
+        width:50%;
+    }
+    /*Kursinfo(höger)*/
+    #wrapper > main > #kursinfo_dl > dd{
+        width:50%;
+    }
+    /*Programsidan SLUTAR*/
+
+    /* Om oss sidan */
+    #wrapper > main > .om_oss {
+    width: 90%;
+    text-align: center;
+    }
+    #wrapper > main > .om_oss > p{
+        font-size: 18px;
+    }
+    /* Om oss sidan SLUTAR*/
+
+    /*FAQ sidan*/
+    #wrapper > main > .faq {
+        width: 90%;
+        text-align: center;
+        margin:auto;
+    }
+    #wrapper > main > .faq > ul > li > p {
+        font-size: 18px;
+    }
+    #wrapper > main > .faq > ul {
+        list-style-type: none;
+    }
+    /*FAQ sidan SLUTAR*/
+}

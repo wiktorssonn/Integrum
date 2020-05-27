@@ -41,7 +41,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ task.assignment(class="form-control form-control-lg") }}
+                        {{ task.assignment(class="form-control form-control-lg", placeholder="Namn på uppgift..") }}
                     {% endif %}
                 </div>
 
@@ -55,7 +55,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ task.description(class="form-control form-control-lg") }}
+                        {{ task.description(class="form-control form-control-lg", placeholder="Beskrivning av uppgiften..") }}
                     {% endif %}
                 </div>
             </fieldset>
