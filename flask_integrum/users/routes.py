@@ -185,6 +185,6 @@ def reset_token(token):
         db.session.commit()
         flash("Ditt lösenord har uppdaterats!", "success")
         return redirect(url_for("users.login"))
-    return render_template("reset_token.html", '
+    return render_template("reset_token.html", 
                             title="Återtställ Lösenord", 
                             form=form)
