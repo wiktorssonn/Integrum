@@ -10,8 +10,12 @@ from flask_integrum.config import Config
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
-login_manager.login_view = "users.login" #Om en sida är login_required kommer man till login sidan
-login_manager.login_message_category = "info" #Visar ett meddelande när man kommer till en sida där man måste logga in
+
+#Om en sida är login_required kommer man till login sidan
+login_manager.login_view = "users.login" 
+
+#Visar ett meddelande när man kommer till sida där man måste logga in
+login_manager.login_message_category = "info" 
 
 #Skickar mejl med länk för återställning av lösenord
 mail = Mail()

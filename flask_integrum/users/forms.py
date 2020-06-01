@@ -10,16 +10,27 @@ from flask_integrum.models import User
 #Registreringsformuläret med inbyggda valideringar genom wtforms
 class RegistrationForm(FlaskForm):
     username = StringField("Användarnamn",
-                           [DataRequired(), Length(min=3, max=20, message="Användarnamnet måste vara mellan 3-20 tecken!")])
+                           [DataRequired(),
+                            Length(min=3, 
+                            max=20, 
+                            message=
+                            "Användarnamnet måste vara mellan 3-20 tecken!")])
 
     email = StringField("Email",
-                        validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
+                        validators=[DataRequired(),
+                        Email(message="Skriv in en giltig email adress!")])
 
     password = PasswordField("Lösenord (Minst 6 tecken långt)", 
-                        validators=[DataRequired(), Length(min=6, max=100, message="Lösenordet måste vara minst 6 tecken långt!")])
+                        validators=[DataRequired(),
+                        Length(min=6, 
+                        max=100, 
+                        message=
+                        "Lösenordet måste vara minst 6 tecken långt!")])
 
     confirm_password = PasswordField("Bekräfta lösenord",
-                        validators=[DataRequired(), EqualTo("password", message="Lösenorden matchar inte!")])
+                        validators=[DataRequired(), 
+                        EqualTo("password", 
+                        message="Lösenorden matchar inte!")])
 
     submit = SubmitField("Registrera")
 
@@ -27,14 +38,14 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         #Kollar om användarnamnet som anges redan finns i databasen
         user = User.query.filter_by(username=username.data).first()
-        #Om användaren redan finns, skriv ut felmeddelande. Annars gå vidare
+        #Om användaren redan finns, skriv felmeddelande.
         if user:
             raise ValidationError("Användarnamnet är upptaget!")
 
     def validate_email(self, email):
         #Kollar om emailen som anges redan finns i databasen
         user = User.query.filter_by(email=email.data).first()
-        #Om emailen redan finns, skriv ut felmeddelande. Annars gå vidare
+        #Om emailen redan finns, skriv felmeddelande. Annars gå vidare
         if user:
             raise ValidationError("Emailen finns redan registrerad!")
         
@@ -43,7 +54,8 @@ class RegistrationForm(FlaskForm):
 #Login formuläret med inbyggda valideringar genom wtforms
 class LoginForm(FlaskForm):
     email = StringField("Email",
-                        validators=[DataRequired(), Email(message="Ogiltig email adress")])
+                        validators=[DataRequired(), 
+                        Email(message="Ogiltig email adress")])
 
     password = PasswordField("Lösenord",
                              validators=[DataRequired()])
@@ -55,42 +67,59 @@ class LoginForm(FlaskForm):
 
 
 
-#Formuläret under profilsidan där man kan uppdatera användarnamn och email
+#Formuläret under profilsidan där man kan uppdatera användarnamn + email
 class UpdateAccountForm(FlaskForm):
     username = StringField("Nytt användarnamn",
-                           [DataRequired(), Length(min=3, max=20, message="Användarnamnet måste vara mellan 3-20 tecken!")])
+                           [DataRequired(), 
+                           Length(min=3,
+                            max=20, 
+                            message=
+                            "Användarnamnet måste vara mellan 3-20 tecken!")])
 
     email = StringField("Ny email",
-                        validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
+                        validators=[DataRequired(),
+                        Email(message=
+                        "Skriv in en giltig email adress!")])
 
-    picture = FileField("Uppdatera profilbild", validators=[FileAllowed(["jpg", "png"], message="Ogiltigt filformat, använd filformat 'jpg' eller 'png'")])
+    picture = FileField("Uppdatera profilbild",
+                        validators=[FileAllowed(["jpg", "png"], 
+                        message=
+                        "Ogiltigt filformat,"\
+                        "använd filformat 'jpg' eller 'png'")])
 
     submit = SubmitField("Uppdatera")
 
     def validate_username(self, username):
-        #Kollar att anvgivet användarnamn inte är samma som användaren redan har
+        #Kollar att anvgivet användarnamn inte 
+        #är samma som användaren redan har
         if username.data != current_user.username:
             #Kollar om användarnamnet som anges redan finns i databasen
             user = User.query.filter_by(username=username.data).first()
-            #Om användaren redan finns, skriv ut felmeddelande. Annars gå vidare
+            #Om användaren redan finns, skriv ut felmeddelande. 
+            #Annars gå vidare
             if user:
                 raise ValidationError("Användarnamnet är upptaget!")
 
     def validate_email(self, email):
-        #Kollar att anvgiven email inte är samma som användaren redan har
+        #Kollar att anvgiven email inte 
+        #är samma som användaren redan har
         if email.data != current_user.email:
             #Kollar om emailen som anges redan finns i databasen
             user = User.query.filter_by(email=email.data).first()
-            #Om emailen redan finns, skriv ut felmeddelande. Annars gå vidare
+            #Om emailen redan finns, skriv ut felmeddelande.
             if user:
                 raise ValidationError("Emailen finns redan registrerad!")
 
 
 
-#Formuläret där man anger sin email för att återställa sitt lösenord, kontrollerar om emailen finns registrerad
+#Formuläret där man anger sin email 
+#för att återställa sitt lösenord 
+#kontrollerar om emailen finns registrerad
 class RequestResetForm(FlaskForm):
     email = StringField("Ange Email",
-                        validators=[DataRequired(), Email(message="Skriv in en giltig email adress!")])
+                        validators=[DataRequired(), 
+                        Email(message=
+                        "Skriv in en giltig email adress!")])
     submit = SubmitField("Validera Email")
 
     #Validera att email som anges finns i databasen
@@ -106,9 +135,16 @@ class RequestResetForm(FlaskForm):
 #Formuläret där man anger sitt nya lösenord
 class ResetPasswordForm(FlaskForm):
     password = PasswordField("Lösenord", 
-                        validators=[DataRequired(), Length(min=6, max=100, message="Lösenordet måste vara minst 6 tecken långt!")])
+                        validators=[DataRequired(), 
+                        Length(min=6, 
+                        max=100,
+                        message=
+                        "Lösenordet måste vara minst 6 tecken långt!")])
 
     confirm_password = PasswordField("Bekräfta lösenord",
-                        validators=[DataRequired(), EqualTo("password", message="Lösenorden matchar inte!")])
+                        validators=[DataRequired(), 
+                        EqualTo("password", 
+                        message=
+                        "Lösenorden matchar inte!")])
     
     submit = SubmitField("Återställ Lösenord")
