@@ -7,13 +7,14 @@ Skapa en enklare och mer användbar "Canvas" främst för Informationsarkitekter
 Instruktioner för att öppna programmet via Flask (om du jobbar via GitHub):
 ---------------------------------------------------------------------------
 1. Börja med att installera alla pip installs som krävs för att starta servern.
-   Detta gör du genom att navigera till integrum mappen och skriv sedan i valfri
-   terminal/kommandotolk: pip install -r requirements.txt
+   Efter att du laddat ner filen från github, börja med att navigera till 
+   integrum mappen i valfri terminal/kommandotolk och skriv sedan i
+   terminalen: pip install -r requirements.txt
 
 2. När alla pip installs är klara, skriv: python3 app.py eller python app.py för att starta servern.
  
 3. Om servern startar utan några felmeddelande, öppna valfri webbläsare och surfa till
-   127:0:0:1:5000.
+   127:0:0:1:5000
    
 4. Om du får upp felmeddelande om att någon modul saknas, läs vilken modul som saknas och skriv
    pip install <saknad_modul> och upprepa steg 2 igen.
@@ -34,3 +35,5 @@ tas från layout.html som ligger som grund för samtliga sidor.
     {% endblock content %}
     
    
+Länk till github repository: https://github.com/wiktorssonn/Integrum
+Kod för databasen ligger i filen "models.py" 
