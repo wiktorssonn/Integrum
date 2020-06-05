@@ -36,4 +36,5 @@ tas från layout.html som ligger som grund för samtliga sidor.
     
    
 Länk till github repository: https://github.com/wiktorssonn/Integrum
+<br>
 Kod för databasen ligger i filen "models.py" 
